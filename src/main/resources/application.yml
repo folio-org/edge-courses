@@ -1,0 +1,24 @@
+spring:
+  application:
+    name: edge-courses
+  liquibase:
+    enabled: false
+
+management.endpoints.web.base-path: /admin
+header.validation.x-okapi-tenant.exclude.base-paths: /admin,/swagger,/v2/api-docs
+server.error.include-message: always
+
+Dsecure_store_props: src/main/resources/ephemeral.properties
+secure_store_props: ${Dsecure_store_props}
+
+Dsecure_store: Ephemeral
+secure_store: ${Dsecure_store}
+
+Dtoken_cache_ttl_ms: 3600000
+token_cache_ttl_ms: ${Dtoken_cache_ttl_ms}
+
+Dnull_token_cache_ttl_ms: 30000
+null_token_cache_ttl_ms: ${Dnull_token_cache_ttl_ms}
+
+Dtoken_cache_capacity: 100
+token_cache_capacity: ${Dtoken_cache_capacity}

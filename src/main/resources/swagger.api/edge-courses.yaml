@@ -1,0 +1,81 @@
+openapi: 3.0.0
+info:
+  title: Courses API
+  version: v1
+
+servers:
+  - url: /courses/
+
+paths:
+  /courses/courses:
+    get:
+      operationId: getCourses
+      summary: Retrieve course reserves associated with the keyword query from folio mod-courses
+      description: Retrieve course reserves associated with the keyword query
+      parameters:
+        - $ref: '#/components/parameters/query-parameter'
+      responses:
+        '200':
+          description: 'Calls the mod-courses GET /coursereserves/courses API and returns the result as-is
+          The example of response: https://github.com/folio-org/mod-courses/blob/master/ramls/examples/reserves.json'
+          content:
+            application/json:
+              schema:
+                type: string
+        '400':
+          $ref: '#/components/responses/badRequestResponse'
+        '500':
+          $ref: '#/components/responses/internalServerErrorResponse'
+  /courses/courselistings/{instanceId}/reserves:
+    get:
+      operationId: getCoursesByInstanceId
+      summary: Retrieve course reserves associated with the course instance id from folio mod-courses
+      description: Retrieve course reserves associated with course instance id
+      parameters:
+        - $ref: '#/components/parameters/instance-id-path'
+      responses:
+        '200':
+          description: 'Calls the mod-courses GET /coursereserves/courselistings/{listing_id}/courses API and returns the result as-is
+          The example of response: https://github.com/folio-org/mod-courses/blob/master/ramls/examples/reserves.json'
+          content:
+            application/json:
+              schema:
+                type: string
+        '400':
+          $ref: '#/components/responses/badRequestResponse'
+        '500':
+          $ref: '#/components/responses/internalServerErrorResponse'
+
+components:
+  schemas:
+    errorResponse:
+      $ref: schemas/error/errors.json
+
+  responses:
+    badRequestResponse:
+      description: Validation errors
+      content:
+        application/json:
+          example: examples/validationErrorResponse.sample
+          schema:
+            $ref: "#/components/schemas/errorResponse"
+    internalServerErrorResponse:
+      description: When unhandled exception occurred during code execution, e.g. NullPointerException
+      content:
+        application/json:
+          example: examples/unknownError.sample
+
+  parameters:
+    query-parameter:
+      name: query
+      in: query
+      description: The keyword query in CQL format
+      schema:
+        type: string
+    instance-id-path:
+      name: instanceId
+      in: path
+      description: Course Instance's UUID
+      required: true
+      schema:
+        type: string

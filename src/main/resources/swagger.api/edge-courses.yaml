@@ -9,11 +9,13 @@ servers:
 paths:
   /courses/courses:
     get:
-      operationId: getCourses
+      operationId: getCoursesByQuery
       summary: Retrieve course reserves associated with the keyword query from folio mod-courses
       description: Retrieve course reserves associated with the keyword query
       parameters:
         - $ref: '#/components/parameters/query-parameter'
+        - $ref: '#/components/parameters/x-okapi-tenant-header'
+        - $ref: '#/components/parameters/x-okapi-token-header'
       responses:
         '200':
           description: 'Calls the mod-courses GET /coursereserves/courses API and returns the result as-is
@@ -33,6 +35,8 @@ paths:
       description: Retrieve course reserves associated with course instance id
       parameters:
         - $ref: '#/components/parameters/instance-id-path'
+        - $ref: '#/components/parameters/x-okapi-tenant-header'
+        - $ref: '#/components/parameters/x-okapi-token-header'
       responses:
         '200':
           description: 'Calls the mod-courses GET /coursereserves/courselistings/{listing_id}/courses API and returns the result as-is
@@ -77,5 +81,19 @@ components:
       in: path
       description: Course Instance's UUID
       required: true
+      schema:
+        type: string
+    x-okapi-tenant-header:
+      name: x-okapi-tenant
+      in: header
+      description: X-Okapi-Tenant header value
+      required: false
+      schema:
+        type: string
+    x-okapi-token-header:
+      name: x-okapi-token
+      in: header
+      description: X-Okapi-Token header value
+      required: false
       schema:
         type: string

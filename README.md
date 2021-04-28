@@ -15,7 +15,7 @@ See [edge-common-spring](https://github.com/folio-org/edge-common-spring)
 ## Requires Permissions
 
 Institutional users should be granted the following permission in order to use this edge API:
-- `"course-reserves-storage.courses.collection.get"`
+- `"course-reserves-storage.reserves.collection.get"`
 - `"course-reserves-storage.courselistings.reserves.collection.get"`
 
 ## Configuration

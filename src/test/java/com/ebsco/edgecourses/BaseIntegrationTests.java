@@ -25,7 +25,7 @@ import org.springframework.test.web.servlet.ResultActions;
 @AutoConfigureMockMvc
 public abstract class BaseIntegrationTests {
 
-  protected static final String OKAPI_URL = "http://localhost:9130";
+  public static final String OKAPI_URL = "http://localhost:9130";
   private static final String EDGE_COURSES_MODULE = "edge-courses-1.0.0";
   private static final String TEST_API_KEY = "eyJzIjoiQlBhb2ZORm5jSzY0NzdEdWJ4RGgiLCJ0IjoidGVzdCIsInUiOiJ0ZXN0X2FkbWluIn0=";
 

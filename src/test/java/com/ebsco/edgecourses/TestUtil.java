@@ -15,7 +15,9 @@ import org.apache.commons.io.IOUtils;
 public class TestUtil {
 
   public static final String RESERVES_RESPONSE_PATH = "mockData/reserves_response.json";
+  public static final String COURSES_RESPONSE_PATH = "mockData/courses_response.json";
   public static final String EMPTY_RESERVES_RESPONSE_PATH = "mockData/empty_reserves_response.json";
+  public static final String EMPTY_COURSES_RESPONSE_PATH = "mockData/empty_courses_response.json";
   public static final String TEST_TENANT = "test";
 
   public static final ObjectMapper OBJECT_MAPPER = new ObjectMapper()

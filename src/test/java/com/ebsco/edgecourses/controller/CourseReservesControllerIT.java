@@ -1,9 +1,12 @@
 package com.ebsco.edgecourses.controller;
 
+import static com.ebsco.edgecourses.TestUtil.COURSES_RESPONSE_PATH;
+import static com.ebsco.edgecourses.TestUtil.EMPTY_COURSES_RESPONSE_PATH;
 import static com.ebsco.edgecourses.TestUtil.EMPTY_RESERVES_RESPONSE_PATH;
 import static com.ebsco.edgecourses.TestUtil.RESERVES_RESPONSE_PATH;
 import static com.ebsco.edgecourses.TestUtil.TEST_TENANT;
 import static org.hamcrest.Matchers.is;
+import static org.hamcrest.Matchers.iterableWithSize;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.springframework.http.MediaType.APPLICATION_JSON;
@@ -37,9 +40,11 @@ import org.springframework.web.client.RestTemplate;
 
 class CourseReservesControllerIT extends BaseIntegrationTests {
 
-  public static final String RESERVES_URL_WITH_QUERY = "/courses/courses?query=id=67227d94-7333-4d22-98a0-718b49d36595";
   public static final String COURSE_RESERVE_UUID = "67227d94-7333-4d22-98a0-718b49d36595";
-  public static final String RESERVES_URL_BY_ID = "/courses/courselistings/67227d94-7333-4d22-98a0-718b49d36595/reserves";
+  public static final String COURSE_UUID = "83034b0a-bf71-4495-b642-2e998f721e5d";
+  public static final String COURSES_URL_WITH_QUERY = String.format("/courses/courses?query=id=%s", COURSE_UUID);
+  public static final String RESERVES_URL_BY_ID = String
+      .format("/courses/courselistings/%s/reserves", COURSE_RESERVE_UUID);
   private static final String MOCK_TOKEN = "eyJhbGciOiJIUzI1NiJ9eyJzdWIiOiJ0ZXN0X2FkbWluIiwidXNlcl9pZCI6ImQyNjUwOGJlLTJmMGItNTUyMC1iZTNkLWQwYjRkOWNkNmY2ZSIsImlhdCI6MTYxNjQ4NDc5NCwidGVuYW50IjoidGVzdCJ9VRYeA0s1O14hAXoTG34EAl80";
   private static final String LOGIN_RESPONSE_BODY = "{\r\n    \"username\": \"test_admin\",\r\n    \"password\": \"admin\"\r\n}";
   private MockRestServiceServer mockRestServiceServer;
@@ -63,16 +68,16 @@ class CourseReservesControllerIT extends BaseIntegrationTests {
     Mockito.when(authnClient.getApiKey(any(ConnectionSystemParameters.class), anyString()))
         .thenReturn(getLoginResponse());
     ReflectionTestUtils
-        .setField(courseReservesService, "okapiUrl", "http://localhost:9130");
+        .setField(courseReservesService, "okapiUrl", OKAPI_URL);
   }
 
   @Test
   void getCourses_shouldReturnCourses() throws Exception {
-    expectGetCoursesByQueryResponseDependsOnResource(RESERVES_RESPONSE_PATH);
-    doGet(mockMvc, RESERVES_URL_WITH_QUERY, TEST_TENANT)
+    expectGetCoursesByQueryResponseDependsOnResource(COURSES_RESPONSE_PATH);
+    doGet(mockMvc, COURSES_URL_WITH_QUERY, TEST_TENANT)
         .andExpect(status().isOk())
         .andExpect(jsonPath("totalRecords", is(1)))
-        .andExpect(jsonPath("reserves[0].id", is(COURSE_RESERVE_UUID)));
+        .andExpect(jsonPath("courses[0].id", is(COURSE_UUID)));
   }
 
   @Test
@@ -86,10 +91,11 @@ class CourseReservesControllerIT extends BaseIntegrationTests {
 
   @Test
   void getCourses_shouldReturnEmpty_whenCoursesResponseIsEmpty() throws Exception {
-    expectGetCoursesByQueryResponseDependsOnResource(EMPTY_RESERVES_RESPONSE_PATH);
-    doGet(mockMvc, RESERVES_URL_WITH_QUERY, TEST_TENANT)
+    expectGetCoursesByQueryResponseDependsOnResource(EMPTY_COURSES_RESPONSE_PATH);
+    doGet(mockMvc, COURSES_URL_WITH_QUERY, TEST_TENANT)
         .andExpect(status().isOk())
-        .andExpect(jsonPath("totalRecords", is(0)));
+        .andExpect(jsonPath("totalRecords", is(0)))
+        .andExpect(jsonPath("courses", iterableWithSize(0)));
   }
 
   @Test
@@ -97,13 +103,14 @@ class CourseReservesControllerIT extends BaseIntegrationTests {
     expectGetCoursesByIdResponseDependsOnResource(EMPTY_RESERVES_RESPONSE_PATH);
     doGet(mockMvc, RESERVES_URL_BY_ID, TEST_TENANT)
         .andExpect(status().isOk())
-        .andExpect(jsonPath("totalRecords", is(0)));
+        .andExpect(jsonPath("totalRecords", is(0)))
+        .andExpect(jsonPath("reserves", iterableWithSize(0)));
   }
 
   private void expectGetCoursesByQueryResponseDependsOnResource(String resource) {
     String content = TestUtil.readFileContentFromResources(resource);
     mockRestServiceServer.expect(
-        requestTo(OKAPI_URL + "/coursereserves/reserves?query=id%3D" + COURSE_RESERVE_UUID))
+        requestTo(OKAPI_URL + "/coursereserves/courses?query=id%3D" + COURSE_UUID))
         .andExpect(method(HttpMethod.GET))
         .andRespond(withSuccess(content, APPLICATION_JSON));
   }

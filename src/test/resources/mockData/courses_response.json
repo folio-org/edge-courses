@@ -1,0 +1,108 @@
+{
+  "courses": [
+    {
+      "id": "83034b0a-bf71-4495-b642-2e998f721e5d",
+      "name": "Calculus 101",
+      "description": "Basic differentiation and integration",
+      "departmentId": "1fc91124-cd2a-4fae-9ae4-40368d80982d",
+      "departmentObject": {
+        "id": "1fc91124-cd2a-4fae-9ae4-40368d80982d",
+        "name": "Mathematics",
+        "description": "Including both pure and applied maths",
+        "metadata": {
+          "createdDate": "2021-05-11T19:18:09.059+00:00",
+          "updatedDate": "2021-05-11T19:18:09.059+00:00"
+        }
+      },
+      "courseListingId": "c03bcba3-a6a0-4251-b316-0631bb2e6f21",
+      "courseListingObject": {
+        "id": "c03bcba3-a6a0-4251-b316-0631bb2e6f21",
+        "registrarId": "external1",
+        "externalId": "external2",
+        "servicepointId": "3a40852d-49fd-4df2-a1f9-6e2641a6e91f",
+        "servicepointObject": {
+          "id": "3a40852d-49fd-4df2-a1f9-6e2641a6e91f",
+          "name": "Circ Desk 1",
+          "code": "cd1",
+          "discoveryDisplayName": "Circulation Desk -- Hallway",
+          "pickupLocation": true,
+          "holdShelfExpiryPeriod": {
+            "duration": 3,
+            "intervalId": "Weeks"
+          },
+          "staffSlips": []
+        },
+        "locationId": "53cf956f-c1df-410b-8bea-27f712cca7c0",
+        "locationObject": {
+          "id": "53cf956f-c1df-410b-8bea-27f712cca7c0",
+          "name": "Annex",
+          "code": "KU/CC/DI/A",
+          "isActive": true,
+          "institutionId": "40ee00ca-a518-4b49-be01-0638d0a4ac57",
+          "campusId": "62cf76b7-cca5-4d33-9217-edf42ce1a848",
+          "libraryId": "5d78803e-ca04-4b4a-aeae-2c63b924518b",
+          "primaryServicePoint": "3a40852d-49fd-4df2-a1f9-6e2641a6e91f",
+          "servicePointIds": [
+            "3a40852d-49fd-4df2-a1f9-6e2641a6e91f"
+          ]
+        },
+        "termId": "cd1eb7ed-2704-4b6a-9037-d7f1a5351f6b",
+        "termObject": {
+          "id": "cd1eb7ed-2704-4b6a-9037-d7f1a5351f6b",
+          "name": "Michaelmas 2019",
+          "startDate": "2019-10-13",
+          "endDate": "2019-12-07"
+        },
+        "courseTypeId": "f5063ee8-b18c-402b-b0c9-1b0f93d8570b",
+        "courseTypeObject": {
+          "id": "f5063ee8-b18c-402b-b0c9-1b0f93d8570b",
+          "name": "Online",
+          "description": "No in-person component"
+        },
+        "instructorObjects": [
+          {
+            "id": "2e53ca2f-9bd9-424d-bcef-67f5f268edb0",
+            "userId": "3579811e-379f-4c09-8b2b-a0a08c94fe30",
+            "name": "Adams, Christa A",
+            "courseListingId": "c03bcba3-a6a0-4251-b316-0631bb2e6f21",
+            "metadata": {
+              "createdDate": "2021-05-11T19:18:09.668+00:00",
+              "updatedDate": "2021-05-11T19:18:09.668+00:00"
+            }
+          },
+          {
+            "id": "f61c6a9e-92b5-470c-8463-6494afd108e6",
+            "userId": "b7ad6a2b-73d3-41e0-ae10-8fc3db4e57ec",
+            "name": "Taylor, Mike",
+            "courseListingId": "c03bcba3-a6a0-4251-b316-0631bb2e6f21",
+            "metadata": {
+              "createdDate": "2021-05-11T19:18:09.923+00:00",
+              "updatedDate": "2021-05-11T19:18:09.923+00:00"
+            }
+          },
+          {
+            "id": "9cc888e5-f6d7-4709-b113-3040e8fbe648",
+            "userId": "b2aeb3de-a156-4a8b-a25b-72d7febe1674",
+            "name": "Aagard, Madgeline",
+            "courseListingId": "c03bcba3-a6a0-4251-b316-0631bb2e6f21",
+            "metadata": {
+              "createdDate": "2021-05-11T19:18:09.975+00:00",
+              "updatedDate": "2021-05-11T19:18:09.975+00:00"
+            }
+          }
+        ],
+        "metadata": {
+          "createdDate": "2021-05-11T19:18:09.417+00:00",
+          "updatedDate": "2021-05-11T19:18:09.417+00:00"
+        }
+      },
+      "courseNumber": "12345",
+      "sectionName": "Main",
+      "metadata": {
+        "createdDate": "2021-05-11T19:18:09.467+00:00",
+        "updatedDate": "2021-05-11T19:18:09.467+00:00"
+      }
+    }
+  ],
+  "totalRecords": 1
+}

@@ -1,5 +1,6 @@
 package com.ebsco.edgecourses.service;
 
+import static com.ebsco.edgecourses.BaseIntegrationTests.OKAPI_URL;
 import static com.ebsco.edgecourses.TestUtil.OBJECT_MAPPER;
 import static com.ebsco.edgecourses.TestUtil.RESERVES_RESPONSE_PATH;
 import static org.apache.commons.lang.StringUtils.EMPTY;
@@ -38,7 +39,7 @@ class CourseReserveServiceTest {
   @BeforeEach
   void before() {
     ReflectionTestUtils
-        .setField(courseReservesService, "okapiUrl", "http://localhost:9130");
+        .setField(courseReservesService, "okapiUrl", OKAPI_URL);
   }
 
   @Test
@@ -55,9 +56,11 @@ class CourseReserveServiceTest {
     JsonNode expectedJsonReserves = OBJECT_MAPPER.readTree(expectedStringReserves).get("reserves").get(0);
     JsonNode actualJsonReserves = OBJECT_MAPPER.readTree(reserves).get("reserves").get(0);
     verify(restTemplate)
-        .exchange(eq("http://localhost:9130/coursereserves/reserves?query=id=2"), any(HttpMethod.class), any(HttpEntity.class), ArgumentMatchers.<Class<String>>any());
+        .exchange(eq("http://localhost:9130/coursereserves/courses?query=id=2"), any(HttpMethod.class), any(HttpEntity.class), ArgumentMatchers.<Class<String>>any());
     assertEquals(expectedJsonReserves.get("id"), actualJsonReserves.get("id"));
     assertEquals(expectedJsonReserves.get("courseListingId"), actualJsonReserves.get("courseListingId"));
+    assertEquals(expectedJsonReserves.get("53cf956f-c1df-410b-8bea-27f712cca7c0"), actualJsonReserves.get("locationId"));
+    assertEquals(expectedJsonReserves.get("12345"), actualJsonReserves.get("courseNumber"));
   }
 
   @Test
@@ -74,7 +77,7 @@ class CourseReserveServiceTest {
     JsonNode expectedJsonReserves = OBJECT_MAPPER.readTree(expectedStringReserves).get("reserves").get(0);
     JsonNode actualJsonReserves = OBJECT_MAPPER.readTree(reserves).get("reserves").get(0);
     verify(restTemplate)
-        .exchange(eq("http://localhost:9130/coursereserves/reserves"), any(HttpMethod.class), any(HttpEntity.class), ArgumentMatchers.<Class<String>>any());
+        .exchange(eq("http://localhost:9130/coursereserves/courses"), any(HttpMethod.class), any(HttpEntity.class), ArgumentMatchers.<Class<String>>any());
     assertEquals(expectedJsonReserves.get("id"), actualJsonReserves.get("id"));
     assertEquals(expectedJsonReserves.get("courseListingId"), actualJsonReserves.get("courseListingId"));
   }

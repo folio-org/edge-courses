@@ -29,9 +29,15 @@ public abstract class BaseIntegrationTests {
   private static final String EDGE_COURSES_MODULE = "edge-courses-1.0.0";
   private static final String TEST_API_KEY = "eyJzIjoiQlBhb2ZORm5jSzY0NzdEdWJ4RGgiLCJ0IjoidGVzdCIsInUiOiJ0ZXN0X2FkbWluIn0=";
 
-  @SneakyThrows
-  protected static ResultActions doGet(MockMvc mockMvc, String url, String tenant) {
+  protected static ResultActions doGet(MockMvc mockMvc, String url, String tenant) throws Exception {
     return mockMvc.perform(get(url)
+        .headers(defaultHeaders(tenant)));
+  }
+
+  protected static ResultActions doGetWithParam(MockMvc mockMvc, String url, String paramName, String paramValue, String tenant)
+      throws Exception {
+    return mockMvc.perform(get(url)
+        .param(paramName, paramValue)
         .headers(defaultHeaders(tenant)));
   }
 

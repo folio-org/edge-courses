@@ -19,6 +19,8 @@ public class TestUtil {
   public static final String EMPTY_RESERVES_RESPONSE_PATH = "mockData/empty_reserves_response.json";
   public static final String EMPTY_COURSES_RESPONSE_PATH = "mockData/empty_courses_response.json";
   public static final String TEST_TENANT = "test";
+  public static final String RESERVES = "reserves";
+  public static final String COURSES = "courses";
 
   public static final ObjectMapper OBJECT_MAPPER = new ObjectMapper()
       .setSerializationInclusion(Include.NON_NULL)

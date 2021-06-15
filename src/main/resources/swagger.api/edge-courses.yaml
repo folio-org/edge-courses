@@ -13,9 +13,9 @@ paths:
       summary: Retrieve course reserves associated with the keyword query from folio mod-courses
       description: Retrieve course reserves associated with the keyword query
       parameters:
-        - $ref: '#/components/parameters/query-parameter'
         - $ref: '#/components/parameters/x-okapi-tenant-header'
         - $ref: '#/components/parameters/x-okapi-token-header'
+        - $ref: '#/components/parameters/request-query-parameters'
       responses:
         '200':
           description: 'Calls the mod-courses GET /coursereserves/courses API and returns the result as-is
@@ -37,6 +37,7 @@ paths:
         - $ref: '#/components/parameters/instance-id-path'
         - $ref: '#/components/parameters/x-okapi-tenant-header'
         - $ref: '#/components/parameters/x-okapi-token-header'
+        - $ref: '#/components/parameters/request-query-parameters'
       responses:
         '200':
           description: 'Calls the mod-courses GET /coursereserves/courselistings/{listing_id}/courses API and returns the result as-is
@@ -54,6 +55,8 @@ components:
   schemas:
     errorResponse:
       $ref: schemas/error/errors.json
+    requestQueryParameters:
+      $ref: schemas/requestQueryParameters.json
 
   responses:
     badRequestResponse:
@@ -70,12 +73,12 @@ components:
           example: examples/unknownError.sample
 
   parameters:
-    query-parameter:
-      name: query
+    request-query-parameters:
+      name: requestQueryParameters
       in: query
-      description: The keyword query in CQL format
+      description: Request query parameters(query, limit, offset and etc.) as object.
       schema:
-        type: string
+        $ref: '#/components/schemas/requestQueryParameters'
     instance-id-path:
       name: instanceId
       in: path

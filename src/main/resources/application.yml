@@ -9,7 +9,7 @@ header.validation.x-okapi-tenant.exclude.base-paths: /admin,/swagger,/v2/api-doc
 server.error.include-message: always
 
 logging:
-  config: classpath:log4j2.properties
+  config: classpath:log4j2.xml
 
 server:
   port: 8080

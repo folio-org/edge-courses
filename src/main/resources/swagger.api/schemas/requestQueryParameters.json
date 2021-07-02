@@ -5,7 +5,8 @@
   "properties": {
     "query": {
       "type": "string",
-      "description": "A CQL query string with search conditions."
+      "description": "A CQL query string with search conditions.",
+      "minLength": 1
     },
     "limit": {
       "type": "integer",

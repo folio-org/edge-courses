@@ -8,17 +8,17 @@ management.endpoints.web.base-path: /admin
 header.validation.x-okapi-tenant.exclude.base-paths: /admin,/swagger,/v2/api-docs
 server.error.include-message: always
 
-Dsecure_store_props: src/main/resources/ephemeral.properties
-secure_store_props: ${Dsecure_store_props}
+logging:
+  config: classpath:log4j2.properties
 
-Dsecure_store: Ephemeral
-secure_store: ${Dsecure_store}
+server:
+  port: 8080
 
-Dtoken_cache_ttl_ms: 3600000
-token_cache_ttl_ms: ${Dtoken_cache_ttl_ms}
+security:
+  store: ${secure_store:Ephemeral}
+  props-location: ${secure_store_props:src/main/resources/ephemeral.properties}
 
-Dnull_token_cache_ttl_ms: 30000
-null_token_cache_ttl_ms: ${Dnull_token_cache_ttl_ms}
-
-Dtoken_cache_capacity: 100
-token_cache_capacity: ${Dtoken_cache_capacity}
+token:
+  capacity: ${token_cache_capacity:100}
+  ttl-ms: ${token_cache_ttl_ms:3600000}
+  fail-ttl-ms: ${null_token_cache_ttl_ms:30000}

@@ -5,5 +5,3 @@ spring:
     name: edge-courses
   liquibase:
     enabled: false
-
-folio.tenant.validation.enabled: false

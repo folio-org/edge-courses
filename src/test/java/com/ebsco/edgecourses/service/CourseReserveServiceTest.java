@@ -1,6 +1,5 @@
 package com.ebsco.edgecourses.service;
 
-import static com.ebsco.edgecourses.BaseIntegrationTests.OKAPI_URL;
 import static com.ebsco.edgecourses.TestUtil.COURSES;
 import static com.ebsco.edgecourses.TestUtil.COURSES_RESPONSE_PATH;
 import static com.ebsco.edgecourses.TestUtil.OBJECT_MAPPER;
@@ -8,34 +7,29 @@ import static com.ebsco.edgecourses.TestUtil.RESERVES;
 import static com.ebsco.edgecourses.TestUtil.RESERVES_RESPONSE_PATH;
 import static org.apache.commons.lang.StringUtils.EMPTY;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.when;
 
 import com.ebsco.courses.domain.dto.RequestQueryParameters;
 import com.ebsco.edgecourses.TestUtil;
+import com.ebsco.edgecourses.client.CourseClient;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
+import java.net.URI;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.ArgumentMatchers;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.test.util.ReflectionTestUtils;
-import org.springframework.web.client.RestTemplate;
 
 @ExtendWith(MockitoExtension.class)
 class CourseReserveServiceTest {
 
+  private static final String OKAPI_URL = "http://localhost:9130";
   private static final String COURSE_LISTING_ID = "courseListingId";
-  private static final String COURSES_URL_PART = "/coursereserves/courses";
-  private static final String RESERVES_URL_PART = "/coursereserves/courselistings/%s/reserves";
   private static final String ID = "id";
   private static final String COURSE_NUMBER = "courseNumber";
   private static final String LOCATION_ID = "locationId";
@@ -43,7 +37,7 @@ class CourseReserveServiceTest {
   @InjectMocks
   private CourseReservesService courseReservesService;
   @Mock
-  private RestTemplate restTemplate;
+  private CourseClient courseClient;
 
   @BeforeEach
   void before() {
@@ -57,11 +51,9 @@ class CourseReserveServiceTest {
     ResponseEntity<String> reservesResponse = new ResponseEntity<>(
         expectedStringCourses,
         HttpStatus.OK);
-    when(restTemplate
-        .exchange(eq(OKAPI_URL + COURSES_URL_PART + "?query=id=2&limit=10&offset=0&lang=en"), eq(HttpMethod.GET),
-            any(HttpEntity.class), ArgumentMatchers.<Class<String>>any()))
-        .thenReturn(reservesResponse);
     RequestQueryParameters requestQueryParameters = new RequestQueryParameters().query("id=2");
+    when(courseClient.getCourseByQuery(URI.create(OKAPI_URL), EMPTY, EMPTY, requestQueryParameters))
+        .thenReturn(reservesResponse);
     String courses = courseReservesService.getCourseReservesByQuery(EMPTY, EMPTY, requestQueryParameters);
 
     JsonNode expectedJsonCourses = OBJECT_MAPPER.readTree(expectedStringCourses).get(COURSES).get(0);
@@ -78,12 +70,10 @@ class CourseReserveServiceTest {
     ResponseEntity<String> reservesResponse = new ResponseEntity<>(
         expectedStringReserves,
         HttpStatus.OK);
-    when(restTemplate
-        .exchange(eq(OKAPI_URL + COURSES_URL_PART + "?limit=10&offset=0&lang=en"), eq(HttpMethod.GET),
-            any(HttpEntity.class),
-            ArgumentMatchers.<Class<String>>any()))
-        .thenReturn(reservesResponse);
     RequestQueryParameters requestQueryParameters = new RequestQueryParameters();
+    when(courseClient.getCourseByQuery(URI.create(OKAPI_URL), EMPTY, EMPTY, requestQueryParameters))
+        .thenReturn(reservesResponse);
+
     String reserves = courseReservesService.getCourseReservesByQuery(EMPTY, EMPTY, requestQueryParameters);
 
     JsonNode expectedJsonReserves = OBJECT_MAPPER.readTree(expectedStringReserves).get(COURSES).get(0);
@@ -100,11 +90,9 @@ class CourseReserveServiceTest {
     ResponseEntity<String> reservesResponse = new ResponseEntity<>(
         expectedStringReserves,
         HttpStatus.OK);
-    when(restTemplate
-        .exchange(eq(OKAPI_URL + COURSES_URL_PART + "?query=testQuery&limit=10&offset=0&lang=en"),
-            eq(HttpMethod.GET), any(HttpEntity.class), ArgumentMatchers.<Class<String>>any()))
-        .thenReturn(reservesResponse);
     RequestQueryParameters requestQueryParameters = new RequestQueryParameters().query("testQuery");
+    when(courseClient.getCourseByQuery(URI.create(OKAPI_URL), EMPTY, EMPTY, requestQueryParameters))
+        .thenReturn(reservesResponse);
     String reserves = courseReservesService.getCourseReservesByQuery(EMPTY, EMPTY, requestQueryParameters);
 
     JsonNode expectedJsonReserves = OBJECT_MAPPER.readTree(expectedStringReserves).get(COURSES).get(0);
@@ -119,12 +107,9 @@ class CourseReserveServiceTest {
     ResponseEntity<String> reservesResponse = new ResponseEntity<>(
         expectedStringReserves,
         HttpStatus.OK);
-    when(restTemplate
-        .exchange(eq(OKAPI_URL + String.format(RESERVES_URL_PART, ID) + "?limit=10&offset=0&lang=en"),
-            eq(HttpMethod.GET),
-            any(HttpEntity.class), ArgumentMatchers.<Class<String>>any()))
-        .thenReturn(reservesResponse);
     RequestQueryParameters requestQueryParameters = new RequestQueryParameters();
+    when(courseClient.getCourseById(URI.create(OKAPI_URL), ID, EMPTY, EMPTY, requestQueryParameters))
+        .thenReturn(reservesResponse);
     String reserves = courseReservesService
         .getCourseReservesByInstanceId(ID, EMPTY, EMPTY, requestQueryParameters);
 
@@ -140,15 +125,11 @@ class CourseReserveServiceTest {
     ResponseEntity<String> reservesResponse = new ResponseEntity<>(
         expectedStringReserves,
         HttpStatus.OK);
-    when(restTemplate
-        .exchange(
-            eq(OKAPI_URL + String.format(RESERVES_URL_PART, 2)
-                + "?query=testQuery&limit=10&offset=0&lang=en&expand=true"),
-            eq(HttpMethod.GET), any(HttpEntity.class), ArgumentMatchers.<Class<String>>any()))
-        .thenReturn(reservesResponse);
     RequestQueryParameters requestQueryParameters = new RequestQueryParameters().query("testQuery").expand("true")
         .lang("en")
         .limit(10).offset(0);
+    when(courseClient.getCourseById(URI.create(OKAPI_URL), "2", EMPTY, EMPTY, requestQueryParameters))
+        .thenReturn(reservesResponse);
     String reserves = courseReservesService
         .getCourseReservesByInstanceId("2", EMPTY, EMPTY, requestQueryParameters);
 

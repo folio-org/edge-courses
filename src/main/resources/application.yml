@@ -13,6 +13,8 @@ logging:
 
 server:
   port: 8080
+  error:
+    include-message: always
 
 security:
   store: ${secure_store:Ephemeral}

@@ -7,17 +7,14 @@ import com.fasterxml.jackson.databind.SerializationFeature;
 import java.io.IOException;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
-import lombok.SneakyThrows;
 import lombok.extern.log4j.Log4j2;
 import org.apache.commons.io.IOUtils;
 
 @Log4j2
 public class TestUtil {
 
-  public static final String RESERVES_RESPONSE_PATH = "mockData/reserves_response.json";
-  public static final String COURSES_RESPONSE_PATH = "mockData/courses_response.json";
-  public static final String EMPTY_RESERVES_RESPONSE_PATH = "mockData/empty_reserves_response.json";
-  public static final String EMPTY_COURSES_RESPONSE_PATH = "mockData/empty_courses_response.json";
+  public static final String RESERVES_RESPONSE_PATH = "__files/reserves/reserves_response.json";
+  public static final String COURSES_RESPONSE_PATH = "__files/courses/courses_response.json";
   public static final String TEST_TENANT = "test";
   public static final String RESERVES = "reserves";
   public static final String COURSES = "courses";
@@ -27,11 +24,6 @@ public class TestUtil {
       .configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false)
       .configure(DeserializationFeature.ACCEPT_SINGLE_VALUE_AS_ARRAY, true)
       .disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS);
-
-  @SneakyThrows
-  public static String asString(Object value) {
-    return OBJECT_MAPPER.writerWithDefaultPrettyPrinter().writeValueAsString(value);
-  }
 
   public static String readFileContentFromResources(String path) {
     try {

@@ -1,61 +1,70 @@
 package com.ebsco.edgecourses;
 
 import static com.ebsco.edgecourses.TestUtil.TEST_TENANT;
-import static com.ebsco.edgecourses.TestUtil.asString;
+import static org.springframework.boot.test.context.SpringBootTest.WebEnvironment.RANDOM_PORT;
 import static org.springframework.http.MediaType.APPLICATION_JSON;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
+import com.github.tomakehurst.wiremock.WireMockServer;
+import com.github.tomakehurst.wiremock.extension.responsetemplating.ResponseTemplateTransformer;
 import java.util.List;
-import lombok.SneakyThrows;
 import lombok.extern.log4j.Log4j2;
+import org.folio.edgecommonspring.client.EnrichUrlClient;
 import org.folio.spring.integration.XOkapiHeaders;
-import org.folio.tenant.domain.dto.TenantAttributes;
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.BeforeAll;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.cloud.contract.wiremock.WireMockSpring;
 import org.springframework.http.HttpHeaders;
 import org.springframework.test.context.TestPropertySource;
+import org.springframework.test.util.ReflectionTestUtils;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.ResultActions;
 
 @Log4j2
-@SpringBootTest
+@SpringBootTest(webEnvironment = RANDOM_PORT)
 @TestPropertySource("classpath:application-test.yml")
 @AutoConfigureMockMvc
 public abstract class BaseIntegrationTests {
 
-  public static final String OKAPI_URL = "http://localhost:9130";
-  private static final String EDGE_COURSES_MODULE = "edge-courses-1.0.0";
+  protected static final WireMockServer WIRE_MOCK = new WireMockServer(
+      WireMockSpring.options()
+          .dynamicPort()
+          .extensions(new ResponseTemplateTransformer(false)));
   private static final String TEST_API_KEY = "eyJzIjoiQlBhb2ZORm5jSzY0NzdEdWJ4RGgiLCJ0IjoidGVzdCIsInUiOiJ0ZXN0X2FkbWluIn0=";
 
-  protected static ResultActions doGet(MockMvc mockMvc, String url, String tenant) throws Exception {
-    return mockMvc.perform(get(url)
-        .headers(defaultHeaders(tenant)));
+  @BeforeAll
+  static void beforeAll(@Autowired EnrichUrlClient enrichUrlClient) {
+    WIRE_MOCK.start();
+    ReflectionTestUtils.setField(enrichUrlClient, "okapiUrl", WIRE_MOCK.baseUrl());
   }
 
-  protected static ResultActions doGetWithParam(MockMvc mockMvc, String url, String paramName, String paramValue, String tenant)
+  @AfterAll
+  static void afterAll() {
+    WIRE_MOCK.stop();
+  }
+
+  protected static ResultActions doGet(MockMvc mockMvc, String url) throws Exception {
+    return mockMvc.perform(get(url)
+        .headers(defaultHeaders()));
+  }
+
+  protected static ResultActions doGetWithParam(MockMvc mockMvc, String url, String paramName, String paramValue)
       throws Exception {
     return mockMvc.perform(get(url)
         .param(paramName, paramValue)
-        .headers(defaultHeaders(tenant)));
+        .headers(defaultHeaders()));
   }
 
-  private static HttpHeaders defaultHeaders(String tenant) {
+  private static HttpHeaders defaultHeaders() {
     final HttpHeaders httpHeaders = new HttpHeaders();
     httpHeaders.setContentType(APPLICATION_JSON);
-    httpHeaders.put(XOkapiHeaders.TENANT, List.of(tenant));
-    httpHeaders.put(XOkapiHeaders.URL, List.of(OKAPI_URL));
+    httpHeaders.put(XOkapiHeaders.TENANT, List.of(TEST_TENANT));
+    httpHeaders.put(XOkapiHeaders.URL, List.of(WIRE_MOCK.baseUrl()));
     httpHeaders.put(XOkapiHeaders.AUTHORIZATION, List.of(TEST_API_KEY));
     return httpHeaders;
-  }
-
-  protected void setUpTenant(MockMvc mockMvc) throws Exception {
-    mockMvc.perform(post("/_/tenant")
-        .content(asString(new TenantAttributes().moduleTo(EDGE_COURSES_MODULE)))
-        .headers(defaultHeaders(TEST_TENANT))
-        .contentType(APPLICATION_JSON))
-        .andExpect(status().isOk());
   }
 
 }

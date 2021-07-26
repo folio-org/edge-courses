@@ -1,0 +1,31 @@
+{
+  "mappings": [
+    {
+      "request": {
+        "method": "GET",
+        "url": "/coursereserves/courselistings/67227d94-7333-4d22-98a0-718b49d36595/reserves?offset=0&limit=10&lang=en"
+      },
+      "response": {
+        "status": 200,
+        "bodyFileName": "reserves/reserves_response.json",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      }
+    },
+    {
+      "request": {
+        "method": "GET",
+        "url": "/coursereserves/courselistings/8f2b60f7-3ff3-4318-be23-95b04b9728c5/reserves?offset=0&limit=10&lang=en"
+      },
+      "response": {
+        "status": 200,
+        "bodyFileName": "reserves/empty_reserves_response.json",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      }
+    }
+  ]
+}
+

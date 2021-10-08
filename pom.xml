@@ -1,25 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
   <parent>
     <groupId>org.springframework.boot</groupId>
     <artifactId>spring-boot-starter-parent</artifactId>
     <version>2.3.11.RELEASE</version>
-    <relativePath/>
+    <relativePath />
   </parent>
 
   <groupId>com.ebsco</groupId>
   <artifactId>edge-courses</artifactId>
-  <version>1.0.0-SNAPSHOT</version>
+  <version>1.1.0-SNAPSHOT</version>
   <name>edge-courses</name>
   <description>Provides an ability to retrieve course-reserve information from FOLIO</description>
   <packaging>jar</packaging>
 
   <properties>
     <java.version>11</java.version>
-    <edge-common-spring-version>1.1.0-SNAPSHOT</edge-common-spring-version>
+    <edge-common-spring-version>1.0.0</edge-common-spring-version>
     <openapi-generator.version>4.3.1</openapi-generator.version>
     <folio-spring-base.version>1.0.5</folio-spring-base.version>
     <spring-cloud-wiremock>3.0.3</spring-cloud-wiremock>
@@ -232,5 +231,12 @@
       <url>https://repository.folio.org/repository/maven-folio</url>
     </repository>
   </repositories>
+
+  <scm>
+    <url>https://github.com/EBSCOIS/${project.artifactId}</url>
+    <connection>scm:git:git://github.com/EBSCOIS/${project.artifactId}.git</connection>
+    <developerConnection>scm:git:git@github.com:EBSCOIS/${project.artifactId}.git</developerConnection>
+    <tag>HEAD</tag>
+  </scm>
 
 </project>

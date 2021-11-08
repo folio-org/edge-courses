@@ -1,7 +1,7 @@
 package com.ebsco.edgecourses.controller;
 
-import static com.ebsco.edgecourses.TestUtil.COURSES;
-import static com.ebsco.edgecourses.TestUtil.RESERVES;
+import static com.ebsco.edgecourses.TestConstants.COURSES;
+import static com.ebsco.edgecourses.TestConstants.RESERVES;
 import static org.hamcrest.Matchers.is;
 import static org.hamcrest.Matchers.iterableWithSize;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
@@ -19,12 +19,12 @@ import org.springframework.test.web.servlet.MockMvc;
 
 class CourseReservesControllerIT extends BaseIntegrationTests {
 
-  public static final String COURSE_RESERVE_UUID = "67227d94-7333-4d22-98a0-718b49d36595";
-  public static final String COURSE_UUID = "83034b0a-bf71-4495-b642-2e998f721e5d";
-  public static final String COURSES_URL_WITH_QUERY = "/courses/courses?query=id=83034b0a-bf71-4495-b642-2e998f721e5d";
-  public static final String COURSES_EMPTY_RESPONSE_URL = "/courses/courses?query=id=8f2b60f7-3ff3-4318-be23-95b04b9728c5";
-  public static final String RESERVES_URL_BY_ID = "/courses/courselistings/67227d94-7333-4d22-98a0-718b49d36595/reserves";
-  public static final String RESERVES_EMPTY_RESPONSE_URL_BY_ID = "/courses/courselistings/8f2b60f7-3ff3-4318-be23-95b04b9728c5/reserves";
+  private static final String COURSE_RESERVE_UUID = "67227d94-7333-4d22-98a0-718b49d36595";
+  private static final String COURSE_UUID = "83034b0a-bf71-4495-b642-2e998f721e5d";
+  private static final String COURSES_URL_WITH_QUERY = "/courses/courses?query=id=83034b0a-bf71-4495-b642-2e998f721e5d";
+  private static final String COURSES_EMPTY_RESPONSE_URL = "/courses/courses?query=id=8f2b60f7-3ff3-4318-be23-95b04b9728c5";
+  private static final String RESERVES_URL_BY_ID = "/courses/courselistings/67227d94-7333-4d22-98a0-718b49d36595/reserves";
+  private static final String RESERVES_EMPTY_RESPONSE_URL_BY_ID = "/courses/courselistings/8f2b60f7-3ff3-4318-be23-95b04b9728c5/reserves";
   private static final String LANG_PARAM_NAME = "lang";
   private static final String LIMIT_PARAM_NAME = "limit";
   private static final String LANG_PARAM_INVALID_VALUE = "111111";

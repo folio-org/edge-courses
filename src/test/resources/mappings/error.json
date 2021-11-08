@@ -1,0 +1,17 @@
+{
+  "mappings": [
+    {
+      "request": {
+        "method": "GET",
+        "url": "/coursereserves/courses?offset=0&query=id=72034b0a-bf71-4495-b642-2e998f721e4c&limit=10&lang=en"
+      },
+      "response": {
+        "status": 403,
+        "bodyFileName": "errors/forbidden.json",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      }
+    }
+  ]
+}

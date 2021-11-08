@@ -1,10 +1,10 @@
 package com.ebsco.edgecourses.service;
 
-import static com.ebsco.edgecourses.TestUtil.COURSES;
-import static com.ebsco.edgecourses.TestUtil.COURSES_RESPONSE_PATH;
+import static com.ebsco.edgecourses.TestConstants.COURSES;
+import static com.ebsco.edgecourses.TestConstants.COURSES_RESPONSE_PATH;
+import static com.ebsco.edgecourses.TestConstants.RESERVES;
+import static com.ebsco.edgecourses.TestConstants.RESERVES_RESPONSE_PATH;
 import static com.ebsco.edgecourses.TestUtil.OBJECT_MAPPER;
-import static com.ebsco.edgecourses.TestUtil.RESERVES;
-import static com.ebsco.edgecourses.TestUtil.RESERVES_RESPONSE_PATH;
 import static org.apache.commons.lang.StringUtils.EMPTY;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.when;

@@ -1,13 +1,15 @@
 package com.ebsco.edgecourses;
 
-import static com.ebsco.edgecourses.TestUtil.TEST_TENANT;
+import static com.ebsco.edgecourses.TestConstants.TEST_TENANT;
 import static org.springframework.boot.test.context.SpringBootTest.WebEnvironment.RANDOM_PORT;
 import static org.springframework.http.MediaType.APPLICATION_JSON;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 
 import com.github.tomakehurst.wiremock.WireMockServer;
 import com.github.tomakehurst.wiremock.extension.responsetemplating.ResponseTemplateTransformer;
 import java.util.List;
+import lombok.SneakyThrows;
 import lombok.extern.log4j.Log4j2;
 import org.folio.edgecommonspring.client.EnrichUrlClient;
 import org.folio.spring.integration.XOkapiHeaders;
@@ -48,6 +50,13 @@ public abstract class BaseIntegrationTests {
 
   protected static ResultActions doGet(MockMvc mockMvc, String url) throws Exception {
     return mockMvc.perform(get(url)
+        .headers(defaultHeaders()));
+  }
+
+  @SneakyThrows
+  protected static ResultActions doPost(MockMvc mockMvc, String url, String body) {
+    return mockMvc.perform(post(url)
+        .content(body)
         .headers(defaultHeaders()));
   }
 

@@ -1,0 +1,4 @@
+[submodule "src/main/resources/swagger.api/yml-utils"]
+	path = src/main/resources/swagger.api/yml-utils
+	url = git@github.com:EBSCOIS/opac-yml-utils.git
+	branch = master

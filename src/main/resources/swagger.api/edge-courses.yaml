@@ -13,9 +13,9 @@ paths:
       summary: Retrieve course reserves associated with the keyword query from folio mod-courses
       description: Retrieve course reserves associated with the keyword query
       parameters:
-        - $ref: '#/components/parameters/x-okapi-tenant-header'
-        - $ref: '#/components/parameters/x-okapi-token-header'
-        - $ref: '#/components/parameters/request-query-parameters'
+        - $ref: 'yml-utils/traits/common-components.yaml#/components/parameters/x-okapi-tenant-header'
+        - $ref: 'yml-utils/traits/common-components.yaml#/components/parameters/x-okapi-token-header'
+        - $ref: 'yml-utils/traits/common-components.yaml#/components/parameters/request-query-parameters'
       responses:
         '200':
           description: 'Calls the mod-courses GET /coursereserves/courses API and returns the result as-is
@@ -25,9 +25,9 @@ paths:
               schema:
                 type: string
         '400':
-          $ref: '#/components/responses/badRequestResponse'
+          $ref: 'yml-utils/traits/common-components.yaml#/components/responses/badRequestResponse'
         '500':
-          $ref: '#/components/responses/internalServerErrorResponse'
+          $ref: 'yml-utils/traits/common-components.yaml#/components/responses/internalServerErrorResponse'
   /courses/courselistings/{instanceId}/reserves:
     get:
       operationId: getCoursesByInstanceId
@@ -35,9 +35,9 @@ paths:
       description: Retrieve course reserves associated with course instance id
       parameters:
         - $ref: '#/components/parameters/instance-id-path'
-        - $ref: '#/components/parameters/x-okapi-tenant-header'
-        - $ref: '#/components/parameters/x-okapi-token-header'
-        - $ref: '#/components/parameters/request-query-parameters'
+        - $ref: 'yml-utils/traits/common-components.yaml#/components/parameters/x-okapi-tenant-header'
+        - $ref: 'yml-utils/traits/common-components.yaml#/components/parameters/x-okapi-token-header'
+        - $ref: 'yml-utils/traits/common-components.yaml#/components/parameters/request-query-parameters'
       responses:
         '200':
           description: 'Calls the mod-courses GET /coursereserves/courselistings/{listing_id}/courses API and returns the result as-is
@@ -47,56 +47,16 @@ paths:
               schema:
                 type: string
         '400':
-          $ref: '#/components/responses/badRequestResponse'
+          $ref: 'yml-utils/traits/common-components.yaml#/components/responses/badRequestResponse'
         '500':
-          $ref: '#/components/responses/internalServerErrorResponse'
+          $ref: 'yml-utils/traits/common-components.yaml#/components/responses/internalServerErrorResponse'
 
 components:
-  schemas:
-    errorResponse:
-      $ref: schemas/error/errors.json
-    requestQueryParameters:
-      $ref: schemas/requestQueryParameters.json
-
-  responses:
-    badRequestResponse:
-      description: Validation errors
-      content:
-        application/json:
-          example: examples/validationErrorResponse.sample
-          schema:
-            $ref: "#/components/schemas/errorResponse"
-    internalServerErrorResponse:
-      description: When unhandled exception occurred during code execution, e.g. NullPointerException
-      content:
-        application/json:
-          example: examples/unknownError.sample
-
   parameters:
-    request-query-parameters:
-      name: requestQueryParameters
-      in: query
-      description: Request query parameters(query, limit, offset and etc.) as object.
-      schema:
-        $ref: '#/components/schemas/requestQueryParameters'
     instance-id-path:
       name: instanceId
       in: path
       description: Course Instance's UUID
       required: true
-      schema:
-        type: string
-    x-okapi-tenant-header:
-      name: x-okapi-tenant
-      in: header
-      description: X-Okapi-Tenant header value
-      required: false
-      schema:
-        type: string
-    x-okapi-token-header:
-      name: x-okapi-token
-      in: header
-      description: X-Okapi-Token header value
-      required: false
       schema:
         type: string

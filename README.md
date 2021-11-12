@@ -39,3 +39,7 @@ Three secure stores currently implemented for safe retrieval of encrypted creden
 #### EphemeralStore ####
 
 Only intended for _development purposes_.  Credentials are defined in plain text in a specified properties file.  See `src/main/resources/ephemeral.properties`
+
+## Set up opac-yml-utils submodule
+
+To install opac-yml-utils submodule run git command: 'git submodule update --init' or 'git submodule update --remote'  

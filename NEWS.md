@@ -1,3 +1,13 @@
+## 1.1.0 Released
+The primary focus of this release was to fix log4 vulnerability
+
+### Stories
+* [US886457](https://rally1.rallydev.com/#/?detail=/userstory/616628060529&fdp=true): Implement courses and reserves APIs
+
+### Bug Fixes
+* [US894249](https://rally1.rallydev.com/#/?detail=/userstory/619656931913&fdp=true): CO - Patch all modules, shared libraries for log4j vulnerability
+
+
 ## 1.0.0 Released
 The primary focus of this release was to implement edge-courses logic
 

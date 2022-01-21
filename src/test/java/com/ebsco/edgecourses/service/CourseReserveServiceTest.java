@@ -5,7 +5,7 @@ import static com.ebsco.edgecourses.TestConstants.COURSES_RESPONSE_PATH;
 import static com.ebsco.edgecourses.TestConstants.RESERVES;
 import static com.ebsco.edgecourses.TestConstants.RESERVES_RESPONSE_PATH;
 import static com.ebsco.edgecourses.TestUtil.OBJECT_MAPPER;
-import static org.apache.commons.lang.StringUtils.EMPTY;
+import static org.apache.commons.lang3.StringUtils.EMPTY;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.when;
 

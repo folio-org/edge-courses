@@ -6,7 +6,11 @@ spring:
 
 management.endpoints.web.base-path: /admin
 header.validation.x-okapi-tenant.exclude.base-paths: /admin,/swagger,/v2/api-docs
-server.error.include-message: always
+
+folio:
+  tenant:
+    validation:
+      enabled: false
 
 logging:
   config: classpath:log4j2.xml

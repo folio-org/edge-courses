@@ -20,6 +20,6 @@ class TenantControllerTest extends BaseIntegrationTests {
     String requestBody = TestUtil.readFileContentFromResources(POST_TENANT_REQUEST);
 
     doPost(mockMvc, TENANT_URL, requestBody)
-        .andExpect(status().isOk());
+        .andExpect(status().isNoContent());
   }
 }

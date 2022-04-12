@@ -28,6 +28,9 @@
 - [ ] Tests cover new or modified code
 - [ ] New dependencies added
 - [ ] Includes breaking changes
+- [ ] Module permissions been updated when calling new APIs
+- [ ] The interface version has been bumped
+- [ ] Coordinated corresponding changes in the UI and other backend modules that consume new interface
 
 ## How to Verify
 <!--

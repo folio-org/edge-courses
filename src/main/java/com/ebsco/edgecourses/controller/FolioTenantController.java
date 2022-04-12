@@ -10,12 +10,12 @@ import org.springframework.web.bind.annotation.RestController;
 
 @Log4j2
 @RestController("folioTenantController")
-@RequestMapping(value = "/_/")
-public class TenantController implements TenantApi {
+@RequestMapping
+public class FolioTenantController implements TenantApi {
 
   @Override
-  public ResponseEntity<String> postTenant(TenantAttributes tenantAttributes) {
-    return new ResponseEntity<>(HttpStatus.OK);
+  public ResponseEntity<Void> postTenant(TenantAttributes tenantAttributes) {
+    return new ResponseEntity<>(HttpStatus.NO_CONTENT);
   }
 
 }

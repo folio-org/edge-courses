@@ -1,3 +1,13 @@
+## 1.2.0 Released
+The primary focus of this release was to update dependencies and fix small bug
+
+### Stories
+* [US899497](https://rally1.rallydev.com/#/?detail=/userstory/621159017243&fdp=true): Update spring base version for all modules
+* [US864576](https://rally1.rallydev.com/#/?detail=/userstory/611047734181&fdp=true): NFR - Upgrade third-party dependencies
+
+### Bug Fixes
+* [DE65545](https://rally1.rallydev.com/#/?detail=/defect/623837392323&fdp=true): X-Okapi-Tenant is required, but shouldn't be
+
 ## 1.1.0 Released
 The primary focus of this release was to fix log4 vulnerability
 

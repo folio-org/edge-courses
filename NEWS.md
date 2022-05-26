@@ -1,3 +1,6 @@
+## 1.2.1 Released
+The primary focus of this release was to add interface version login 7.1 to ModuleDescriptor
+
 ## 1.2.0 Released
 The primary focus of this release was to update dependencies and fix small bug
 

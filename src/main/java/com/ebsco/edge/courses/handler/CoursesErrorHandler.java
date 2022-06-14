@@ -1,4 +1,4 @@
-package com.ebsco.edgecourses.handler;
+package com.ebsco.edge.courses.handler;
 
 import feign.FeignException;
 import lombok.extern.log4j.Log4j2;

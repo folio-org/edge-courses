@@ -1,4 +1,4 @@
-package com.ebsco.edgecourses;
+package com.ebsco.edge.courses;
 
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.databind.DeserializationFeature;

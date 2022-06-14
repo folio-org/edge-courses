@@ -1,4 +1,4 @@
-package com.ebsco.edgecourses;
+package com.ebsco.edge.courses;
 
 public class TestConstants {
 

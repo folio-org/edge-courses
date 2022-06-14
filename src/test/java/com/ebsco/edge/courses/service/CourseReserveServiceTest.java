@@ -1,17 +1,16 @@
-package com.ebsco.edgecourses.service;
+package com.ebsco.edge.courses.service;
 
-import static com.ebsco.edgecourses.TestConstants.COURSES;
-import static com.ebsco.edgecourses.TestConstants.COURSES_RESPONSE_PATH;
-import static com.ebsco.edgecourses.TestConstants.RESERVES;
-import static com.ebsco.edgecourses.TestConstants.RESERVES_RESPONSE_PATH;
-import static com.ebsco.edgecourses.TestUtil.OBJECT_MAPPER;
+import static com.ebsco.edge.courses.TestConstants.COURSES;
+import static com.ebsco.edge.courses.TestConstants.COURSES_RESPONSE_PATH;
+import static com.ebsco.edge.courses.TestConstants.RESERVES;
+import static com.ebsco.edge.courses.TestConstants.RESERVES_RESPONSE_PATH;
 import static org.apache.commons.lang3.StringUtils.EMPTY;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.when;
 
 import com.ebsco.courses.domain.dto.RequestQueryParameters;
-import com.ebsco.edgecourses.TestUtil;
-import com.ebsco.edgecourses.client.CourseClient;
+import com.ebsco.edge.courses.TestUtil;
+import com.ebsco.edge.courses.client.CourseClient;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import java.net.URI;
@@ -56,8 +55,8 @@ class CourseReserveServiceTest {
         .thenReturn(reservesResponse);
     String courses = courseReservesService.getCourseReservesByQuery(EMPTY, EMPTY, requestQueryParameters);
 
-    JsonNode expectedJsonCourses = OBJECT_MAPPER.readTree(expectedStringCourses).get(COURSES).get(0);
-    JsonNode actualJsonCourses = OBJECT_MAPPER.readTree(courses).get(COURSES).get(0);
+    JsonNode expectedJsonCourses = TestUtil.OBJECT_MAPPER.readTree(expectedStringCourses).get(COURSES).get(0);
+    JsonNode actualJsonCourses = TestUtil.OBJECT_MAPPER.readTree(courses).get(COURSES).get(0);
     assertEquals(expectedJsonCourses.get(ID), actualJsonCourses.get(ID));
     assertEquals(expectedJsonCourses.get(COURSE_LISTING_ID), actualJsonCourses.get(COURSE_LISTING_ID));
     assertEquals(expectedJsonCourses.get(COURSE_NUMBER), actualJsonCourses.get(COURSE_NUMBER));
@@ -76,8 +75,8 @@ class CourseReserveServiceTest {
 
     String reserves = courseReservesService.getCourseReservesByQuery(EMPTY, EMPTY, requestQueryParameters);
 
-    JsonNode expectedJsonReserves = OBJECT_MAPPER.readTree(expectedStringReserves).get(COURSES).get(0);
-    JsonNode actualJsonReserves = OBJECT_MAPPER.readTree(reserves).get(COURSES).get(0);
+    JsonNode expectedJsonReserves = TestUtil.OBJECT_MAPPER.readTree(expectedStringReserves).get(COURSES).get(0);
+    JsonNode actualJsonReserves = TestUtil.OBJECT_MAPPER.readTree(reserves).get(COURSES).get(0);
     assertEquals(expectedJsonReserves.get(ID), actualJsonReserves.get(ID));
     assertEquals(expectedJsonReserves.get(COURSE_LISTING_ID), actualJsonReserves.get(COURSE_LISTING_ID));
     assertEquals(expectedJsonReserves.get(COURSE_NUMBER), actualJsonReserves.get(COURSE_NUMBER));
@@ -95,8 +94,8 @@ class CourseReserveServiceTest {
         .thenReturn(reservesResponse);
     String reserves = courseReservesService.getCourseReservesByQuery(EMPTY, EMPTY, requestQueryParameters);
 
-    JsonNode expectedJsonReserves = OBJECT_MAPPER.readTree(expectedStringReserves).get(COURSES).get(0);
-    JsonNode actualJsonReserves = OBJECT_MAPPER.readTree(reserves).get(COURSES).get(0);
+    JsonNode expectedJsonReserves = TestUtil.OBJECT_MAPPER.readTree(expectedStringReserves).get(COURSES).get(0);
+    JsonNode actualJsonReserves = TestUtil.OBJECT_MAPPER.readTree(reserves).get(COURSES).get(0);
     assertEquals(expectedJsonReserves.get(ID), actualJsonReserves.get(ID));
     assertEquals(expectedJsonReserves.get(COURSE_LISTING_ID), actualJsonReserves.get(COURSE_LISTING_ID));
   }
@@ -113,8 +112,8 @@ class CourseReserveServiceTest {
     String reserves = courseReservesService
         .getCourseReservesByInstanceId(ID, EMPTY, EMPTY, requestQueryParameters);
 
-    JsonNode expectedJsonReserves = OBJECT_MAPPER.readTree(expectedStringReserves).get(RESERVES).get(0);
-    JsonNode actualJsonReserves = OBJECT_MAPPER.readTree(reserves).get(RESERVES).get(0);
+    JsonNode expectedJsonReserves = TestUtil.OBJECT_MAPPER.readTree(expectedStringReserves).get(RESERVES).get(0);
+    JsonNode actualJsonReserves = TestUtil.OBJECT_MAPPER.readTree(reserves).get(RESERVES).get(0);
     assertEquals(expectedJsonReserves.get(ID), actualJsonReserves.get(ID));
     assertEquals(expectedJsonReserves.get(COURSE_LISTING_ID), actualJsonReserves.get(COURSE_LISTING_ID));
   }
@@ -133,8 +132,8 @@ class CourseReserveServiceTest {
     String reserves = courseReservesService
         .getCourseReservesByInstanceId("2", EMPTY, EMPTY, requestQueryParameters);
 
-    JsonNode expectedJsonReserves = OBJECT_MAPPER.readTree(expectedStringReserves).get(RESERVES).get(0);
-    JsonNode actualJsonReserves = OBJECT_MAPPER.readTree(reserves).get(RESERVES).get(0);
+    JsonNode expectedJsonReserves = TestUtil.OBJECT_MAPPER.readTree(expectedStringReserves).get(RESERVES).get(0);
+    JsonNode actualJsonReserves = TestUtil.OBJECT_MAPPER.readTree(reserves).get(RESERVES).get(0);
     assertEquals(expectedJsonReserves.get(ID), actualJsonReserves.get(ID));
     assertEquals(expectedJsonReserves.get(COURSE_LISTING_ID), actualJsonReserves.get(COURSE_LISTING_ID));
   }

@@ -1,14 +1,15 @@
-package com.ebsco.edgecourses.controller;
+package com.ebsco.edge.courses.controller;
 
-import static com.ebsco.edgecourses.TestConstants.COURSES;
-import static com.ebsco.edgecourses.TestConstants.RESERVES;
+import static com.ebsco.edge.courses.TestConstants.COURSES;
+import static com.ebsco.edge.courses.TestConstants.RESERVES;
 import static org.hamcrest.Matchers.is;
 import static org.hamcrest.Matchers.iterableWithSize;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-import com.ebsco.edgecourses.BaseIntegrationTests;
-import com.ebsco.edgecourses.service.CourseReservesService;
+import com.ebsco.edge.courses.TestConstants;
+import com.ebsco.edge.courses.BaseIntegrationTests;
+import com.ebsco.edge.courses.service.CourseReservesService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;

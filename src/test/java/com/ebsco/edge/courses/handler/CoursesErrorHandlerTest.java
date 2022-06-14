@@ -1,13 +1,14 @@
-package com.ebsco.edgecourses.handler;
+package com.ebsco.edge.courses.handler;
 
-import static com.ebsco.edgecourses.TestConstants.COURSE_BY_ID_FORBIDDEN_URI;
+import static com.ebsco.edge.courses.TestConstants.COURSE_BY_ID_FORBIDDEN_URI;
 import static org.hamcrest.Matchers.is;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.header;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-import com.ebsco.edgecourses.BaseIntegrationTests;
-import com.ebsco.edgecourses.service.CourseReservesService;
+import com.ebsco.edge.courses.TestConstants;
+import com.ebsco.edge.courses.BaseIntegrationTests;
+import com.ebsco.edge.courses.service.CourseReservesService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

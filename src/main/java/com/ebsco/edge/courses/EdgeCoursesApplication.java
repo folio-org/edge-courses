@@ -1,4 +1,4 @@
-package com.ebsco.edgecourses;
+package com.ebsco.edge.courses;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

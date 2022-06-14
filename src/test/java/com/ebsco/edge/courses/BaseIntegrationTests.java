@@ -1,6 +1,6 @@
-package com.ebsco.edgecourses;
+package com.ebsco.edge.courses;
 
-import static com.ebsco.edgecourses.TestConstants.TEST_TENANT;
+import static com.ebsco.edge.courses.TestConstants.TEST_TENANT;
 import static org.springframework.boot.test.context.SpringBootTest.WebEnvironment.RANDOM_PORT;
 import static org.springframework.http.MediaType.APPLICATION_JSON;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;

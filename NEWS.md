@@ -1,3 +1,12 @@
+## 1.2.2 Released
+The focus of this release was:
+* major refactoring work related to renaming references from GOPAC to LOCATE
+* format samlpe JSON responses in the API documentation
+
+### Stories
+* [US965340](https://rally1.rallydev.com/#/?detail=/userstory/638721191931&fdp=true): Major refactoring work related to renaming references to GOPAC
+* [US967724](https://rally1.rallydev.com/#/?detail=/userstory/639214307523&fdp=true): Format sample JSON response in the API documentation
+
 ## 1.2.1 Released
 The primary focus of this release was to add interface version login 7.1 to ModuleDescriptor
 

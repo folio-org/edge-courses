@@ -3,7 +3,9 @@ spring:
     name: edge-courses
   liquibase:
     enabled: false
-
+  jackson:
+    default-property-inclusion: non_null
+    
 management.endpoints.web.base-path: /admin
 header.validation.x-okapi-tenant.exclude.base-paths: /admin,/swagger,/v2/api-docs
 

@@ -28,6 +28,50 @@ paths:
           $ref: 'yml-utils/traits/common-components.yaml#/components/responses/badRequestResponse'
         '500':
           $ref: 'yml-utils/traits/common-components.yaml#/components/responses/internalServerErrorResponse'
+  
+  /courses/departments:
+    get:
+      operationId: getDepartments
+      summary: Retrieve course departments
+      description: Retrieve course departments
+      parameters:
+        - $ref: 'yml-utils/traits/common-components.yaml#/components/parameters/x-okapi-tenant-header'
+        - $ref: 'yml-utils/traits/common-components.yaml#/components/parameters/x-okapi-token-header'
+        - $ref: 'yml-utils/traits/common-components.yaml#/components/parameters/request-query-parameters'
+      responses:
+        '200':
+          description: 'Calls the mod-courses GET /coursereserves/departments API and returns the result as-is
+          The example of response: https://github.com/folio-org/mod-courses/blob/master/ramls/examples/departments.json'
+          content:
+            application/json:
+              schema:
+                type: string
+        '400':
+          $ref: 'yml-utils/traits/common-components.yaml#/components/responses/badRequestResponse'
+        '500':
+          $ref: 'yml-utils/traits/common-components.yaml#/components/responses/internalServerErrorResponse'
+          
+  /courses/instructors:
+    get:
+      operationId: getInstructors
+      summary: Retrieve course instructors
+      description: Retrieve course  instructors 
+      parameters:
+        - $ref: 'yml-utils/traits/common-components.yaml#/components/parameters/x-okapi-tenant-header'
+        - $ref: 'yml-utils/traits/common-components.yaml#/components/parameters/x-okapi-token-header'
+        - $ref: 'yml-utils/traits/common-components.yaml#/components/parameters/request-query-parameters'
+      responses:
+        '200':
+          description: 'Calls the mod-courses GET /coursereserves/courselistings API and returns instructorObjects'
+          content:
+            application/json:
+              schema:
+                $ref: 'yml-utils/schemas/course-reserves/instructors.json'
+        '400':
+          $ref: 'yml-utils/traits/common-components.yaml#/components/responses/badRequestResponse'
+        '500':
+          $ref: 'yml-utils/traits/common-components.yaml#/components/responses/internalServerErrorResponse'        
+          
   /courses/courselistings/{instanceId}/reserves:
     get:
       operationId: getCoursesByInstanceId
@@ -60,3 +104,7 @@ components:
       required: true
       schema:
         type: string
+        
+  schemas:
+    courselistings:
+      $ref: 'yml-utils/schemas/course-reserves/courselistings.json'

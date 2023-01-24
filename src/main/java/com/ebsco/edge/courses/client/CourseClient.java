@@ -3,6 +3,7 @@ package com.ebsco.edge.courses.client;
 import static org.folio.spring.integration.XOkapiHeaders.TENANT;
 import static org.folio.spring.integration.XOkapiHeaders.TOKEN;
 
+import com.ebsco.courses.domain.dto.Courselistings;
 import com.ebsco.edge.courses.config.CourseClientConfig;
 import java.net.URI;
 import org.springframework.cloud.openfeign.FeignClient;
@@ -24,4 +25,12 @@ public interface CourseClient {
   ResponseEntity<String> getCourseById(URI okapiURI, @PathVariable("listing_id") String listingId,
       @RequestHeader(TENANT) String tenant, @RequestHeader(TOKEN) String token,
       @SpringQueryMap(encoded = true) Object requestQueryParameters);
+
+  @GetMapping(value = "/coursereserves/departments", consumes = MediaType.APPLICATION_JSON_VALUE)
+  ResponseEntity<String> getDepartments(URI okapiURI, @RequestHeader(TENANT) String tenant,
+      @RequestHeader(TOKEN) String token, @SpringQueryMap(encoded = true) Object requestQueryParameters);  
+  
+  @GetMapping(value = "/coursereserves/courselistings", consumes = MediaType.APPLICATION_JSON_VALUE)
+  Courselistings getCourselistings(URI okapiURI, @RequestHeader(TENANT) String tenant,
+      @RequestHeader(TOKEN) String token, @SpringQueryMap(encoded = true) Object requestQueryParameters);
 }

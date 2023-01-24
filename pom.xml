@@ -226,7 +226,7 @@
         <version>3.0.0</version>
         <executions>
           <execution>
-            <id>git submodule update</id>
+            <id>git submodule init</id>
             <phase>initialize</phase>
             <goals>
               <goal>exec</goal>
@@ -237,6 +237,22 @@
                 <argument>submodule</argument>
                 <argument>update</argument>
                 <argument>--init</argument>
+                <argument>--recursive</argument>
+              </arguments>
+            </configuration>
+          </execution>
+          <execution>
+            <id>git submodule update</id>
+            <phase>initialize</phase>
+            <goals>
+              <goal>exec</goal>
+            </goals>
+            <configuration>
+              <executable>git</executable>
+              <arguments>
+                <argument>submodule</argument>
+                <argument>update</argument>
+                <argument>--remote</argument>
                 <argument>--recursive</argument>
               </arguments>
             </configuration>

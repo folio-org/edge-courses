@@ -1,0 +1,283 @@
+{
+  "courseListings": [
+    {
+      "id": "b9981e4e-62fc-4158-9e4b-18a05e21758a",
+      "termId": "83fc4434-9ebb-4f68-b4d1-6ee2e2208662",
+      "courseTypeId": "d60010a8-a104-4b29-84dc-864884beaa9f",
+      "instructorObjects": [],
+      "metadata": {
+        "createdDate": "2020-10-22T18:27:25.978+00:00",
+        "createdByUserId": "6068640d-8c99-415a-9e3c-d3cc14549998",
+        "updatedDate": "2020-10-22T18:27:25.978+00:00",
+        "updatedByUserId": "6068640d-8c99-415a-9e3c-d3cc14549998"
+      }
+    },
+    {
+      "id": "f39f06ad-24da-43fc-ae65-f8e4fd1772c9",
+      "termId": "aa580ace-bf13-4730-aa3b-caa9eaec6257",
+      "instructorObjects": [],
+      "metadata": {
+        "createdDate": "2020-10-22T18:27:50.576+00:00",
+        "createdByUserId": "6068640d-8c99-415a-9e3c-d3cc14549998",
+        "updatedDate": "2020-10-22T18:27:50.576+00:00",
+        "updatedByUserId": "6068640d-8c99-415a-9e3c-d3cc14549998"
+      }
+    },
+    {
+      "id": "eead4020-3d24-4233-bc5a-7cc5f39858b0",
+      "locationId": "51fe28e5-8085-4910-9f54-abc5456e1284",
+      "termId": "aa580ace-bf13-4730-aa3b-caa9eaec6257",
+      "instructorObjects": [
+        {
+          "id": "75985fb0-a994-4136-a2bf-ec5824f43877",
+          "name": "Emma Beck",
+          "barcode": "1234567890",
+          "courseListingId": "eead4020-3d24-4233-bc5a-7cc5f39858b0",
+          "metadata": {
+            "createdDate": "2020-11-04T17:36:45.488+00:00",
+            "createdByUserId": "e963759b-6eea-4552-98d5-5ce4c9d21253",
+            "updatedDate": "2020-11-04T17:36:45.488+00:00",
+            "updatedByUserId": "e963759b-6eea-4552-98d5-5ce4c9d21253"
+          }
+        }
+      ],
+      "metadata": {
+        "createdDate": "2020-11-04T17:36:26.169+00:00",
+        "createdByUserId": "e963759b-6eea-4552-98d5-5ce4c9d21253",
+        "updatedDate": "2020-11-04T17:36:26.169+00:00",
+        "updatedByUserId": "e963759b-6eea-4552-98d5-5ce4c9d21253"
+      }
+    },
+    {
+      "id": "4588e885-d013-48bc-ad63-7191e10fb697",
+      "termId": "66c70630-13be-498b-bb5c-15fb2ca114ee",
+      "courseTypeId": "d60010a8-a104-4b29-84dc-864884beaa9f",
+      "instructorObjects": [
+        {
+          "id": "10401bcf-d178-4b0e-8dda-c426c727c30d",
+          "userId": "6068640d-8c99-415a-9e3c-d3cc14549998",
+          "name": "Kim Ammons",
+          "barcode": "3853930141",
+          "patronGroup": "612512f9-b2f1-4716-9c2a-463b484b0613",
+          "patronGroupObject": {
+            "id": "612512f9-b2f1-4716-9c2a-463b484b0613",
+            "desc": "Staff",
+            "group": "Staff"
+          },
+          "courseListingId": "4588e885-d013-48bc-ad63-7191e10fb697",
+          "metadata": {
+            "createdDate": "2020-10-22T18:29:51.364+00:00",
+            "createdByUserId": "6068640d-8c99-415a-9e3c-d3cc14549998",
+            "updatedDate": "2020-10-22T18:29:51.364+00:00",
+            "updatedByUserId": "6068640d-8c99-415a-9e3c-d3cc14549998"
+          }
+        }
+      ],
+      "metadata": {
+        "createdDate": "2020-10-22T17:47:02.161+00:00",
+        "createdByUserId": "6068640d-8c99-415a-9e3c-d3cc14549998",
+        "updatedDate": "2020-10-22T19:49:13.409+00:00",
+        "updatedByUserId": "6068640d-8c99-415a-9e3c-d3cc14549998"
+      }
+    },
+    {
+      "id": "9d39141b-949e-4dee-b8a6-df804479e485",
+      "registrarId": "12345",
+      "externalId": "12345",
+      "locationId": "008acf71-024f-4059-9c13-e2d6c1aa0b29",
+      "termId": "aa580ace-bf13-4730-aa3b-caa9eaec6257",
+      "courseTypeId": "c0506e6a-8fb3-44e8-946c-5d79b16bbd89",
+      "instructorObjects": [
+        {
+          "id": "f711647c-7e57-47c3-a957-d996a0adbdf8",
+          "userId": "a0dc4f49-401f-4624-8032-726a089b0b06",
+          "name": "Gabe Stetson",
+          "barcode": "987123",
+          "patronGroup": "612512f9-b2f1-4716-9c2a-463b484b0613",
+          "patronGroupObject": {
+            "id": "612512f9-b2f1-4716-9c2a-463b484b0613",
+            "desc": "Staff",
+            "group": "Staff"
+          },
+          "courseListingId": "9d39141b-949e-4dee-b8a6-df804479e485",
+          "metadata": {
+            "createdDate": "2020-11-10T15:12:47.032+00:00",
+            "createdByUserId": "a0dc4f49-401f-4624-8032-726a089b0b06",
+            "updatedDate": "2020-11-10T15:12:47.032+00:00",
+            "updatedByUserId": "a0dc4f49-401f-4624-8032-726a089b0b06"
+          }
+        }
+      ],
+      "metadata": {
+        "createdDate": "2020-11-10T15:12:24.077+00:00",
+        "createdByUserId": "a0dc4f49-401f-4624-8032-726a089b0b06",
+        "updatedDate": "2020-11-10T15:12:24.077+00:00",
+        "updatedByUserId": "a0dc4f49-401f-4624-8032-726a089b0b06"
+      }
+    },
+    {
+      "id": "76478767-3165-454c-ac81-c287b3ebb5ea",
+      "locationId": "e482a585-e0c5-4933-a259-f616a6ee6760",
+      "termId": "83fc4434-9ebb-4f68-b4d1-6ee2e2208662",
+      "courseTypeId": "d60010a8-a104-4b29-84dc-864884beaa9f",
+      "instructorObjects": [
+        {
+          "id": "d1e2bebc-eb63-49c2-a8a1-4b03aaafffa5",
+          "name": "Sam Sharp",
+          "barcode": "2057788717",
+          "courseListingId": "76478767-3165-454c-ac81-c287b3ebb5ea",
+          "metadata": {
+            "createdDate": "2020-11-05T17:49:35.684+00:00",
+            "createdByUserId": "610b3cb3-3d3e-4167-9106-b935abab775b",
+            "updatedDate": "2020-11-05T17:49:35.684+00:00",
+            "updatedByUserId": "610b3cb3-3d3e-4167-9106-b935abab775b"
+          }
+        }
+      ],
+      "metadata": {
+        "createdDate": "2020-11-05T17:45:10.512+00:00",
+        "createdByUserId": "610b3cb3-3d3e-4167-9106-b935abab775b",
+        "updatedDate": "2020-11-17T17:06:05.384+00:00",
+        "updatedByUserId": "610b3cb3-3d3e-4167-9106-b935abab775b"
+      }
+    },
+    {
+      "id": "bdde18ee-e2a8-4133-a515-b14e391f5f98",
+      "locationId": "a610ec9d-26cc-4007-bce8-764049060209",
+      "termId": "aa580ace-bf13-4730-aa3b-caa9eaec6257",
+      "courseTypeId": "55fde004-6df9-48af-bf59-63c38b10425b",
+      "instructorObjects": [
+        {
+          "id": "cd41186f-843b-4949-b9c3-0d701d6d9ae7",
+          "name": "Malkowski, Jennifer ",
+          "courseListingId": "bdde18ee-e2a8-4133-a515-b14e391f5f98",
+          "metadata": {
+            "createdDate": "2020-10-22T14:49:53.857+00:00",
+            "createdByUserId": "a41dfac9-3972-4bce-bfe4-dfba7ee94ad2",
+            "updatedDate": "2020-10-22T14:49:53.857+00:00",
+            "updatedByUserId": "a41dfac9-3972-4bce-bfe4-dfba7ee94ad2"
+          }
+        },
+        {
+          "id": "41277890-3f67-4ee5-be20-3680cb19fdbd",
+          "userId": "a41dfac9-3972-4bce-bfe4-dfba7ee94ad2",
+          "name": "C.M. Flynn",
+          "barcode": "4132818377",
+          "patronGroup": "612512f9-b2f1-4716-9c2a-463b484b0613",
+          "patronGroupObject": {
+            "id": "612512f9-b2f1-4716-9c2a-463b484b0613",
+            "desc": "Staff",
+            "group": "Staff"
+          },
+          "courseListingId": "bdde18ee-e2a8-4133-a515-b14e391f5f98",
+          "metadata": {
+            "createdDate": "2020-11-11T14:24:09.177+00:00",
+            "createdByUserId": "a41dfac9-3972-4bce-bfe4-dfba7ee94ad2",
+            "updatedDate": "2020-11-11T14:24:09.177+00:00",
+            "updatedByUserId": "a41dfac9-3972-4bce-bfe4-dfba7ee94ad2"
+          }
+        }
+      ],
+      "metadata": {
+        "createdDate": "2020-10-22T14:48:45.423+00:00",
+        "createdByUserId": "a41dfac9-3972-4bce-bfe4-dfba7ee94ad2",
+        "updatedDate": "2020-12-01T15:21:26.010+00:00",
+        "updatedByUserId": "54953c4a-cb7c-4b3a-9f42-fd0ca0d30394"
+      }
+    },
+    {
+      "id": "f28557e0-6386-407b-af33-5b7a1941b88c",
+      "termId": "2c766be6-7ec6-4d53-acb9-30fe4453f026",
+      "instructorObjects": [],
+      "metadata": {
+        "createdDate": "2021-04-08T17:46:35.678+00:00",
+        "createdByUserId": "6068640d-8c99-415a-9e3c-d3cc14549998",
+        "updatedDate": "2022-01-08T22:31:24.812+00:00",
+        "updatedByUserId": "1bcca4f8-6502-4659-9ad3-3eb952f663db"
+      }
+    },
+    {
+      "id": "d8185065-c3ab-4019-85ef-3df1903a0d77",
+      "locationId": "9f6844b5-2704-4dd0-ac80-b12d3b4c33a6",
+      "termId": "aa580ace-bf13-4730-aa3b-caa9eaec6257",
+      "instructorObjects": [
+        {
+          "id": "02d9b8ca-bda2-4622-a4df-83ca19f63e86",
+          "name": "Albus Dumbledore",
+          "courseListingId": "d8185065-c3ab-4019-85ef-3df1903a0d77",
+          "metadata": {
+            "createdDate": "2021-12-22T14:49:42.154+00:00",
+            "createdByUserId": "1bcca4f8-6502-4659-9ad3-3eb952f663db",
+            "updatedDate": "2021-12-22T14:49:42.154+00:00",
+            "updatedByUserId": "1bcca4f8-6502-4659-9ad3-3eb952f663db"
+          }
+        },
+        {
+          "id": "459456a2-6415-44b3-8b46-2f3bbe563bbb",
+          "name": "Alastor \"Mad-Eye\" Moody",
+          "courseListingId": "d8185065-c3ab-4019-85ef-3df1903a0d77",
+          "metadata": {
+            "createdDate": "2021-12-22T14:49:49.862+00:00",
+            "createdByUserId": "1bcca4f8-6502-4659-9ad3-3eb952f663db",
+            "updatedDate": "2021-12-22T14:49:49.862+00:00",
+            "updatedByUserId": "1bcca4f8-6502-4659-9ad3-3eb952f663db"
+          }
+        },
+        {
+          "id": "574955f6-5651-4ac7-9dda-5bd8c9940307",
+          "name": "Remus Lupin",
+          "courseListingId": "d8185065-c3ab-4019-85ef-3df1903a0d77",
+          "metadata": {
+            "createdDate": "2021-12-22T14:50:20.501+00:00",
+            "createdByUserId": "1bcca4f8-6502-4659-9ad3-3eb952f663db",
+            "updatedDate": "2021-12-22T14:50:20.501+00:00",
+            "updatedByUserId": "1bcca4f8-6502-4659-9ad3-3eb952f663db"
+          }
+        },
+        {
+          "id": "20b8903a-0892-4af8-97c1-7e46c514c1c5",
+          "name": "Serverus Snape",
+          "courseListingId": "d8185065-c3ab-4019-85ef-3df1903a0d77",
+          "metadata": {
+            "createdDate": "2021-12-22T14:49:17.871+00:00",
+            "createdByUserId": "1bcca4f8-6502-4659-9ad3-3eb952f663db",
+            "updatedDate": "2021-12-22T14:50:26.385+00:00",
+            "updatedByUserId": "1bcca4f8-6502-4659-9ad3-3eb952f663db"
+          }
+        }
+      ],
+      "metadata": {
+        "createdDate": "2021-12-22T14:47:14.017+00:00",
+        "createdByUserId": "1bcca4f8-6502-4659-9ad3-3eb952f663db",
+        "updatedDate": "2022-01-06T14:48:03.589+00:00",
+        "updatedByUserId": "1bcca4f8-6502-4659-9ad3-3eb952f663db"
+      }
+    },
+    {
+      "id": "a9fa4530-7c38-42b1-a6a9-bd5964039b19",
+      "locationId": "58f47b2b-7482-4e63-a169-50699bbb90a4",
+      "termId": "4b965b62-924f-4728-9b65-75c82de11e4a",
+      "instructorObjects": [
+        {
+          "id": "75fe0f43-7d21-48fb-af88-9abde3321822",
+          "name": "Mare Alos",
+          "barcode": "90567",
+          "courseListingId": "a9fa4530-7c38-42b1-a6a9-bd5964039b19",
+          "metadata": {
+            "createdDate": "2020-11-02T00:08:59.232+00:00",
+            "createdByUserId": "b089be52-d878-458c-ae40-985c3efce982",
+            "updatedDate": "2020-11-02T00:08:59.232+00:00",
+            "updatedByUserId": "b089be52-d878-458c-ae40-985c3efce982"
+          }
+        }
+      ],
+      "metadata": {
+        "createdDate": "2020-11-02T00:06:25.443+00:00",
+        "createdByUserId": "b089be52-d878-458c-ae40-985c3efce982",
+        "updatedDate": "2022-01-06T15:00:54.138+00:00",
+        "updatedByUserId": "1bcca4f8-6502-4659-9ad3-3eb952f663db"
+      }
+    }
+  ],
+  "totalRecords": 10
+}

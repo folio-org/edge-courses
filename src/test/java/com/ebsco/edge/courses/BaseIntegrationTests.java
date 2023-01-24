@@ -66,6 +66,13 @@ public abstract class BaseIntegrationTests {
         .param(paramName, paramValue)
         .headers(defaultHeaders()));
   }
+  protected static ResultActions doGetWithLimitAndOffset(MockMvc mockMvc, String url, Integer limit, Integer offset)
+      throws Exception {
+    return mockMvc.perform(get(url)
+        .param("limit", limit.toString())
+        .param("offset", offset.toString())
+        .headers(defaultHeaders()));
+  }
 
   private static HttpHeaders defaultHeaders() {
     final HttpHeaders httpHeaders = new HttpHeaders();

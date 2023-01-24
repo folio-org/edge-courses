@@ -3,7 +3,9 @@ package com.ebsco.edge.courses;
 public class TestConstants {
 
   public static final String RESERVES_RESPONSE_PATH = "__files/reserves/reserves_response.json";
+  public static final String DEPARTMENTS_RESPONSE_PATH = "__files/courses/departments.json";
   public static final String COURSES_RESPONSE_PATH = "__files/courses/courses_response.json";
+  public static final String COURSELISTINGS_RESPONSE_PATH = "__files/courses/courselistings.json";
   public static final String TEST_TENANT = "test";
   public static final String RESERVES = "reserves";
   public static final String COURSES = "courses";

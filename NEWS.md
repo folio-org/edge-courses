@@ -1,3 +1,12 @@
+## 1.2.3 Released
+The focus of this release was:
+* Add new endpoints to get list of departments and instructors
+* Update required interface versions
+
+### Stories
+* [US1054505](https://rally1.rallydev.com/#/?detail=/userstory/675118089675&fdp=true): Implement new endpoints to get a list of departments and instructors for course reserves (edge-courses)
+* [US1076980](https://rally1.rallydev.com/#/?detail=/userstory/686115458595&fdp=true): CO - Fix interface versions of FOLIO module in edge modules used for Locate
+
 ## 1.2.2 Released
 The focus of this release was:
 * major refactoring work related to renaming references from GOPAC to LOCATE

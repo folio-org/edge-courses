@@ -1,0 +1,22 @@
+{
+  "description": "A collection of records",
+  "type": "object",
+  "properties": {
+    "courseListings": {
+      "description": "List of courseListings",
+      "id": "courseListings",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "$ref": "courselisting.json"
+      }
+    },
+    "totalRecords": {
+      "type": "integer"
+    }
+  },
+  "required": [
+    "courseListings",
+    "totalRecords"
+  ]
+}

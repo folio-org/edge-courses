@@ -1,0 +1,210 @@
+{
+  "reserves": [
+    {
+      "id": "01be009e-46c0-4c46-9e01-d9604629a005",
+      "courseListingId": "a9fa4530-7c38-42b1-a6a9-bd5964039b19",
+      "itemId": "f4819beb-f841-4ec1-bf61-f2f181119508",
+      "processingStatusId": "d383045c-2b67-4cce-8a40-7d5c7a76b056",
+      "startDate": "2021-01-04T05:00:00.000Z",
+      "endDate": "2021-01-29T05:00:00.000Z",
+      "copiedItem": {
+        "barcode": "310212312435412",
+        "temporaryLocationId": "58f47b2b-7482-4e63-a169-50699bbb90a4",
+        "permanentLocationId": "fc7ea407-c8fc-49ac-b1a2-5ea67915aa69",
+        "title": "War on peace : the end of diplomacy and the decline of American influence / Ronan Farrow.",
+        "contributors": [
+          {
+            "name": "Farrow, Ronan, 1987-",
+            "contributorTypeId": "6e09d47d-95e2-4d8a-831b-f777b8ef6d81",
+            "contributorTypeText": "Contributor",
+            "contributorNameTypeId": "2b94c631-fca9-4892-a730-03ee529ffe2a",
+            "primary": true
+          }
+        ],
+        "publication": [
+          {
+            "publisher": "W.W. Norton & Company",
+            "place": "New York, NY",
+            "dateOfPublication": "[2018]",
+            "role": "Publication"
+          },
+          {
+            "publisher": "",
+            "place": "",
+            "dateOfPublication": "©2018",
+            "role": ""
+          }
+        ],
+        "callNumber": "JZ1480.F37 2018",
+        "instanceId": "56a99eba-a340-4c6b-a5c2-fb1c8b4cdf09",
+        "instanceHrid": "in00004661322",
+        "holdingsId": "0bf1ef90-2602-4d87-9f11-fcd3cda70ebc"
+      },
+      "temporaryLoanTypeId": "db67198c-4a27-43a2-8634-6c956f0b692d",
+      "metadata": {
+        "createdDate": "2020-11-02T00:11:18.451+00:00",
+        "createdByUserId": "b089be52-d878-458c-ae40-985c3efce982",
+        "updatedDate": "2021-05-28T12:45:50.854+00:00",
+        "updatedByUserId": "1bcca4f8-6502-4659-9ad3-3eb952f663db"
+      }
+    },
+    {
+      "id": "e79e2506-30d9-4e4b-89d2-c2502140b889",
+      "courseListingId": "a9fa4530-7c38-42b1-a6a9-bd5964039b19",
+      "itemId": "170f17f6-1a87-45e2-87d2-a95e41e83920",
+      "startDate": "2021-01-04T05:00:00.000Z",
+      "endDate": "2021-01-29T05:00:00.000Z",
+      "copiedItem": {
+        "barcode": "310212310292631",
+        "temporaryLocationId": "58f47b2b-7482-4e63-a169-50699bbb90a4",
+        "permanentLocationId": "bbf0ebff-7891-4d58-84c1-1fa2929829f4",
+        "title": "A little history of British gardening / Jenny Uglow",
+        "contributors": [
+          {
+            "name": "Uglow, Jennifer S",
+            "contributorTypeId": "9f0a2cf0-7a9b-45a2-a403-f68d2850d07c",
+            "contributorTypeText": "Contributor",
+            "contributorNameTypeId": "2b94c631-fca9-4892-a730-03ee529ffe2a",
+            "primary": true
+          }
+        ],
+        "publication": [
+          {
+            "publisher": "North Point Press",
+            "place": "New York",
+            "dateOfPublication": "2004",
+            "role": "Publication"
+          }
+        ],
+        "callNumber": "$$hSB451.36.G7$$iU56 2004",
+        "copy": "1",
+        "instanceId": "d688e2f1-36d8-4e0c-bb98-47e6fa72a4bd",
+        "instanceHrid": "in00002127990",
+        "holdingsId": "8f9e551f-fed3-4029-9e1f-d64794b0e02b"
+      },
+      "temporaryLoanTypeId": "db67198c-4a27-43a2-8634-6c956f0b692d",
+      "metadata": {
+        "createdDate": "2020-11-05T18:46:02.461+00:00",
+        "createdByUserId": "b089be52-d878-458c-ae40-985c3efce982",
+        "updatedDate": "2020-11-05T18:47:58.941+00:00",
+        "updatedByUserId": "b089be52-d878-458c-ae40-985c3efce982"
+      }
+    },
+    {
+      "id": "91441bd6-6f0f-4586-a4a5-26ffcfb20e0c",
+      "courseListingId": "9d39141b-949e-4dee-b8a6-df804479e485",
+      "itemId": "017bb629-8f8e-40d2-80ad-76b5a38e56aa",
+      "startDate": "2021-02-04T05:00:00.000Z",
+      "endDate": "2021-05-12T04:00:00.000Z",
+      "copiedItem": {
+        "barcode": "312066014741611",
+        "temporaryLocationId": "008acf71-024f-4059-9c13-e2d6c1aa0b29",
+        "permanentLocationId": "177c4e20-1944-49ff-8a54-eaca72260d25",
+        "title": "10 SATs : the actual and complete scholastic aptitude test plus advice from the College Board on how to prepare for it",
+        "contributors": [
+          {
+            "name": "College Entrance Examination Board",
+            "contributorTypeId": "9f0a2cf0-7a9b-45a2-a403-f68d2850d07c",
+            "contributorTypeText": "Contributor",
+            "contributorNameTypeId": "f5bda109-a719-4f72-b797-b9c22f45e4e1",
+            "primary": false
+          }
+        ],
+        "publication": [
+          {
+            "publisher": "College Entrance Examination Board",
+            "place": "New York",
+            "dateOfPublication": "[1986]",
+            "role": "Publication"
+          }
+        ],
+        "callNumber": "$$hLB2353.57$$i.A16 1986",
+        "copy": "1",
+        "instanceId": "83e62747-b707-4c1b-b98d-81c98ff228fd",
+        "instanceHrid": "in00001430923",
+        "holdingsId": "9c8dfcbd-3de9-4bcb-9161-2047afc64f6c"
+      },
+      "temporaryLoanTypeId": "db67198c-4a27-43a2-8634-6c956f0b692d",
+      "metadata": {
+        "createdDate": "2020-11-17T19:15:45.966+00:00",
+        "createdByUserId": "a0dc4f49-401f-4624-8032-726a089b0b06",
+        "updatedDate": "2020-11-17T19:17:11.915+00:00",
+        "updatedByUserId": "a0dc4f49-401f-4624-8032-726a089b0b06"
+      }
+    },
+    {
+      "id": "76437744-b496-4c49-9466-12d14b293c4a",
+      "courseListingId": "f28557e0-6386-407b-af33-5b7a1941b88c",
+      "itemId": "db95c95f-345e-4289-b1b1-d45a3d0169c3",
+      "copiedItem": {
+        "barcode": "310212304228633",
+        "permanentLocationId": "3f75119d-1a16-4982-be3f-a9fd07b15b32",
+        "title": "Battaglia d'Amor e Dispetto ; and, Mascherata della Malinconia et Allegrezza / Orazio Vecchi ; edited by David Nutter.",
+        "contributors": [
+          {
+            "name": "Vecchi, Orazio, 1550-1605",
+            "contributorTypeId": "9f0a2cf0-7a9b-45a2-a403-f68d2850d07c",
+            "contributorTypeText": "Contributor",
+            "contributorNameTypeId": "2b94c631-fca9-4892-a730-03ee529ffe2a",
+            "primary": true
+          },
+          {
+            "name": "Nutter, David Alan",
+            "contributorTypeId": "9f0a2cf0-7a9b-45a2-a403-f68d2850d07c",
+            "contributorTypeText": "Contributor",
+            "contributorNameTypeId": "2b94c631-fca9-4892-a730-03ee529ffe2a",
+            "primary": false
+          },
+          {
+            "name": "Vecchi, Orazio, 1550-1605 Mascherata della Malinconia et Allegrezza. 1987",
+            "contributorTypeId": "9f0a2cf0-7a9b-45a2-a403-f68d2850d07c",
+            "contributorTypeText": "Contributor",
+            "contributorNameTypeId": "2b94c631-fca9-4892-a730-03ee529ffe2a",
+            "primary": false
+          },
+          {
+            "name": "Nutter, David Alan",
+            "contributorTypeId": "9deb29d1-3e71-4951-9413-a80adac703d0",
+            "contributorTypeText": "Contributor",
+            "contributorNameTypeId": "2b94c631-fca9-4892-a730-03ee529ffe2a",
+            "primary": false
+          },
+          {
+            "name": "Vecchi, Orazio, 1550-1605 Mascherata della Malinconia et Allegrezza",
+            "contributorTypeId": "9f0a2cf0-7a9b-45a2-a403-f68d2850d07c",
+            "contributorTypeText": "Contributor",
+            "contributorNameTypeId": "2b94c631-fca9-4892-a730-03ee529ffe2a",
+            "primary": false
+          }
+        ],
+        "publication": [
+          {
+            "publisher": "A-R Editions",
+            "place": "Madison, [Wis.]",
+            "dateOfPublication": "[1987]",
+            "role": "Publication"
+          },
+          {
+            "publisher": "",
+            "place": "",
+            "dateOfPublication": "©1987",
+            "role": ""
+          }
+        ],
+        "callNumber": "M2.R2384 v.72",
+        "copy": "1",
+        "instanceId": "621bb07f-d2fb-4a61-ad04-6eb9241e1d1c",
+        "instanceHrid": "in00000000709",
+        "instanceDiscoverySuppress": false,
+        "holdingsId": "5a9812ea-b9ac-4947-ac40-5fc323702d20"
+      },
+      "metadata": {
+        "createdDate": "2021-12-16T15:31:37.092+00:00",
+        "createdByUserId": "1bcca4f8-6502-4659-9ad3-3eb952f663db",
+        "updatedDate": "2021-12-16T15:31:37.092+00:00",
+        "updatedByUserId": "1bcca4f8-6502-4659-9ad3-3eb952f663db"
+      }
+    }
+  ],
+  "totalRecords": 4
+}

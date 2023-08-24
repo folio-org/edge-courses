@@ -1,0 +1,13 @@
+{
+  "description": "A loan type",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "name": {
+      "description": "label for the loan type",
+      "type": "string"
+    }
+  }
+}

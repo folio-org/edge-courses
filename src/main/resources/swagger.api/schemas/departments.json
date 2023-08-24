@@ -1,0 +1,22 @@
+{
+  "description": "A collection of records",
+  "type": "object",
+  "properties": {
+    "departments": {
+      "description": "List of departments",
+      "id": "departments",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "$ref": "department.json"
+      }
+    },
+    "totalRecords": {
+      "type": "integer"
+    }
+  },
+  "required": [
+    "departments",
+    "totalRecords"
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "mappings": [
+    {
+      "request": {
+        "method": "GET",
+        "url": "/coursereserves/courselistings?offset=0&limit=2147483647&lang=en"
+      },
+      "response": {
+        "status": 200,
+        "bodyFileName": "courses/courselistings.json",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      }
+    }
+  ]
+}
+

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>CourseReservesController.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">edge-courses</a> &gt; <a href="index.source.html" class="el_package">org.folio.edge.courses.controller</a> &gt; <span class="el_source">CourseReservesController.java</span></div><h1>CourseReservesController.java</h1><pre class="source lang-java linenums">package org.folio.edge.courses.controller;
+
+import org.folio.courses.domain.dto.Instructors;
+import org.folio.courses.domain.dto.RequestQueryParameters;
+import org.folio.courses.rest.resource.CoursesApi;
+import org.folio.edge.courses.service.CourseReservesService;
+import io.swagger.annotations.Api;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.log4j.Log4j2;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.RestController;
+
+@Api(tags = &quot;Edge courses&quot;)
+<span class="fc" id="L14">@Log4j2</span>
+@RestController
+@RequiredArgsConstructor
+public class CourseReservesController implements CoursesApi {
+
+  private final CourseReservesService courseReservesService;
+
+  @Override
+  public ResponseEntity&lt;String&gt; getCoursesByQuery(String xOkapiTenant, String xOkapiToken,
+      RequestQueryParameters queryParameters) {
+<span class="fc" id="L24">    var courses = courseReservesService.getCoursesByQuery(queryParameters);</span>
+<span class="fc" id="L25">    return ResponseEntity.ok(courses);</span>
+  }
+
+  @Override
+  public ResponseEntity&lt;String&gt; getReservesByQuery(String xOkapiTenant, String xOkapiToken,
+      RequestQueryParameters queryParameters) {
+<span class="fc" id="L31">    var reserves = courseReservesService.getReservesByQuery(queryParameters);</span>
+<span class="fc" id="L32">    return ResponseEntity.ok(reserves);</span>
+  }
+
+  @Override
+  public ResponseEntity&lt;String&gt; getReservesByInstanceId(String instanceId, String xOkapiTenant, String xOkapiToken,
+      RequestQueryParameters queryParameters) {
+<span class="fc" id="L38">    var reserves = courseReservesService.getReservesByInstanceId(instanceId, queryParameters);</span>
+<span class="fc" id="L39">    return ResponseEntity.ok(reserves);</span>
+  }
+
+  @Override
+  public ResponseEntity&lt;String&gt; getDepartments(String xOkapiTenant, String xOkapiToken,
+      RequestQueryParameters requestQueryParameters) {
+<span class="fc" id="L45">    var departments = courseReservesService.getDepartments(requestQueryParameters);</span>
+<span class="fc" id="L46">    return ResponseEntity.ok(departments);</span>
+  }
+
+  @Override
+  public ResponseEntity&lt;Instructors&gt; getInstructors(String tenant, String token, RequestQueryParameters queryParams,
+      String sortBy) {
+<span class="fc" id="L52">    var instructors = courseReservesService.getInstructors(queryParams, sortBy);</span>
+<span class="fc" id="L53">    return ResponseEntity.ok(instructors);</span>
+  }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.10.202304240956</span></div></body></html>

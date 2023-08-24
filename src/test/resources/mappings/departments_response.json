@@ -1,0 +1,18 @@
+{
+  "mappings": [
+    {
+      "request": {
+        "method": "GET",
+        "url": "/coursereserves/departments?offset=0&limit=10&lang=en"
+      },
+      "response": {
+        "status": 200,
+        "bodyFileName": "courses/departments.json",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      }
+    }
+  ]
+}
+

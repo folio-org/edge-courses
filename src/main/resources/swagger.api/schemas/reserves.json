@@ -1,0 +1,22 @@
+{
+  "description": "A collection of records",
+  "type": "object",
+  "properties": {
+    "reserves": {
+      "description": "List of reserves",
+      "id": "reserves",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "$ref": "reserve.json"
+      }
+    },
+    "totalRecords": {
+      "type": "integer"
+    }
+  },
+  "required": [
+    "reserves",
+    "totalRecords"
+  ]
+}

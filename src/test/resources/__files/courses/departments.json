@@ -1,0 +1,107 @@
+{
+  "departments": [
+    {
+      "id": "6f30e9ba-d480-429e-bbb2-41ddfe70366c",
+      "name": "SC American Studies ",
+      "metadata": {
+        "createdDate": "2020-10-21T18:12:45.560+00:00",
+        "createdByUserId": "a41dfac9-3972-4bce-bfe4-dfba7ee94ad2",
+        "updatedDate": "2020-11-11T14:19:23.720+00:00",
+        "updatedByUserId": "a41dfac9-3972-4bce-bfe4-dfba7ee94ad2"
+      }
+    },
+    {
+      "id": "fd80c33b-cb35-4943-a311-cbb03fa2d6be",
+      "name": "SC Anthropology ",
+      "metadata": {
+        "createdDate": "2020-10-21T18:12:25.402+00:00",
+        "createdByUserId": "a41dfac9-3972-4bce-bfe4-dfba7ee94ad2",
+        "updatedDate": "2020-11-11T14:19:33.709+00:00",
+        "updatedByUserId": "a41dfac9-3972-4bce-bfe4-dfba7ee94ad2"
+      }
+    },
+    {
+      "id": "6d6f7c49-a3cb-41df-89c9-c8c24b935d40",
+      "name": "SC Economics ",
+      "metadata": {
+        "createdDate": "2020-10-21T18:10:28.321+00:00",
+        "createdByUserId": "a41dfac9-3972-4bce-bfe4-dfba7ee94ad2",
+        "updatedDate": "2020-11-11T14:19:41.111+00:00",
+        "updatedByUserId": "a41dfac9-3972-4bce-bfe4-dfba7ee94ad2"
+      }
+    },
+    {
+      "id": "34bcc34b-17b9-4f53-b65b-cff9bcf688ec",
+      "name": "SC Education and Child Study ",
+      "metadata": {
+        "createdDate": "2020-10-21T18:00:25.893+00:00",
+        "createdByUserId": "a41dfac9-3972-4bce-bfe4-dfba7ee94ad2",
+        "updatedDate": "2020-11-11T14:19:49.969+00:00",
+        "updatedByUserId": "a41dfac9-3972-4bce-bfe4-dfba7ee94ad2"
+      }
+    },
+    {
+      "id": "b422d0bd-6394-4bf0-adfc-21d9eb8993ba",
+      "name": "SC Film and Media Studies ",
+      "metadata": {
+        "createdDate": "2020-10-21T18:10:52.757+00:00",
+        "createdByUserId": "a41dfac9-3972-4bce-bfe4-dfba7ee94ad2",
+        "updatedDate": "2020-11-11T14:19:56.320+00:00",
+        "updatedByUserId": "a41dfac9-3972-4bce-bfe4-dfba7ee94ad2"
+      }
+    },
+    {
+      "id": "2e605b66-a3b8-4a70-9bf7-fbbb46f070bd",
+      "name": "SC First Year Seminar ",
+      "metadata": {
+        "createdDate": "2020-10-21T18:12:03.994+00:00",
+        "createdByUserId": "a41dfac9-3972-4bce-bfe4-dfba7ee94ad2",
+        "updatedDate": "2020-11-11T14:20:02.737+00:00",
+        "updatedByUserId": "a41dfac9-3972-4bce-bfe4-dfba7ee94ad2"
+      }
+    },
+    {
+      "id": "acfb611c-e7cf-485f-bcba-7b5bc82faaf9",
+      "name": "MH Mathematics & Statistics",
+      "description": "",
+      "metadata": {
+        "createdDate": "2020-11-05T18:17:48.366+00:00",
+        "createdByUserId": "6068640d-8c99-415a-9e3c-d3cc14549998",
+        "updatedDate": "2021-01-26T23:21:03.712+00:00",
+        "updatedByUserId": "6068640d-8c99-415a-9e3c-d3cc14549998"
+      }
+    },
+    {
+      "id": "332090cd-33af-4f97-aa5f-6a27fd367b63",
+      "name": "AC Mathematics & Statistics",
+      "description": "",
+      "metadata": {
+        "createdDate": "2020-10-22T01:48:00.749+00:00",
+        "createdByUserId": "6068640d-8c99-415a-9e3c-d3cc14549998",
+        "updatedDate": "2021-03-08T00:13:07.268+00:00",
+        "updatedByUserId": "b089be52-d878-458c-ae40-985c3efce982"
+      }
+    },
+    {
+      "id": "61c762b1-6aeb-4e76-8205-385fa887844c",
+      "name": "AC Art & the History of Art",
+      "metadata": {
+        "createdDate": "2020-11-05T18:16:45.098+00:00",
+        "createdByUserId": "b089be52-d878-458c-ae40-985c3efce982",
+        "updatedDate": "2021-03-08T00:13:46.647+00:00",
+        "updatedByUserId": "b089be52-d878-458c-ae40-985c3efce982"
+      }
+    },
+    {
+      "id": "ce730d1d-8e18-4f37-bbdd-8db37f065f04",
+      "name": "SC History ",
+      "metadata": {
+        "createdDate": "2020-10-21T18:11:11.583+00:00",
+        "createdByUserId": "a41dfac9-3972-4bce-bfe4-dfba7ee94ad2",
+        "updatedDate": "2020-11-11T14:20:09.788+00:00",
+        "updatedByUserId": "a41dfac9-3972-4bce-bfe4-dfba7ee94ad2"
+      }
+    }
+  ],
+  "totalRecords": 145
+}

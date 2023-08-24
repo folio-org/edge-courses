@@ -1,0 +1,22 @@
+{
+  "description": "A collection of records",
+  "type": "object",
+  "properties": {
+    "instructors": {
+      "description": "List of instructors",
+      "id": "instructors",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "$ref": "instructor_minimal.json"
+      }
+    },
+    "totalRecords": {
+      "type": "integer"
+    }
+  },
+  "required": [
+    "instructors",
+    "totalRecords"
+  ]
+}

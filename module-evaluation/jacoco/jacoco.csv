@@ -1,0 +1,10 @@
+GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
+edge-courses,org.folio.edge.courses.service,CourseReservesService,0,260,0,8,0,56,0,14,0,10
+edge-courses,org.folio.edge.courses.handler,CoursesErrorHandler,0,52,0,0,0,14,0,5,0,5
+edge-courses,org.folio.edge.courses.controller,LocateTenantController,0,12,0,0,0,3,0,3,0,3
+edge-courses,org.folio.edge.courses.controller,CourseReservesController,0,46,0,0,0,11,0,6,0,6
+edge-courses,org.folio.edge.courses,EdgeCoursesApplication,5,3,0,0,2,1,1,1,1,1
+edge-courses,org.folio.edge.courses.config,CourseClientRequestInterceptor,3,76,0,4,1,16,1,6,1,4
+edge-courses,org.folio.edge.courses.config,CourseClientConfig,0,14,0,0,0,3,0,3,0,3
+edge-courses,org.folio.edge.courses.config,CustomErrorAttributes,25,3,0,0,5,1,1,1,1,1
+edge-courses,org.folio.edge.courses.model.dto,SortDirection,0,47,0,0,0,10,0,5,0,5

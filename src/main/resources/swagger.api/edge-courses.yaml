@@ -266,4 +266,3 @@ components:
           schema:
             $ref: "#/components/schemas/errorResponse"
 
-

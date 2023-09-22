@@ -2,6 +2,9 @@ FROM folioci/alpine-jre-openjdk17:latest
 
 USER root
 
+RUN apk upgrade --no-cache
+USER folio
+
 # Copy your fat jar to the container
 ENV APP_FILE edge-courses-fat.jar
 

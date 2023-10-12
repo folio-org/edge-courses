@@ -32,7 +32,7 @@ public class CourseClientRequestInterceptor implements RequestInterceptor {
     var apiKey = getApiKey();
     var paramsWithToken = securityManagerService.getParamsWithToken(apiKey);
     template.header(TENANT, paramsWithToken.getTenantId());
-    template.header(TOKEN, paramsWithToken.getOkapiToken());
+    template.header(TOKEN, paramsWithToken.getOkapiToken().accessToken());
   }
 
   private String getApiKey() {

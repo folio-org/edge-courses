@@ -2,6 +2,9 @@ FROM folioci/alpine-jre-openjdk17:latest
 
 USER root
 
+RUN apk upgrade --no-cache
+USER folio
+
 # Copy your fat jar to the container
 ENV APP_FILE edge-courses-fat.jar
 
@@ -11,4 +14,4 @@ ARG JAR_FILE=./target/*.jar
 COPY ${JAR_FILE} ${JAVA_APP_DIR}/${APP_FILE}
 
 # Expose this port locally in the container.
-EXPOSE 8081
+EXPOSE 8080

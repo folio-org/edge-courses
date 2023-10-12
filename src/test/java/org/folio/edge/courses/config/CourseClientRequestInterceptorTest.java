@@ -9,6 +9,7 @@ import static org.mockito.Mockito.when;
 
 import feign.RequestTemplate;
 import jakarta.servlet.http.HttpServletRequest;
+import java.time.Instant;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
@@ -18,6 +19,7 @@ import org.folio.edgecommonspring.domain.entity.ConnectionSystemParameters;
 import org.folio.edgecommonspring.security.SecurityManagerService;
 import org.folio.spring.FolioExecutionContext;
 import org.folio.spring.integration.XOkapiHeaders;
+import org.folio.spring.model.UserToken;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -31,7 +33,7 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 @ExtendWith(MockitoExtension.class)
 class CourseClientRequestInterceptorTest {
 
-  private static final String API_KEY = "apiKey";
+  private static final String API_KEY = "eyJzIjoiQlBhb2ZORm5jSzY0NzdEdWJ4RGgiLCJ0IjoidGVzdCIsInUiOiJ0ZXN0X2FkbWluIn0=";
   private static final String TOKEN_VALUE = "tokenValue";
   @Spy
   @InjectMocks
@@ -91,15 +93,13 @@ class CourseClientRequestInterceptorTest {
   @Test
   void getServletRequestAttributes_shouldThrowException_whenNoApiKey() {
     doReturn(null).when(interceptor).getServletRequestAttributes();
-
-    assertThrows(AuthorizationException.class, () -> {
-      interceptor.getServletRequest();
-    }, "No apikey provided");
+    assertThrows(AuthorizationException.class, () -> interceptor.getServletRequest(), "No apikey provided");
   }
 
   private void setupTests() {
+    UserToken userToken = new UserToken(TOKEN_VALUE,Instant.now());
     when(securityManagerService.getParamsWithToken(API_KEY)).thenReturn(connectionSystemParameters);
     when(connectionSystemParameters.getTenantId()).thenReturn(TEST_TENANT);
-    when(connectionSystemParameters.getOkapiToken()).thenReturn(TOKEN_VALUE);
+    when(connectionSystemParameters.getOkapiToken()).thenReturn(userToken);
   }
 }

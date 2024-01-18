@@ -1,6 +1,5 @@
 package org.folio.edge.courses.client;
 
-import org.folio.courses.domain.dto.Courselistings;
 import org.folio.edge.courses.config.CourseClientConfig;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.cloud.openfeign.SpringQueryMap;
@@ -25,6 +24,4 @@ public interface CourseClient {
   @GetMapping(value = "/coursereserves/departments", consumes = MediaType.APPLICATION_JSON_VALUE)
   ResponseEntity<String> getDepartments(@SpringQueryMap Object requestQueryParameters);
 
-  @GetMapping(value = "/coursereserves/courselistings", consumes = MediaType.APPLICATION_JSON_VALUE)
-  Courselistings getCourselistings(@SpringQueryMap Object requestQueryParameters);
 }

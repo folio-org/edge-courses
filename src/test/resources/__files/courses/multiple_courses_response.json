@@ -63,7 +63,7 @@
           {
             "id": "2e53ca2f-9bd9-424d-bcef-67f5f268edb0",
             "userId": "3579811e-379f-4c09-8b2b-a0a08c94fe30",
-            "name": "Adams, Christa A",
+            "name": "Adams Christa A",
             "courseListingId": "c03bcba3-a6a0-4251-b316-0631bb2e6f21",
             "metadata": {
               "createdDate": "2021-05-11T19:18:09.668+00:00",
@@ -73,7 +73,7 @@
           {
             "id": "f61c6a9e-92b5-470c-8463-6494afd108e6",
             "userId": "b7ad6a2b-73d3-41e0-ae10-8fc3db4e57ec",
-            "name": "Taylor, Mike",
+            "name": "Taylor Mike",
             "courseListingId": "c03bcba3-a6a0-4251-b316-0631bb2e6f21",
             "metadata": {
               "createdDate": "2021-05-11T19:18:09.923+00:00",
@@ -83,7 +83,7 @@
           {
             "id": "9cc888e5-f6d7-4709-b113-3040e8fbe648",
             "userId": "b2aeb3de-a156-4a8b-a25b-72d7febe1674",
-            "name": "Aagard, Madgeline",
+            "name": "Aagard Madgeline",
             "courseListingId": "c03bcba3-a6a0-4251-b316-0631bb2e6f21",
             "metadata": {
               "createdDate": "2021-05-11T19:18:09.975+00:00",
@@ -102,7 +102,52 @@
         "createdDate": "2021-05-11T19:18:09.467+00:00",
         "updatedDate": "2021-05-11T19:18:09.467+00:00"
       }
+    },
+    {
+      "id": "683e0ac2-ba78-4676-b1e4-bb233e3a3b8d",
+      "name": "Prob. Solv./Quant. Reasoning",
+      "description": "This course is intended for students who, based on the results of their mathematics assessment and the agreement of the instructor, need to strengthen their quantitative and algebraic skills in order to be ready to progress to further mathematics, science, and economics courses. In this class students learn to translate real problems into mathematics, to solve complex multi-step problems, and to gain confidence in using logarithms, exponents, and trigonometry in different contexts.",
+      "departmentId": "332090cd-33af-4f97-aa5f-6a27fd367b63",
+      "courseListingId": "4588e885-d013-48bc-ad63-7191e10fb697",
+      "courseListingObject": {
+        "id": "4588e885-d013-48bc-ad63-7191e10fb697",
+        "locationId": "5b933276-46db-4b23-89b7-381e965443e5",
+        "termId": "66c70630-13be-498b-bb5c-15fb2ca114ee",
+        "courseTypeId": "d60010a8-a104-4b29-84dc-864884beaa9f",
+        "instructorObjects": [
+          {
+            "id": "2e53ca2f-9bd9-424d-bcef-67f5f268edb0",
+            "userId": "3579811e-379f-4c09-8b2b-a0a08c94fe30",
+            "name": "Adams Christa A",
+            "courseListingId": "c03bcba3-a6a0-4251-b316-0631bb2e6f21",
+            "metadata": {
+              "createdDate": "2021-05-11T19:18:09.668+00:00",
+              "updatedDate": "2021-05-11T19:18:09.668+00:00"
+            }
+          },
+          {
+            "id": "10401bcf-d178-4b0e-8dda-c426c727c30d",
+            "userId": "6068640d-8c99-415a-9e3c-d3cc14549998",
+            "name": "Kim Ammons",
+            "courseListingId": "c03bcba3-a6a0-4251-b316-0631bb2e6f21",
+            "metadata": {
+              "createdDate": "2021-05-11T19:18:09.923+00:00",
+              "updatedDate": "2021-05-11T19:18:09.923+00:00"
+            }
+          }
+        ],
+        "metadata": {
+          "createdDate": "2021-05-11T19:18:09.417+00:00",
+          "updatedDate": "2021-05-11T19:18:09.417+00:00"
+        }
+      },
+      "courseNumber": "MATH-100QR",
+      "sectionName": "01",
+      "metadata": {
+        "createdDate": "2021-05-11T19:18:09.467+00:00",
+        "updatedDate": "2021-05-11T19:18:09.467+00:00"
+      }
     }
   ],
-  "totalRecords": 1
+  "totalRecords": 2
 }

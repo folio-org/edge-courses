@@ -118,7 +118,7 @@ class CourseReservesControllerIT extends BaseIntegrationTests {
     String[] items) throws Exception {
     doGetWithLimitAndOffset(mockMvc, INSTRUCTORS_URL, limit, offset)
       .andExpect(status().isOk())
-      .andExpect(jsonPath("totalRecords", is(11)))
+      .andExpect(jsonPath("totalRecords", is(4)))
       .andExpect(jsonPath("instructors", hasSize(resultSize)))
       .andExpect(jsonPath("instructors[*].name", hasItems(items)));
   }
@@ -127,18 +127,18 @@ class CourseReservesControllerIT extends BaseIntegrationTests {
   void getInstructors_shouldReturnInstructors_sortedByName() throws Exception {
     doGetWithParam(mockMvc, INSTRUCTORS_URL, "sortBy", "name/sort.ascending")
       .andExpect(status().isOk())
-      .andExpect(jsonPath("totalRecords", is(11)))
-      .andExpect(jsonPath("instructors[0].name", is("Alastor \"Mad-Eye\" Moody")))
-      .andExpect(jsonPath("instructors[0].id", is("459456a2-6415-44b3-8b46-2f3bbe563bbb")));
+      .andExpect(jsonPath("totalRecords", is(4)))
+      .andExpect(jsonPath("instructors[0].name", is("Aagard Madgeline")))
+      .andExpect(jsonPath("instructors[0].id", is("9cc888e5-f6d7-4709-b113-3040e8fbe648")));
   }
 
   @Test
   void getInstructors_shouldReturnInstructors_sortedById() throws Exception {
     doGetWithParam(mockMvc, INSTRUCTORS_URL, "sortBy", "id/sort.descending")
       .andExpect(status().isOk())
-      .andExpect(jsonPath("totalRecords", is(11)))
-      .andExpect(jsonPath("instructors[0].name", is("Gabe Stetson")))
-      .andExpect(jsonPath("instructors[0].id", is("f711647c-7e57-47c3-a957-d996a0adbdf8")));
+      .andExpect(jsonPath("totalRecords", is(4)))
+      .andExpect(jsonPath("instructors[0].name", is("Taylor Mike")))
+      .andExpect(jsonPath("instructors[0].id", is("f61c6a9e-92b5-470c-8463-6494afd108e6")));
   }
 
   @Test
@@ -171,24 +171,20 @@ class CourseReservesControllerIT extends BaseIntegrationTests {
   static class LimitAndOffsetProvider implements ArgumentsProvider {
 
     String[] allItems = new String[]{
-      "Emma Beck", "Kim Ammons", "Gabe Stetson", "Sam Sharp", "Malkowski, Jennifer", "C.M. Flynn",
-      "Albus Dumbledore", "Alastor \"Mad-Eye\" Moody", "Remus Lupin", "Serverus Snape", "Mare Alos"
+      "Adams Christa A", "Taylor Mike", "Aagard Madgeline", "Kim Ammons"
     };
 
     @Override
     public Stream<? extends Arguments> provideArguments(ExtensionContext context) {
       return Stream.of(
-        arguments(0, 12, 11, allItems),
-        arguments(11, 12, 0, new String[]{}),
-        arguments(10, 10, 1, new String[]{"Mare Alos"}),
-        arguments(5, 10, 6, new String[]{"C.M. Flynn", "Albus Dumbledore", "Alastor \"Mad-Eye\" Moody", "Remus Lupin",
-          "Serverus Snape", "Mare Alos"}),
-        arguments(0, 5, 5,
-          new String[]{"Emma Beck", "Kim Ammons", "Gabe Stetson", "Sam Sharp", "Malkowski, Jennifer"}),
-        arguments(9, 1, 1, new String[]{"Serverus Snape"}),
-        arguments(9, 10, 2, new String[]{"Serverus Snape", "Mare Alos"}),
-        arguments(20, 10, 0, new String[]{}),
-        arguments(0, 100, 11, allItems)
+        arguments(0, 4, 4, allItems),
+        arguments(4, 5, 0, new String[]{}),
+        arguments(3, 3, 1, new String[]{"Kim Ammons"}),
+        arguments(1, 2, 2, new String[]{"Taylor Mike", "Aagard Madgeline"}),
+        arguments(0, 3, 3,
+          new String[]{"Adams Christa A", "Taylor Mike", "Aagard Madgeline"}),
+        arguments(5, 4, 0, new String[]{}),
+        arguments(0, 100, 4, allItems)
       );
     }
   }

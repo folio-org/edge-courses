@@ -10,13 +10,16 @@ import java.util.List;
 import java.util.function.Function;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
+import org.folio.courses.domain.dto.Course;
 import org.folio.courses.domain.dto.Courselisting;
+import org.folio.courses.domain.dto.Courses;
 import org.folio.courses.domain.dto.Instructor;
 import org.folio.courses.domain.dto.InstructorMinimal;
 import org.folio.courses.domain.dto.Instructors;
 import org.folio.courses.domain.dto.RequestQueryParameters;
 import org.folio.edge.courses.client.CourseClient;
 import org.folio.edge.courses.model.dto.SortDirection;
+import org.folio.edge.courses.utils.JsonConverter;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
@@ -27,7 +30,10 @@ public class CourseReservesService {
 
   private static final String NAME_FIELD = "name";
   private static final String SLASH_SEPARATOR = "/";
+
   private final CourseClient courseClient;
+  private final JsonConverter jsonConverter;
+
   @Value("${okapi_url}")
   private String okapiUrl;
 
@@ -64,17 +70,18 @@ public class CourseReservesService {
   }
 
   public Instructors getInstructors(RequestQueryParameters queryParameters, String sortBy) {
-    var maxLimit = new RequestQueryParameters().limit(Integer.MAX_VALUE);
     log.info("Calling getInstructors");
-
-    var courseListings = courseClient.getCourselistings(maxLimit);
-
-    log.info("Received response while getting getInstructors, size: {}", courseListings::getTotalRecords);
-    var courseInstructors = courseListings.getCourseListings().stream()
-      .map(Courselisting::getInstructorObjects)
-      .flatMap(Collection::stream)
-      .map(this::toInstructorMinimal)
-      .toList();
+    var maxLimit = new RequestQueryParameters().limit(Integer.MAX_VALUE);
+    var coursesResponse = courseClient.getCourseByQuery(maxLimit);
+    var courses = jsonConverter.getObjectFromJson(coursesResponse.getBody(), Courses.class);
+    log.info("Received courses response while getting instructors, size: {}", courses::getTotalRecords);
+    var courseInstructors = courses.getCourses().stream()
+        .map(Course::getCourseListingObject)
+        .map(Courselisting::getInstructorObjects)
+        .flatMap(Collection::stream)
+        .map(this::toInstructorMinimal)
+        .distinct()
+        .toList();
 
     if (isNoneBlank(sortBy)) {
       courseInstructors = courseInstructors.stream()

@@ -1,9 +1,9 @@
 package org.folio.edge.courses.service;
 
 import static org.apache.commons.lang3.StringUtils.EMPTY;
-import static org.folio.edge.courses.TestConstants.COURSELISTINGS_RESPONSE_PATH;
 import static org.folio.edge.courses.TestConstants.COURSES;
-import static org.folio.edge.courses.TestConstants.COURSES_RESPONSE_PATH;
+import static org.folio.edge.courses.TestConstants.MULTIPLE_COURSES_RESPONSE_PATH;
+import static org.folio.edge.courses.TestConstants.SINGLE_COURSES_RESPONSE_PATH;
 import static org.folio.edge.courses.TestConstants.DEPARTMENTS_RESPONSE_PATH;
 import static org.folio.edge.courses.TestConstants.RESERVES;
 import static org.folio.edge.courses.TestConstants.RESERVES_RESPONSE_PATH;
@@ -17,10 +17,12 @@ import static org.mockito.Mockito.when;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
-import org.folio.courses.domain.dto.Courselistings;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import org.folio.courses.domain.dto.Courses;
 import org.folio.courses.domain.dto.RequestQueryParameters;
 import org.folio.edge.courses.TestUtil;
 import org.folio.edge.courses.client.CourseClient;
+import org.folio.edge.courses.utils.JsonConverter;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -41,11 +43,15 @@ class CourseReserveServiceTest {
   private CourseReservesService courseReservesService;
   @Mock
   private CourseClient courseClient;
+  @Mock
+  private JsonConverter jsonConverter;
+
+  private final ObjectMapper objectMapper = new ObjectMapper();
 
   @Test
   void getCourseReserveByQuery_shouldReturnReserves() throws JsonProcessingException {
     //given
-    var expectedStringCourses = TestUtil.readFileContentFromResources(COURSES_RESPONSE_PATH);
+    var expectedStringCourses = TestUtil.readFileContentFromResources(SINGLE_COURSES_RESPONSE_PATH);
     var reservesResponse = new ResponseEntity<>(expectedStringCourses, HttpStatus.OK);
     var requestQueryParameters = new RequestQueryParameters().query("id=2");
     when(courseClient.getCourseByQuery(requestQueryParameters)).thenReturn(reservesResponse);
@@ -63,7 +69,7 @@ class CourseReserveServiceTest {
   @Test
   void getCourseReserveByQuery_shouldReturnReserves_whenQueryEmpty() throws JsonProcessingException {
     //given
-    var expectedStringReserves = TestUtil.readFileContentFromResources(COURSES_RESPONSE_PATH);
+    var expectedStringReserves = TestUtil.readFileContentFromResources(SINGLE_COURSES_RESPONSE_PATH);
     var reservesResponse = ResponseEntity.ok(expectedStringReserves);
     var requestQueryParameters = new RequestQueryParameters();
     when(courseClient.getCourseByQuery(requestQueryParameters)).thenReturn(reservesResponse);
@@ -81,7 +87,7 @@ class CourseReserveServiceTest {
   @Test
   void getCourseReserveByQuery_shouldReturnReserves_whileCallingWithAllParams() throws JsonProcessingException {
     //given
-    var expectedStringReserves = TestUtil.readFileContentFromResources(COURSES_RESPONSE_PATH);
+    var expectedStringReserves = TestUtil.readFileContentFromResources(SINGLE_COURSES_RESPONSE_PATH);
     var reservesResponse = ResponseEntity.ok(expectedStringReserves);
     var requestQueryParameters = new RequestQueryParameters().query("testQuery");
     when(courseClient.getCourseByQuery(requestQueryParameters)).thenReturn(reservesResponse);
@@ -144,101 +150,140 @@ class CourseReserveServiceTest {
   }
 
   @Test
-  void getInstructors_shouldReturnInstructors_whileCallingWithAllParams() throws JsonProcessingException {
+  void getInstructors_shouldReturnInstructors_fromSingleCourseResponse() throws JsonProcessingException {
     //given
-    var courseListingsJson = TestUtil.readFileContentFromResources(COURSELISTINGS_RESPONSE_PATH);
-    var courselistings = TestUtil.OBJECT_MAPPER.readValue(courseListingsJson, Courselistings.class);
-    var requestQueryParameters = setUpQueryParametersWithMaxLimit();
-    when(courseClient.getCourselistings(requestQueryParameters)).thenReturn(courselistings);
+    var expectedStringCourses = TestUtil.readFileContentFromResources(SINGLE_COURSES_RESPONSE_PATH);
+    var reservesResponse = new ResponseEntity<>(expectedStringCourses, HttpStatus.OK);
+    var requestQueryParameters = new RequestQueryParameters().limit(Integer.MAX_VALUE);
+    ObjectMapper objectMapper = new ObjectMapper();
+    Courses expectedCourses = objectMapper.readValue(expectedStringCourses, Courses.class);
+    when(courseClient.getCourseByQuery(requestQueryParameters)).thenReturn(reservesResponse);
+    when(jsonConverter.getObjectFromJson(expectedStringCourses, Courses.class)).thenReturn(expectedCourses);
     //when
     var instructors = courseReservesService.getInstructors(requestQueryParameters, EMPTY);
     //then
-    var actualInstructor = instructors.getInstructors().get(0);
-    assertEquals(11, instructors.getTotalRecords());
-    assertEquals("75985fb0-a994-4136-a2bf-ec5824f43877", actualInstructor.getId());
-    assertEquals("Emma Beck", actualInstructor.getName());
+    assertEquals(3, instructors.getTotalRecords());
+    assertEquals("2e53ca2f-9bd9-424d-bcef-67f5f268edb0", instructors.getInstructors().get(0).getId());
+    assertEquals("Adams Christa A", instructors.getInstructors().get(0).getName());
+    assertEquals("f61c6a9e-92b5-470c-8463-6494afd108e6", instructors.getInstructors().get(1).getId());
+    assertEquals("Taylor Mike", instructors.getInstructors().get(1).getName());
+    assertEquals("9cc888e5-f6d7-4709-b113-3040e8fbe648", instructors.getInstructors().get(2).getId());
+    assertEquals("Aagard Madgeline", instructors.getInstructors().get(2).getName());
+  }
+
+  @Test
+  void getInstructors_shouldReturnInstructors_andDistinctDuplications() throws JsonProcessingException {
+    //given
+    var expectedStringCourses = TestUtil.readFileContentFromResources(MULTIPLE_COURSES_RESPONSE_PATH);
+    var reservesResponse = new ResponseEntity<>(expectedStringCourses, HttpStatus.OK);
+    var requestQueryParameters = new RequestQueryParameters().limit(Integer.MAX_VALUE);
+    Courses expectedCourses = objectMapper.readValue(expectedStringCourses, Courses.class);
+    when(courseClient.getCourseByQuery(requestQueryParameters)).thenReturn(reservesResponse);
+    when(jsonConverter.getObjectFromJson(expectedStringCourses, Courses.class)).thenReturn(expectedCourses);
+    //when
+    var instructors = courseReservesService.getInstructors(requestQueryParameters, EMPTY);
+    //then
+    assertEquals(4, instructors.getTotalRecords());
+    assertEquals("2e53ca2f-9bd9-424d-bcef-67f5f268edb0", instructors.getInstructors().get(0).getId());
+    assertEquals("Adams Christa A", instructors.getInstructors().get(0).getName());
+    assertEquals("f61c6a9e-92b5-470c-8463-6494afd108e6", instructors.getInstructors().get(1).getId());
+    assertEquals("Taylor Mike", instructors.getInstructors().get(1).getName());
+    assertEquals("9cc888e5-f6d7-4709-b113-3040e8fbe648", instructors.getInstructors().get(2).getId());
+    assertEquals("Aagard Madgeline", instructors.getInstructors().get(2).getName());
+    assertEquals("10401bcf-d178-4b0e-8dda-c426c727c30d", instructors.getInstructors().get(3).getId());
+    assertEquals("Kim Ammons", instructors.getInstructors().get(3).getName());
   }
 
   @Test
   void getInstructors_shouldReturnInstructors_sortedByNameInAscendingOrder_whileCallingWithAllParams()
     throws JsonProcessingException {
     //given
-    var courseListingsJson = TestUtil.readFileContentFromResources(COURSELISTINGS_RESPONSE_PATH);
-    var courselistings = TestUtil.OBJECT_MAPPER.readValue(courseListingsJson, Courselistings.class);
-    var requestQueryParameters = setUpQueryParametersWithMaxLimit();
-    when(courseClient.getCourselistings(requestQueryParameters)).thenReturn(courselistings);
+    var expectedStringCourses = TestUtil.readFileContentFromResources(SINGLE_COURSES_RESPONSE_PATH);
+    var reservesResponse = new ResponseEntity<>(expectedStringCourses, HttpStatus.OK);
+    var requestQueryParameters = new RequestQueryParameters().limit(Integer.MAX_VALUE);
+    Courses expectedCourses = objectMapper.readValue(expectedStringCourses, Courses.class);
+    when(courseClient.getCourseByQuery(requestQueryParameters)).thenReturn(reservesResponse);
+    when(jsonConverter.getObjectFromJson(expectedStringCourses, Courses.class)).thenReturn(expectedCourses);
     //when
     var instructors = courseReservesService.getInstructors(requestQueryParameters,
       "name/sort.ascending");
     //then
-    var actualInstructor = instructors.getInstructors().get(0);
-    assertEquals(11, instructors.getTotalRecords());
-    assertEquals("459456a2-6415-44b3-8b46-2f3bbe563bbb", actualInstructor.getId());
-    assertEquals("Alastor \"Mad-Eye\" Moody", actualInstructor.getName());
+    assertEquals(3, instructors.getTotalRecords());
+    assertEquals("Aagard Madgeline", instructors.getInstructors().get(0).getName());
+    assertEquals("Adams Christa A", instructors.getInstructors().get(1).getName());
+    assertEquals("Taylor Mike", instructors.getInstructors().get(2).getName());
   }
 
   @Test
   void getInstructors_shouldReturnInstructors_sortedByNameInDescendingOrder_whileCallingWithAllParams()
     throws JsonProcessingException {
     //given
-    var courseListingsJson = TestUtil.readFileContentFromResources(COURSELISTINGS_RESPONSE_PATH);
-    var courselistings = TestUtil.OBJECT_MAPPER.readValue(courseListingsJson, Courselistings.class);
-    var requestQueryParameters = setUpQueryParametersWithMaxLimit();
-    when(courseClient.getCourselistings(requestQueryParameters)).thenReturn(courselistings);
+    var expectedStringCourses = TestUtil.readFileContentFromResources(SINGLE_COURSES_RESPONSE_PATH);
+    var reservesResponse = new ResponseEntity<>(expectedStringCourses, HttpStatus.OK);
+    var requestQueryParameters = new RequestQueryParameters().limit(Integer.MAX_VALUE);
+    Courses expectedCourses = objectMapper.readValue(expectedStringCourses, Courses.class);
+    when(courseClient.getCourseByQuery(requestQueryParameters)).thenReturn(reservesResponse);
+    when(jsonConverter.getObjectFromJson(expectedStringCourses, Courses.class)).thenReturn(expectedCourses);
     //when
     var instructors = courseReservesService.getInstructors(requestQueryParameters,
       "name/sort.descending");
     //then
-    var actualInstructor = instructors.getInstructors().get(0);
-    assertEquals(11, instructors.getTotalRecords());
-    assertEquals("20b8903a-0892-4af8-97c1-7e46c514c1c5", actualInstructor.getId());
-    assertEquals("Serverus Snape", actualInstructor.getName());
+    assertEquals(3, instructors.getTotalRecords());
+    assertEquals("Taylor Mike", instructors.getInstructors().get(0).getName());
+    assertEquals("Adams Christa A", instructors.getInstructors().get(1).getName());
+    assertEquals("Aagard Madgeline", instructors.getInstructors().get(2).getName());
   }
 
   @Test
   void getInstructors_shouldReturnInstructors_sortedByIdInAscendingOrder_whileCallingWithAllParams()
     throws JsonProcessingException {
     //given
-    var courseListingsJson = TestUtil.readFileContentFromResources(COURSELISTINGS_RESPONSE_PATH);
-    var courselistings = TestUtil.OBJECT_MAPPER.readValue(courseListingsJson, Courselistings.class);
-    var requestQueryParameters = setUpQueryParametersWithMaxLimit();
-    when(courseClient.getCourselistings(requestQueryParameters)).thenReturn(courselistings);
+    var expectedStringCourses = TestUtil.readFileContentFromResources(SINGLE_COURSES_RESPONSE_PATH);
+    var reservesResponse = new ResponseEntity<>(expectedStringCourses, HttpStatus.OK);
+    var requestQueryParameters = new RequestQueryParameters().limit(Integer.MAX_VALUE);
+    Courses expectedCourses = objectMapper.readValue(expectedStringCourses, Courses.class);
+    when(courseClient.getCourseByQuery(requestQueryParameters)).thenReturn(reservesResponse);
+    when(jsonConverter.getObjectFromJson(expectedStringCourses, Courses.class)).thenReturn(expectedCourses);
     //when
     var instructors = courseReservesService.getInstructors(requestQueryParameters,
       "id/sort.ascending");
     //then
-    var actualInstructor = instructors.getInstructors().get(0);
-    assertEquals(11, instructors.getTotalRecords());
-    assertEquals("02d9b8ca-bda2-4622-a4df-83ca19f63e86", actualInstructor.getId());
-    assertEquals("Albus Dumbledore", actualInstructor.getName());
+    assertEquals(3, instructors.getTotalRecords());
+    assertEquals("2e53ca2f-9bd9-424d-bcef-67f5f268edb0", instructors.getInstructors().get(0).getId());
+    assertEquals("9cc888e5-f6d7-4709-b113-3040e8fbe648", instructors.getInstructors().get(1).getId());
+    assertEquals("f61c6a9e-92b5-470c-8463-6494afd108e6", instructors.getInstructors().get(2).getId());
   }
 
   @Test
   void getInstructors_shouldReturnInstructors_sortedByIdInDescendingOrder_whileCallingWithAllParams()
     throws JsonProcessingException {
     //given
-    var courseListingsJson = TestUtil.readFileContentFromResources(COURSELISTINGS_RESPONSE_PATH);
-    var courselistings = TestUtil.OBJECT_MAPPER.readValue(courseListingsJson, Courselistings.class);
-    var requestQueryParameters = setUpQueryParametersWithMaxLimit();
-    when(courseClient.getCourselistings(requestQueryParameters)).thenReturn(courselistings);
+    var expectedStringCourses = TestUtil.readFileContentFromResources(SINGLE_COURSES_RESPONSE_PATH);
+    var reservesResponse = new ResponseEntity<>(expectedStringCourses, HttpStatus.OK);
+    var requestQueryParameters = new RequestQueryParameters().limit(Integer.MAX_VALUE);
+    Courses expectedCourses = objectMapper.readValue(expectedStringCourses, Courses.class);
+    when(courseClient.getCourseByQuery(requestQueryParameters)).thenReturn(reservesResponse);
+    when(jsonConverter.getObjectFromJson(expectedStringCourses, Courses.class)).thenReturn(expectedCourses);
     //when
     var instructors = courseReservesService.getInstructors(requestQueryParameters,
       "id/sort.descending");
     //then
-    var actualInstructor = instructors.getInstructors().get(0);
-    assertEquals(11, instructors.getTotalRecords());
-    assertEquals("f711647c-7e57-47c3-a957-d996a0adbdf8", actualInstructor.getId());
-    assertEquals("Gabe Stetson", actualInstructor.getName());
+    assertEquals(3, instructors.getTotalRecords());
+    assertEquals("f61c6a9e-92b5-470c-8463-6494afd108e6", instructors.getInstructors().get(0).getId());
+    assertEquals("9cc888e5-f6d7-4709-b113-3040e8fbe648", instructors.getInstructors().get(1).getId());
+    assertEquals("2e53ca2f-9bd9-424d-bcef-67f5f268edb0", instructors.getInstructors().get(2).getId());
   }
 
   @Test
   void getInstructors_shouldThrowException_whenSortByValueContainsInvalidDirection()
     throws JsonProcessingException {
     //given
-    var courseListingsJson = TestUtil.readFileContentFromResources(COURSELISTINGS_RESPONSE_PATH);
-    var courselistings = TestUtil.OBJECT_MAPPER.readValue(courseListingsJson, Courselistings.class);
-    var requestQueryParameters = setUpQueryParametersWithMaxLimit();
-    when(courseClient.getCourselistings(requestQueryParameters)).thenReturn(courselistings);
+    var expectedStringCourses = TestUtil.readFileContentFromResources(SINGLE_COURSES_RESPONSE_PATH);
+    var reservesResponse = new ResponseEntity<>(expectedStringCourses, HttpStatus.OK);
+    var requestQueryParameters = new RequestQueryParameters().limit(Integer.MAX_VALUE);
+    Courses expectedCourses = objectMapper.readValue(expectedStringCourses, Courses.class);
+    when(courseClient.getCourseByQuery(requestQueryParameters)).thenReturn(reservesResponse);
+    when(jsonConverter.getObjectFromJson(expectedStringCourses, Courses.class)).thenReturn(expectedCourses);
     //when
     var exception = assertThrows(IllegalArgumentException.class, () -> {
       courseReservesService.getInstructors(requestQueryParameters, "id/sort.invalid");

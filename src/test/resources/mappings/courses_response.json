@@ -7,7 +7,7 @@
       },
       "response": {
         "status": 200,
-        "bodyFileName": "courses/courses_response.json",
+        "bodyFileName": "courses/single_courses_response.json",
         "headers": {
           "Content-Type": "application/json"
         }
@@ -21,6 +21,19 @@
       "response": {
         "status": 200,
         "bodyFileName": "courses/empty_courses_response.json",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      }
+    },
+    {
+      "request": {
+        "method": "GET",
+        "url": "/coursereserves/courses?offset=0&limit=2147483647&lang=en"
+      },
+      "response": {
+        "status": 200,
+        "bodyFileName": "courses/multiple_courses_response.json",
         "headers": {
           "Content-Type": "application/json"
         }

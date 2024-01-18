@@ -124,8 +124,8 @@ components:
       $ref: 'schemas/error.json#/Error'
     requestQueryParameters:
       $ref: 'schemas/requestQueryParameters.json#/RequestQueryParameters'
-    courselistings:
-      $ref: 'schemas/courselistings.json'
+    courses:
+      $ref: 'schemas/courses.json'
 
   parameters:
     request-query-parameters:

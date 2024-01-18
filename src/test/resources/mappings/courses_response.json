@@ -7,7 +7,7 @@
       },
       "response": {
         "status": 200,
-        "bodyFileName": "courses/courses_response.json",
+        "bodyFileName": "courses/single_courses_response.json",
         "headers": {
           "Content-Type": "application/json"
         }

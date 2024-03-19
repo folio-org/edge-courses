@@ -5,7 +5,7 @@
   <parent>
     <groupId>org.springframework.boot</groupId>
     <artifactId>spring-boot-starter-parent</artifactId>
-    <version>3.1.6</version>
+    <version>3.2.3</version>
     <relativePath />
   </parent>
 
@@ -25,19 +25,15 @@
 
   <properties>
     <java.version>17</java.version>
-    <edge-common-spring-version>2.3.1</edge-common-spring-version>
-    <openapi-generator.version>6.5.0</openapi-generator.version>
-    <spring-cloud-wiremock>4.0.2</spring-cloud-wiremock>
-    <swagger-parser.version>2.1.14</swagger-parser.version>
+    <edge-common-spring-version>2.4.1</edge-common-spring-version>
+    <openapi-generator.version>7.3.0</openapi-generator.version>
+    <spring-cloud-wiremock>4.1.1</spring-cloud-wiremock>
+    <swagger-parser.version>2.1.20</swagger-parser.version>
     <edge-courses.yaml.file>${project.basedir}/src/main/resources/swagger.api/edge-courses.yaml</edge-courses.yaml.file>
 
     <httpcomponents.httpclient.version>4.5.14</httpcomponents.httpclient.version>
     <httpcomponents.httpcore.version>4.4.16</httpcomponents.httpcore.version>
-    <snakeyaml.version>2.0</snakeyaml.version>
-    <jknack.handlebars.version>4.3.1</jknack.handlebars.version>
-    <tomcat.version>10.1.16</tomcat.version>
-    <bouncycastle.jdk18on.version>1.74</bouncycastle.jdk18on.version>
-    <jackson.version>2.16.0</jackson.version>
+    <jknack.handlebars.version>4.4.0</jknack.handlebars.version>
   </properties>
 
   <dependencies>
@@ -62,10 +58,6 @@
         <exclusion>
           <groupId>ch.qos.logback</groupId>
           <artifactId>logback-classic</artifactId>
-        </exclusion>
-        <exclusion>
-          <groupId>org.apache.tomcat.embed</groupId>
-          <artifactId>tomcat-embed-core</artifactId>
         </exclusion>
       </exclusions>
     </dependency>
@@ -134,26 +126,6 @@
       <artifactId>handlebars</artifactId>
       <version>${jknack.handlebars.version}</version>
     </dependency>
-    <dependency>
-      <groupId>org.apache.tomcat.embed</groupId>
-      <artifactId>tomcat-embed-core</artifactId>
-      <version>${tomcat.version}</version>
-    </dependency>
-    <dependency>
-      <groupId>org.apache.tomcat</groupId>
-      <artifactId>tomcat-annotations-api</artifactId>
-      <version>${tomcat.version}</version>
-    </dependency>
-    <dependency>
-      <groupId>org.bouncycastle</groupId>
-      <artifactId>bcprov-jdk18on</artifactId>
-      <version>${bouncycastle.jdk18on.version}</version>
-    </dependency>
-    <dependency>
-      <groupId>com.fasterxml.jackson.core</groupId>
-      <artifactId>jackson-databind</artifactId>
-      <version>${jackson.version}</version>
-    </dependency>
   </dependencies>
 
   <build>
@@ -173,7 +145,6 @@
 
       <plugin>
         <artifactId>maven-resources-plugin</artifactId>
-        <version>3.1.0</version>
         <executions>
           <execution>
             <id>filter-descriptor-inputs</id>
@@ -199,7 +170,7 @@
       <plugin>
         <groupId>com.coderplus.maven.plugins</groupId>
         <artifactId>copy-rename-maven-plugin</artifactId>
-        <version>1.0</version>
+        <version>1.0.1</version>
         <executions>
           <execution>
             <id>rename-descriptor-outputs</id>
@@ -262,7 +233,6 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-surefire-plugin</artifactId>
-        <version>3.0.0-M5</version>
         <configuration>
           <includes>
             <include>**/*IT.java</include>
@@ -275,7 +245,7 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-release-plugin</artifactId>
-        <version>2.5.3</version>
+        <version>3.0.1</version>
         <configuration>
           <preparationGoals>clean verify</preparationGoals>
           <tagNameFormat>v@{project.version}</tagNameFormat>
@@ -287,7 +257,7 @@
       <plugin>
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>exec-maven-plugin</artifactId>
-        <version>3.0.0</version>
+        <version>3.2.0</version>
         <executions>
           <execution>
             <id>git submodule init</id>

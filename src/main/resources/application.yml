@@ -14,8 +14,9 @@ management.endpoints.web.base-path: /admin
 header.validation.x-okapi-tenant.exclude.base-paths: /admin,/swagger,/v2/api-docs
 
 folio:
-  system-user:
-    username: dummy # This isn't actually used, but we get dependency injection errors from folio-spring-system-user if we don't have it
+  system-user:  # This isn't actually used, but we get dependency injection errors from folio-spring-system-user if we don't have it
+    username: dummy
+    password: dummy
   environment: dev # Overridden at runtime in production, but causes folio-spring-system-user DI errors if it's not set
   tenant:
     validation:

@@ -14,7 +14,9 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
+
 import org.folio.edge.api.utils.exception.AuthorizationException;
+import org.folio.edgecommonspring.client.EdgeFeignClientProperties;
 import org.folio.edgecommonspring.domain.entity.ConnectionSystemParameters;
 import org.folio.edgecommonspring.security.SecurityManagerService;
 import org.folio.spring.FolioExecutionContext;
@@ -46,6 +48,8 @@ class CourseClientRequestInterceptorTest {
   private ConnectionSystemParameters connectionSystemParameters;
   @Mock
   private HttpServletRequest servletRequest;
+  @Mock
+  private EdgeFeignClientProperties properties;
 
 
   @BeforeEach

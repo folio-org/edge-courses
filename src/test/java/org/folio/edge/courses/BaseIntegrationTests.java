@@ -11,6 +11,7 @@ import java.util.List;
 import lombok.SneakyThrows;
 import lombok.extern.log4j.Log4j2;
 import org.folio.edge.courses.config.CourseClientRequestInterceptor;
+import org.folio.edgecommonspring.client.EdgeFeignClientProperties;
 import org.folio.edgecommonspring.client.EnrichUrlClient;
 import org.folio.spring.integration.XOkapiHeaders;
 import org.junit.jupiter.api.AfterAll;
@@ -44,10 +45,12 @@ public abstract class BaseIntegrationTests {
 
   @BeforeAll
   static void beforeAll(@Autowired EnrichUrlClient enrichUrlClient,
-    @Autowired CourseClientRequestInterceptor interceptor) {
+    @Autowired CourseClientRequestInterceptor interceptor, @Autowired EdgeFeignClientProperties properties) {
     WIRE_MOCK.start();
-    ReflectionTestUtils.setField(enrichUrlClient, OKAPI_URL, WIRE_MOCK.baseUrl());
-    ReflectionTestUtils.setField(interceptor, OKAPI_URL, WIRE_MOCK.baseUrl());
+    var url = WIRE_MOCK.baseUrl();
+    ReflectionTestUtils.setField(enrichUrlClient, OKAPI_URL, url);
+    ReflectionTestUtils.setField(interceptor, OKAPI_URL, url);
+    ReflectionTestUtils.setField(properties, OKAPI_URL, url);
   }
 
   @AfterAll

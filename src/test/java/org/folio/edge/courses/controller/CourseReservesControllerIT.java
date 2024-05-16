@@ -50,12 +50,6 @@ class CourseReservesControllerIT extends BaseIntegrationTests {
   @Autowired
   private CourseReservesService courseReservesService;
 
-  @BeforeEach
-  void before() {
-    ReflectionTestUtils
-      .setField(courseReservesService, "okapiUrl", WIRE_MOCK.baseUrl());
-  }
-
   @ParameterizedTest
   @ValueSource(strings = {COURSES_URL_WITH_QUERY, RESERVES_URL_BY_ID, DEPARTMENTS_URL, INSTRUCTORS_URL})
   void getCoursesAndReserves_shouldReturnBadRequest_whenLangParamInvalid(String endpoint)

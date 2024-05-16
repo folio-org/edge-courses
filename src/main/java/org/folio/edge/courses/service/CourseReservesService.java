@@ -34,9 +34,6 @@ public class CourseReservesService {
   private final CourseClient courseClient;
   private final JsonConverter jsonConverter;
 
-  @Value("${okapi_url}")
-  private String okapiUrl;
-
   public String getCoursesByQuery(RequestQueryParameters requestQueryParameters) {
     log.info("Calling getCoursesByQuery with query: {}", requestQueryParameters.getQuery());
     var courses = courseClient.getCourseByQuery(requestQueryParameters);

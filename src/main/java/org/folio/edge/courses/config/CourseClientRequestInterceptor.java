@@ -1,5 +1,6 @@
 package org.folio.edge.courses.config;
 
+import static org.apache.commons.lang3.StringUtils.isBlank;
 import static org.folio.spring.integration.XOkapiHeaders.TENANT;
 import static org.folio.spring.integration.XOkapiHeaders.TOKEN;
 
@@ -11,6 +12,7 @@ import java.util.Objects;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.folio.edge.api.utils.exception.AuthorizationException;
+import org.folio.edgecommonspring.client.EdgeFeignClientProperties;
 import org.folio.edgecommonspring.security.SecurityManagerService;
 import org.folio.spring.FolioExecutionContext;
 import org.springframework.beans.factory.annotation.Value;
@@ -21,14 +23,23 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 @RequiredArgsConstructor
 public class CourseClientRequestInterceptor implements RequestInterceptor {
 
+  private final EdgeFeignClientProperties properties;
   private final FolioExecutionContext context;
   private final SecurityManagerService securityManagerService;
-  @Value("${okapi_url}")
+
+  @Deprecated
+  @Value("${okapi_url:NO_VALUE}")
   private String okapiUrl;
 
   @Override
   public void apply(RequestTemplate template) {
-    template.target(okapiUrl);
+    String okapiUrlToUse = properties.getOkapiUrl();
+    if (isBlank(okapiUrlToUse)) {
+      log.warn("deprecated property okapi_url is used. Please use folio.client.okapiUrl instead.");
+      okapiUrlToUse = okapiUrl;
+    }
+
+    template.target(okapiUrlToUse);
     var apiKey = getApiKey();
     var paramsWithToken = securityManagerService.getParamsWithToken(apiKey);
     template.header(TENANT, paramsWithToken.getTenantId());

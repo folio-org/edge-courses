@@ -24,11 +24,6 @@ class CoursesErrorHandlerTest extends BaseIntegrationTests {
   @Autowired
   private CourseReservesService courseReservesService;
 
-  @BeforeEach
-  void before() {
-    ReflectionTestUtils.setField(courseReservesService, "okapiUrl", BaseIntegrationTests.WIRE_MOCK.baseUrl());
-  }
-
   @Test
   void handleForbiddenException_shouldProcessException() throws Exception {
     doGet(mockMvc, COURSE_BY_ID_FORBIDDEN_URI)

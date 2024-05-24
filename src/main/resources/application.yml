@@ -21,7 +21,13 @@ folio:
   tenant:
     validation:
       enabled: false
-
+  client:
+    okapiUrl: http://localhost:9130
+    tls:
+      enabled: false
+#      trustStorePath: ~/test/test.truststore.bcfks
+#      trustStorePassword: "SecretPassword"
+#      trustStoreType: BCFKS
 logging:
   config: classpath:log4j2.xml
 

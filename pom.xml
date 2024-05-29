@@ -34,9 +34,6 @@
     <httpcomponents.httpclient.version>4.5.14</httpcomponents.httpclient.version>
     <httpcomponents.httpcore.version>4.4.16</httpcomponents.httpcore.version>
     <jknack.handlebars.version>4.4.0</jknack.handlebars.version>
-    <bc-fips.version>1.0.2.5</bc-fips.version>
-    <bcpkix-fips.version>1.0.7</bcpkix-fips.version>
-    <bctls-fips.version>1.0.19</bctls-fips.version>
     <folio-spring-cql.version>7.1.2</folio-spring-cql.version>
     <folio-tls-utils.version>1.5.0</folio-tls-utils.version>
   </properties>

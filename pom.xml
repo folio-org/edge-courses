@@ -38,23 +38,14 @@
     <bcpkix-fips.version>1.0.7</bcpkix-fips.version>
     <bctls-fips.version>1.0.19</bctls-fips.version>
     <folio-spring-cql.version>7.1.2</folio-spring-cql.version>
+    <folio-tls-utils.version>1.5.0</folio-tls-utils.version>
   </properties>
 
   <dependencies>
     <dependency>
-      <groupId>org.bouncycastle</groupId>
-      <artifactId>bc-fips</artifactId>
-      <version>${bc-fips.version}</version>
-    </dependency>
-    <dependency>
-      <groupId>org.bouncycastle</groupId>
-      <artifactId>bcpkix-fips</artifactId>
-      <version>${bcpkix-fips.version}</version>
-    </dependency>
-    <dependency>
-      <groupId>org.bouncycastle</groupId>
-      <artifactId>bctls-fips</artifactId>
-      <version>${bctls-fips.version}</version>
+      <groupId>org.folio</groupId>
+      <artifactId>folio-tls-utils</artifactId>
+      <version>${folio-tls-utils.version}</version>
     </dependency>
     <dependency>
        <groupId>org.folio</groupId>

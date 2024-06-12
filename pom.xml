@@ -137,6 +137,27 @@
       <artifactId>handlebars</artifactId>
       <version>${jknack.handlebars.version}</version>
     </dependency>
+
+
+    <dependency>
+      <groupId>org.bouncycastle</groupId>
+      <artifactId>bc-fips</artifactId>
+      <version>1.0.2.5</version>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.bouncycastle</groupId>
+      <artifactId>bcpkix-fips</artifactId>
+      <version>1.0.7</version>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.bouncycastle</groupId>
+      <artifactId>bctls-fips</artifactId>
+      <version>1.0.19</version>
+      <scope>provided</scope>
+    </dependency>
+
   </dependencies>
 
   <build>

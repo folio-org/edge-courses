@@ -11,7 +11,7 @@
 
   <groupId>org.folio</groupId>
   <artifactId>edge-courses</artifactId>
-  <version>1.5.0-SNAPSHOT</version>
+  <version>1.4.2-SNAPSHOT</version>
   <name>edge-courses</name>
   <description>Provides an ability to retrieve course-reserve information from FOLIO</description>
   <packaging>jar</packaging>

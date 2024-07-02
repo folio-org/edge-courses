@@ -35,15 +35,9 @@
     <httpcomponents.httpcore.version>4.4.16</httpcomponents.httpcore.version>
     <jknack.handlebars.version>4.4.0</jknack.handlebars.version>
     <folio-spring-cql.version>7.1.2</folio-spring-cql.version>
-    <folio-tls-utils.version>1.5.0</folio-tls-utils.version>
   </properties>
 
   <dependencies>
-    <dependency>
-      <groupId>org.folio</groupId>
-      <artifactId>folio-tls-utils</artifactId>
-      <version>${folio-tls-utils.version}</version>
-    </dependency>
     <dependency>
        <groupId>org.folio</groupId>
        <artifactId>folio-spring-cql</artifactId>

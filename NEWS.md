@@ -1,3 +1,8 @@
+## v1.4.2
+Quesnelia CP1 release
+
+* [EDGCOURSES-9](https://folio-org.atlassian.net/browse/EDGCOURSES-9) edge-common-spring 2.4.4, Spring Boot 3.2.6 fixing vulns
+
 ## v1.4.1
 
 * [EDGCOURSES-7](https://folio-org.atlassian.net/browse/EDGCOURSES-7) Enhance CourseClient TLS Configuration for Secure Connections to OKAPI

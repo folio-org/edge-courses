@@ -1,3 +1,7 @@
+## v1.4.3
+
+* [EDGCOURSES-12](https://folio-org.atlassian.net/browse/EDGCOURSES-12) edge-common-spring 2.4.5: AwsParamStore to support FIPS-approved crypto modules
+
 ## v1.4.2
 Quesnelia CP1 release
 

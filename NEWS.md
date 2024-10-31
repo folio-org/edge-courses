@@ -1,3 +1,6 @@
+## v1.5.0
+- Update edge-common-spring to 2.4.6, update common-langs to 3.17.0
+
 ## v1.4.3
 
 * [EDGCOURSES-12](https://folio-org.atlassian.net/browse/EDGCOURSES-12) edge-common-spring 2.4.5: AwsParamStore to support FIPS-approved crypto modules

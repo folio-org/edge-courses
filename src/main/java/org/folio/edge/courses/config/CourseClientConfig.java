@@ -16,7 +16,7 @@ import java.util.List;
 import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
 
-import static org.folio.common.utils.FeignClientTlsUtils.getSslOkHttpClient;
+import static org.folio.common.utils.tls.FeignClientTlsUtils.getSslOkHttpClient;
 
 @AllArgsConstructor
 public class CourseClientConfig {

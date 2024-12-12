@@ -1,3 +1,6 @@
+## v1.5.1
+* [EDGCOURSES-15](https://folio-org.atlassian.net/browse/EDGCOURSES-15) Spring Boot 3.3.6 fixing security vulnerabilities
+
 ## v1.5.0
 - Update edge-common-spring to 2.4.6, update common-langs to 3.17.0
 

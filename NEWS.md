@@ -1,3 +1,7 @@
+## v1.4.4
+
+* [EDGCOURSES-15](https://folio-org.atlassian.net/browse/EDGCOURSES-15) Spring Boot 3.2.12 fixing security vulnerabilities
+
 ## v1.4.3
 
 * [EDGCOURSES-12](https://folio-org.atlassian.net/browse/EDGCOURSES-12) edge-common-spring 2.4.5: AwsParamStore to support FIPS-approved crypto modules

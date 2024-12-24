@@ -1,5 +1,7 @@
 package org.folio.edge.courses.config;
 
+import static org.folio.common.utils.tls.FeignClientTlsUtils.getSslOkHttpClient;
+
 import feign.RequestInterceptor;
 import feign.okhttp.OkHttpClient;
 import lombok.AllArgsConstructor;
@@ -16,7 +18,6 @@ import java.util.List;
 import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
 
-import static org.folio.common.utils.tls.FeignClientTlsUtils.getSslOkHttpClient;
 
 @AllArgsConstructor
 public class CourseClientConfig {

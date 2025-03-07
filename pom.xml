@@ -34,7 +34,7 @@
     <httpcomponents.httpclient.version>4.5.14</httpcomponents.httpclient.version>
     <httpcomponents.httpcore.version>4.4.16</httpcomponents.httpcore.version>
     <jknack.handlebars.version>4.4.0</jknack.handlebars.version>
-    <folio-spring-cql.version>8.2.2</folio-spring-cql.version>
+    <folio-spring-cql.version>9.0.0</folio-spring-cql.version>
     <commons-lang3.version>3.17.0</commons-lang3.version>
   </properties>
 

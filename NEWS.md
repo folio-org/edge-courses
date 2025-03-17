@@ -1,3 +1,7 @@
+## v2.1.0 2025-03-14
+
+* [EDGCOURSES-18](https://folio-org.atlassian.net/browse/EDGEUSERS-5) - Update to edge-courses Java 21
+
 ## v1.5.1
 * [EDGCOURSES-15](https://folio-org.atlassian.net/browse/EDGCOURSES-15) Spring Boot 3.3.6 fixing security vulnerabilities
 

@@ -18,8 +18,9 @@ paths:
         - $ref: '#/components/parameters/request-query-parameters'
       responses:
         '200':
-          description: 'Calls the mod-courses GET /coursereserves/courses API and returns the result as-is
-          The example of response: https://github.com/folio-org/mod-courses/blob/master/ramls/examples/reserves.json'
+          description: |
+            Calls the mod-courses GET /coursereserves/courses API and returns the result as-is. \
+            The example of response: https://github.com/folio-org/mod-courses/blob/master/ramls/examples/reserves.json
           content:
             application/json:
               schema:
@@ -40,8 +41,9 @@ paths:
         - $ref: '#/components/parameters/request-query-parameters'
       responses:
         '200':
-          description: 'Calls the mod-courses GET /coursereserves/reserves API and returns the result as-is
-         The example of response: https://github.com/folio-org/mod-courses/blob/master/ramls/examples/reserves.json'
+          description: |
+            Calls the mod-courses GET /coursereserves/reserves API and returns the result as-is. \
+            The example of response: https://github.com/folio-org/mod-courses/blob/master/ramls/examples/reserves.json
           content:
             application/json:
               schema:
@@ -62,8 +64,9 @@ paths:
         - $ref: '#/components/parameters/request-query-parameters'
       responses:
         '200':
-          description: 'Calls the mod-courses GET /coursereserves/departments API and returns the result as-is
-          The example of response: https://github.com/folio-org/mod-courses/blob/master/ramls/examples/departments.json'
+          description: |
+            Calls the mod-courses GET /coursereserves/departments API and returns the result as-is. \
+            The example of response: https://github.com/folio-org/mod-courses/blob/master/ramls/examples/departments.json
           content:
             application/json:
               schema:
@@ -107,8 +110,9 @@ paths:
         - $ref: '#/components/parameters/request-query-parameters'
       responses:
         '200':
-          description: 'Calls the mod-courses GET /coursereserves/courselistings/{listing_id}/courses API and returns the result as-is
-          The example of response: https://github.com/folio-org/mod-courses/blob/master/ramls/examples/reserves.json'
+          description: |
+            Calls the mod-courses GET /coursereserves/courselistings/{listing_id}/courses API and returns the result as-is. \
+            The example of response: https://github.com/folio-org/mod-courses/blob/master/ramls/examples/reserves.json
           content:
             application/json:
               schema:

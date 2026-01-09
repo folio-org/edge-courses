@@ -1,4 +1,8 @@
-## v2.1.0 2025-03-14
+## v1.6.1 2026-01-09
+
+* [EDGCOURSES-24](https://folio-org.atlassian.net/browse/EDGCOURSES-24) Spring Boot 3.4.13 fixing vulns
+
+## v1.6.0 2025-03-14
 
 * [EDGCOURSES-18](https://folio-org.atlassian.net/browse/EDGEUSERS-5) - Update to edge-courses Java 21
 

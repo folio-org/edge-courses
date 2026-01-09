@@ -31,6 +31,8 @@
     <swagger-parser.version>2.1.20</swagger-parser.version>
     <edge-courses.yaml.file>${project.basedir}/src/main/resources/swagger.api/edge-courses.yaml</edge-courses.yaml.file>
 
+    <netty.version>4.1.130.Final</netty.version>
+    <tomcat.version>10.1.50</tomcat.version>
     <httpcomponents.httpclient.version>4.5.14</httpcomponents.httpclient.version>
     <httpcomponents.httpcore.version>4.4.16</httpcomponents.httpcore.version>
     <jknack.handlebars.version>4.4.0</jknack.handlebars.version>

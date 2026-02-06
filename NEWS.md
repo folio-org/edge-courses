@@ -1,3 +1,9 @@
+## v1.5.2
+* [EDGCOURSES-25](https://folio-org.atlassian.net/browse/EDGCOURSES-25) Netty 4.1.130, Tomcat 10.1.50 fixing vulns
+
+## v1.5.1
+* [EDGCOURSES-15](https://folio-org.atlassian.net/browse/EDGCOURSES-15) Spring Boot 3.3.6 fixing security vulnerabilities
+
 ## v1.5.0
 - Update edge-common-spring to 2.4.6, update common-langs to 3.17.0
 

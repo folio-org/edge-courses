@@ -5,13 +5,13 @@
   <parent>
     <groupId>org.springframework.boot</groupId>
     <artifactId>spring-boot-starter-parent</artifactId>
-    <version>3.4.3</version>
+    <version>3.4.13</version>
     <relativePath />
   </parent>
 
   <groupId>org.folio</groupId>
   <artifactId>edge-courses</artifactId>
-  <version>1.6.1-SNAPSHOT</version>
+  <version>1.6.2-SNAPSHOT</version>
   <name>edge-courses</name>
   <description>Provides an ability to retrieve course-reserve information from FOLIO</description>
   <packaging>jar</packaging>

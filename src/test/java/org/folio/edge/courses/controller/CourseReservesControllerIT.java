@@ -14,7 +14,6 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import java.util.stream.Stream;
 import org.folio.edge.courses.BaseIntegrationTests;
 import org.folio.edge.courses.service.CourseReservesService;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtensionContext;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -23,7 +22,6 @@ import org.junit.jupiter.params.provider.ArgumentsProvider;
 import org.junit.jupiter.params.provider.ArgumentsSource;
 import org.junit.jupiter.params.provider.ValueSource;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.test.util.ReflectionTestUtils;
 import org.springframework.test.web.servlet.MockMvc;
 
 class CourseReservesControllerIT extends BaseIntegrationTests {
@@ -86,8 +84,10 @@ class CourseReservesControllerIT extends BaseIntegrationTests {
   void getDepartments_shouldReturnDepartments() throws Exception {
     doGet(mockMvc, DEPARTMENTS_URL_WITH_PARAM)
       .andExpect(status().isOk())
-      .andExpect(jsonPath("totalRecords", is(145)))
-      .andExpect(jsonPath("departments", hasSize(10)));
+        .andExpect(jsonPath("totalRecords", is(2)))
+        .andExpect(jsonPath("departments", hasSize(2)))
+        .andExpect(jsonPath("departments[*].id",
+            hasItems("1fc91124-cd2a-4fae-9ae4-40368d80982d", "332090cd-33af-4f97-aa5f-6a27fd367b63")));
   }
 
   @Test

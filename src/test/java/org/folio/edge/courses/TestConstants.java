@@ -3,9 +3,10 @@ package org.folio.edge.courses;
 public class TestConstants {
 
   public static final String RESERVES_RESPONSE_PATH = "__files/reserves/reserves_response.json";
-  public static final String DEPARTMENTS_RESPONSE_PATH = "__files/courses/departments.json";
   public static final String SINGLE_COURSES_RESPONSE_PATH = "__files/courses/single_courses_response.json";
   public static final String MULTIPLE_COURSES_RESPONSE_PATH = "__files/courses/multiple_courses_response.json";
+  public static final String ACTIVE_AND_EXPIRED_COURSES_RESPONSE_PATH = "__files/courses/active_and_expired_courses_response.json";
+  public static final String SHARED_DEPARTMENT_COURSES_RESPONSE_PATH = "__files/courses/shared_department_courses_response.json";
   public static final String RESERVES_WITHOUT_QUERY_RESPONSE_PATH = "__files/reserves/reserves_response_without_query.json";
   public static final String TEST_TENANT = "test";
   public static final String RESERVES = "reserves";

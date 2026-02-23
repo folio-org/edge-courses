@@ -49,9 +49,9 @@
         "termId": "cd1eb7ed-2704-4b6a-9037-d7f1a5351f6b",
         "termObject": {
           "id": "cd1eb7ed-2704-4b6a-9037-d7f1a5351f6b",
-          "name": "Michaelmas 2019",
-          "startDate": "2019-10-13",
-          "endDate": "2019-12-07"
+          "name": "Active Term",
+          "startDate": "2000-01-01",
+          "endDate": "2100-12-31"
         },
         "courseTypeId": "f5063ee8-b18c-402b-b0c9-1b0f93d8570b",
         "courseTypeObject": {
@@ -108,11 +108,25 @@
       "name": "Prob. Solv./Quant. Reasoning",
       "description": "This course is intended for students who, based on the results of their mathematics assessment and the agreement of the instructor, need to strengthen their quantitative and algebraic skills in order to be ready to progress to further mathematics, science, and economics courses. In this class students learn to translate real problems into mathematics, to solve complex multi-step problems, and to gain confidence in using logarithms, exponents, and trigonometry in different contexts.",
       "departmentId": "332090cd-33af-4f97-aa5f-6a27fd367b63",
+      "departmentObject": {
+        "id": "332090cd-33af-4f97-aa5f-6a27fd367b63",
+        "name": "AC Mathematics & Statistics",
+        "metadata": {
+          "createdDate": "2020-10-22T01:48:00.749+00:00",
+          "updatedDate": "2021-03-08T00:13:07.268+00:00"
+        }
+      },
       "courseListingId": "4588e885-d013-48bc-ad63-7191e10fb697",
       "courseListingObject": {
         "id": "4588e885-d013-48bc-ad63-7191e10fb697",
         "locationId": "5b933276-46db-4b23-89b7-381e965443e5",
         "termId": "66c70630-13be-498b-bb5c-15fb2ca114ee",
+        "termObject": {
+          "id": "66c70630-13be-498b-bb5c-15fb2ca114ee",
+          "name": "Active Term",
+          "startDate": "2000-01-01",
+          "endDate": "2100-12-31"
+        },
         "courseTypeId": "d60010a8-a104-4b29-84dc-864884beaa9f",
         "instructorObjects": [
           {

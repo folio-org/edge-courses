@@ -36,7 +36,7 @@ public class CourseClientConfig {
             .followRedirects(followRedirects).readTimeout(readTimeout).connectionPool(connectionPool)
             .protocols(protocols).build();
     var tls = properties.getTls();
-    return tls != null  && Boolean.TRUE.equals(tls.isEnabled()) ?
+    return tls != null  && tls.isEnabled() ?
             getSslOkHttpClient(builder.build(), tls) : builder.build();
   }
 

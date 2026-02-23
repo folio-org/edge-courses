@@ -1,0 +1,51 @@
+{
+  "courses": [
+    {
+      "id": "83034b0a-bf71-4495-b642-2e998f721e5d",
+      "name": "Calculus 101",
+      "departmentId": "1fc91124-cd2a-4fae-9ae4-40368d80982d",
+      "departmentObject": {
+        "id": "1fc91124-cd2a-4fae-9ae4-40368d80982d",
+        "name": "Mathematics"
+      },
+      "courseListingId": "c03bcba3-a6a0-4251-b316-0631bb2e6f21",
+      "courseListingObject": {
+        "id": "c03bcba3-a6a0-4251-b316-0631bb2e6f21",
+        "termId": "cd1eb7ed-2704-4b6a-9037-d7f1a5351f6b",
+        "termObject": {
+          "id": "cd1eb7ed-2704-4b6a-9037-d7f1a5351f6b",
+          "name": "Active Term",
+          "startDate": "2000-01-01",
+          "endDate": "2100-12-31"
+        },
+        "instructorObjects": []
+      },
+      "courseNumber": "MATH-101",
+      "sectionName": "A"
+    },
+    {
+      "id": "683e0ac2-ba78-4676-b1e4-bb233e3a3b8d",
+      "name": "Calculus 102",
+      "departmentId": "1fc91124-cd2a-4fae-9ae4-40368d80982d",
+      "departmentObject": {
+        "id": "1fc91124-cd2a-4fae-9ae4-40368d80982d",
+        "name": "Mathematics"
+      },
+      "courseListingId": "4588e885-d013-48bc-ad63-7191e10fb697",
+      "courseListingObject": {
+        "id": "4588e885-d013-48bc-ad63-7191e10fb697",
+        "termId": "66c70630-13be-498b-bb5c-15fb2ca114ee",
+        "termObject": {
+          "id": "66c70630-13be-498b-bb5c-15fb2ca114ee",
+          "name": "Active Term",
+          "startDate": "2000-01-01",
+          "endDate": "2100-12-31"
+        },
+        "instructorObjects": []
+      },
+      "courseNumber": "MATH-102",
+      "sectionName": "B"
+    }
+  ],
+  "totalRecords": 2
+}

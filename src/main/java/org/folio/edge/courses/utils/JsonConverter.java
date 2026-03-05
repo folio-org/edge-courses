@@ -32,4 +32,14 @@ public class JsonConverter {
     }
   }
 
+  public String toJson(Object value) {
+    try {
+      return objectMapper.writeValueAsString(value);
+    } catch (IOException e) {
+      String errorMessage = String.format("Failed to serialize object to json: %s", value);
+      log.error(errorMessage, e);
+      throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, errorMessage);
+    }
+  }
+
 }

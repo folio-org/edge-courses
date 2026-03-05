@@ -21,7 +21,4 @@ public interface CourseClient {
   ResponseEntity<String> getReservesByInstanceId(@PathVariable("listing_id") String listingId,
     @SpringQueryMap Object requestQueryParameters);
 
-  @GetMapping(value = "/coursereserves/departments", consumes = MediaType.APPLICATION_JSON_VALUE)
-  ResponseEntity<String> getDepartments(@SpringQueryMap Object requestQueryParameters);
-
 }

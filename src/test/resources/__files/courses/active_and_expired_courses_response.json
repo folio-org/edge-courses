@@ -1,0 +1,93 @@
+{
+  "courses": [
+    {
+      "id": "83034b0a-bf71-4495-b642-2e998f721e5d",
+      "name": "Calculus 101",
+      "description": "Basic differentiation and integration",
+      "departmentId": "1fc91124-cd2a-4fae-9ae4-40368d80982d",
+      "departmentObject": {
+        "id": "1fc91124-cd2a-4fae-9ae4-40368d80982d",
+        "name": "Mathematics",
+        "description": "Including both pure and applied maths",
+        "metadata": {
+          "createdDate": "2021-05-11T19:18:09.059+00:00",
+          "updatedDate": "2021-05-11T19:18:09.059+00:00"
+        }
+      },
+      "courseListingId": "c03bcba3-a6a0-4251-b316-0631bb2e6f21",
+      "courseListingObject": {
+        "id": "c03bcba3-a6a0-4251-b316-0631bb2e6f21",
+        "termId": "cd1eb7ed-2704-4b6a-9037-d7f1a5351f6b",
+        "termObject": {
+          "id": "cd1eb7ed-2704-4b6a-9037-d7f1a5351f6b",
+          "name": "Active Term",
+          "startDate": "2000-01-01T00:00:00.000Z",
+          "endDate": "2100-12-31T00:00:00.000Z"
+        },
+        "instructorObjects": [
+          {
+            "id": "2e53ca2f-9bd9-424d-bcef-67f5f268edb0",
+            "name": "Adams Christa A",
+            "courseListingId": "c03bcba3-a6a0-4251-b316-0631bb2e6f21"
+          }
+        ]
+      },
+      "courseNumber": "12345",
+      "sectionName": "Main"
+    },
+    {
+      "id": "683e0ac2-ba78-4676-b1e4-bb233e3a3b8d",
+      "name": "Expired Course",
+      "departmentId": "332090cd-33af-4f97-aa5f-6a27fd367b63",
+      "departmentObject": {
+        "id": "332090cd-33af-4f97-aa5f-6a27fd367b63",
+        "name": "AC Mathematics & Statistics"
+      },
+      "courseListingId": "4588e885-d013-48bc-ad63-7191e10fb697",
+      "courseListingObject": {
+        "id": "4588e885-d013-48bc-ad63-7191e10fb697",
+        "termId": "66c70630-13be-498b-bb5c-15fb2ca114ee",
+        "termObject": {
+          "id": "66c70630-13be-498b-bb5c-15fb2ca114ee",
+          "name": "Michaelmas 2019",
+          "startDate": "2019-10-13",
+          "endDate": "2019-12-07"
+        },
+        "instructorObjects": [
+          {
+            "id": "10401bcf-d178-4b0e-8dda-c426c727c30d",
+            "name": "Kim Ammons",
+            "courseListingId": "4588e885-d013-48bc-ad63-7191e10fb697"
+          }
+        ]
+      },
+      "courseNumber": "MATH-100QR",
+      "sectionName": "01"
+    },
+    {
+      "id": "aabbccdd-0000-1111-2222-333344445555",
+      "name": "No Term Course",
+      "departmentId": "aabbccdd-ffff-eeee-dddd-ccccbbbbaaaa",
+      "departmentObject": {
+        "id": "aabbccdd-ffff-eeee-dddd-ccccbbbbaaaa",
+        "name": "History"
+      },
+      "courseListingId": "aabbccdd-1111-2222-3333-444455556666",
+      "courseListingObject": {
+        "id": "aabbccdd-1111-2222-3333-444455556666",
+        "termId": "aabbccdd-2222-3333-4444-555566667777",
+        "instructorObjects": [
+          {
+            "id": "aabbccdd-3333-4444-5555-666677778888",
+            "name": "No Term Instructor",
+            "courseListingId": "aabbccdd-1111-2222-3333-444455556666"
+          }
+        ]
+      },
+      "courseNumber": "HIST-001",
+      "sectionName": "01"
+    }
+  ],
+  "totalRecords": 3
+}
+

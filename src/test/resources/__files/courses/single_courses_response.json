@@ -49,9 +49,9 @@
         "termId": "cd1eb7ed-2704-4b6a-9037-d7f1a5351f6b",
         "termObject": {
           "id": "cd1eb7ed-2704-4b6a-9037-d7f1a5351f6b",
-          "name": "Michaelmas 2019",
-          "startDate": "2019-10-13",
-          "endDate": "2019-12-07"
+          "name": "Active Term",
+          "startDate": "2000-01-01",
+          "endDate": "2100-12-31"
         },
         "courseTypeId": "f5063ee8-b18c-402b-b0c9-1b0f93d8570b",
         "courseTypeObject": {

@@ -1,24 +1,25 @@
 package org.folio.edge.courses.service;
 
 import static org.apache.commons.lang3.StringUtils.EMPTY;
+import static org.folio.edge.courses.TestConstants.ACTIVE_AND_EXPIRED_COURSES_RESPONSE_PATH;
 import static org.folio.edge.courses.TestConstants.COURSES;
 import static org.folio.edge.courses.TestConstants.MULTIPLE_COURSES_RESPONSE_PATH;
+import static org.folio.edge.courses.TestConstants.SHARED_DEPARTMENT_COURSES_RESPONSE_PATH;
 import static org.folio.edge.courses.TestConstants.SINGLE_COURSES_RESPONSE_PATH;
-import static org.folio.edge.courses.TestConstants.DEPARTMENTS_RESPONSE_PATH;
 import static org.folio.edge.courses.TestConstants.RESERVES;
 import static org.folio.edge.courses.TestConstants.RESERVES_RESPONSE_PATH;
 import static org.folio.edge.courses.TestConstants.RESERVES_WITHOUT_QUERY_RESPONSE_PATH;
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.is;
-import static org.hamcrest.beans.SamePropertyValuesAs.samePropertyValuesAs;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.folio.courses.domain.dto.Courses;
+import org.folio.courses.domain.dto.InstructorMinimal;
 import org.folio.courses.domain.dto.RequestQueryParameters;
 import org.folio.edge.courses.TestUtil;
 import org.folio.edge.courses.client.CourseClient;
@@ -133,20 +134,100 @@ class CourseReserveServiceTest {
   }
 
   @Test
-  void getDepartments_shouldReturnDepartments_whileCallingWithAllParams() throws JsonProcessingException {
+  void getDepartments_shouldReturnDepartments_derivedFromActiveCourses() throws JsonProcessingException {
     //given
-    var departmentsJson = TestUtil.readFileContentFromResources(DEPARTMENTS_RESPONSE_PATH);
-    var departmentsRespEntity = ResponseEntity.ok(departmentsJson);
-    var requestQueryParameters = setUpQueryParametersWithQueryAndStandardLimit();
-    when(courseClient.getDepartments(requestQueryParameters)).thenReturn(departmentsRespEntity);
+    var coursesJson = TestUtil.readFileContentFromResources(ACTIVE_AND_EXPIRED_COURSES_RESPONSE_PATH);
+    var coursesResponse = ResponseEntity.ok(coursesJson);
+    var maxLimit = new RequestQueryParameters().limit(Integer.MAX_VALUE);
+    Courses courses = objectMapper.readValue(coursesJson, Courses.class);
+    when(courseClient.getCourseByQuery(maxLimit)).thenReturn(coursesResponse);
+    when(jsonConverter.getObjectFromJson(coursesJson, Courses.class)).thenReturn(courses);
+    when(jsonConverter.toJson(any())).thenAnswer(inv -> objectMapper.writeValueAsString(inv.getArgument(0)));
+    var queryParameters = new RequestQueryParameters().limit(10).offset(0);
     //when
-    var departments = courseReservesService.getDepartments(requestQueryParameters);
+    var result = courseReservesService.getDepartments(queryParameters);
     //then
-    var expectedJsonDepartments = TestUtil.OBJECT_MAPPER.readTree(departmentsJson).get("departments").get(0);
-    var actualJsonDepartments = TestUtil.OBJECT_MAPPER.readTree(departments).get("departments").get(0);
-    assertThat(actualJsonDepartments, is(samePropertyValuesAs(expectedJsonDepartments)));
-    assertEquals(expectedJsonDepartments.get(ID), actualJsonDepartments.get(ID));
-    assertEquals(expectedJsonDepartments.get("name"), actualJsonDepartments.get("name"));
+    var json = objectMapper.readTree(result);
+    assertEquals(1, json.get("totalRecords").asInt());
+    assertEquals("1fc91124-cd2a-4fae-9ae4-40368d80982d", json.get("departments").get(0).get("id").asText());
+    assertEquals("Mathematics", json.get("departments").get(0).get("name").asText());
+  }
+
+  @Test
+  void getDepartments_shouldExcludeDepartments_fromExpiredAndNoTermCourses() throws JsonProcessingException {
+    //given
+    var coursesJson = TestUtil.readFileContentFromResources(ACTIVE_AND_EXPIRED_COURSES_RESPONSE_PATH);
+    var coursesResponse = ResponseEntity.ok(coursesJson);
+    var maxLimit = new RequestQueryParameters().limit(Integer.MAX_VALUE);
+    Courses courses = objectMapper.readValue(coursesJson, Courses.class);
+    when(courseClient.getCourseByQuery(maxLimit)).thenReturn(coursesResponse);
+    when(jsonConverter.getObjectFromJson(coursesJson, Courses.class)).thenReturn(courses);
+    when(jsonConverter.toJson(any())).thenAnswer(inv -> objectMapper.writeValueAsString(inv.getArgument(0)));
+    var queryParameters = new RequestQueryParameters().limit(10).offset(0);
+    //when
+    var result = courseReservesService.getDepartments(queryParameters);
+    //then
+    var json = objectMapper.readTree(result);
+    var departmentIds = new java.util.ArrayList<String>();
+    json.get("departments").forEach(d -> departmentIds.add(d.get("id").asText()));
+    assertFalse(departmentIds.contains("332090cd-33af-4f97-aa5f-6a27fd367b63"));
+    assertFalse(departmentIds.contains("aabbccdd-ffff-eeee-dddd-ccccbbbbaaaa"));
+  }
+
+  @Test
+  void getDepartments_shouldDeduplicateDepartments_fromMultipleActiveCoursesWithSameDepartment() throws JsonProcessingException {
+    //given
+    var coursesJson = TestUtil.readFileContentFromResources(SHARED_DEPARTMENT_COURSES_RESPONSE_PATH);
+    var coursesResponse = ResponseEntity.ok(coursesJson);
+    var maxLimit = new RequestQueryParameters().limit(Integer.MAX_VALUE);
+    Courses courses = objectMapper.readValue(coursesJson, Courses.class);
+    when(courseClient.getCourseByQuery(maxLimit)).thenReturn(coursesResponse);
+    when(jsonConverter.getObjectFromJson(coursesJson, Courses.class)).thenReturn(courses);
+    when(jsonConverter.toJson(any())).thenAnswer(inv -> objectMapper.writeValueAsString(inv.getArgument(0)));
+    var queryParameters = new RequestQueryParameters().limit(10).offset(0);
+    //when
+    var result = courseReservesService.getDepartments(queryParameters);
+    //then
+    var json = objectMapper.readTree(result);
+    assertEquals(1, json.get("totalRecords").asInt());
+    assertEquals("1fc91124-cd2a-4fae-9ae4-40368d80982d", json.get("departments").get(0).get("id").asText());
+  }
+
+  @Test
+  void getInstructors_shouldExcludeInstructors_fromExpiredCourses() throws JsonProcessingException {
+    //given
+    var coursesJson = TestUtil.readFileContentFromResources(ACTIVE_AND_EXPIRED_COURSES_RESPONSE_PATH);
+    var coursesResponse = ResponseEntity.ok(coursesJson);
+    var maxLimit = new RequestQueryParameters().limit(Integer.MAX_VALUE);
+    Courses courses = objectMapper.readValue(coursesJson, Courses.class);
+    when(courseClient.getCourseByQuery(maxLimit)).thenReturn(coursesResponse);
+    when(jsonConverter.getObjectFromJson(coursesJson, Courses.class)).thenReturn(courses);
+    var queryParameters = new RequestQueryParameters().limit(10).offset(0);
+    //when
+    var instructors = courseReservesService.getInstructors(queryParameters, EMPTY);
+    //then
+    assertEquals(1, instructors.getTotalRecords());
+    assertEquals("2e53ca2f-9bd9-424d-bcef-67f5f268edb0", instructors.getInstructors().get(0).getId());
+    assertEquals("Adams Christa A", instructors.getInstructors().get(0).getName());
+  }
+
+  @Test
+  void getInstructors_shouldExcludeInstructors_fromCoursesWithNullTermObject() throws JsonProcessingException {
+    //given
+    var coursesJson = TestUtil.readFileContentFromResources(ACTIVE_AND_EXPIRED_COURSES_RESPONSE_PATH);
+    var coursesResponse = ResponseEntity.ok(coursesJson);
+    var maxLimit = new RequestQueryParameters().limit(Integer.MAX_VALUE);
+    Courses courses = objectMapper.readValue(coursesJson, Courses.class);
+    when(courseClient.getCourseByQuery(maxLimit)).thenReturn(coursesResponse);
+    when(jsonConverter.getObjectFromJson(coursesJson, Courses.class)).thenReturn(courses);
+    var queryParameters = new RequestQueryParameters().limit(10).offset(0);
+    //when
+    var instructors = courseReservesService.getInstructors(queryParameters, EMPTY);
+    //then
+    var instructorNames = instructors.getInstructors().stream()
+      .map(InstructorMinimal::getName)
+      .toList();
+    assertFalse(instructorNames.contains("No Term Instructor"));
   }
 
   @Test

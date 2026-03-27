@@ -3,7 +3,12 @@
     {
       "request": {
         "method": "GET",
-        "url": "/coursereserves/departments?offset=0&limit=10&lang=en"
+        "urlPath": "/coursereserves/departments",
+        "queryParameters": {
+          "offset": { "equalTo": "0" },
+          "limit": { "equalTo": "10" },
+          "lang": { "equalTo": "en" }
+        }
       },
       "response": {
         "status": 200,
@@ -15,4 +20,3 @@
     }
   ]
 }
-

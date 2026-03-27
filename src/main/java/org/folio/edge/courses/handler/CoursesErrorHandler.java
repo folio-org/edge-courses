@@ -1,6 +1,5 @@
 package org.folio.edge.courses.handler;
 
-import feign.FeignException;
 import jakarta.validation.ConstraintViolationException;
 import lombok.extern.log4j.Log4j2;
 import org.folio.courses.domain.dto.Error;
@@ -11,16 +10,18 @@ import org.springframework.http.converter.HttpMessageConversionException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
+import org.springframework.web.client.HttpStatusCodeException;
+import org.springframework.web.client.RestClientResponseException;
 
 @Log4j2
 @RestControllerAdvice
 public class CoursesErrorHandler {
 
-  @ExceptionHandler(FeignException.class)
-  public ResponseEntity<String> handleFeignException(FeignException exception) {
-    String properErrorMessage = exception.contentUTF8();
+  @ExceptionHandler(HttpStatusCodeException.class)
+  public ResponseEntity<String> handleClientException(RestClientResponseException exception) {
+    String properErrorMessage = exception.getResponseBodyAsString();
     log.error("Error occurred during service chain call, {}", properErrorMessage);
-    return ResponseEntity.status(exception.status())
+    return ResponseEntity.status(exception.getStatusCode())
       .contentType(MediaType.APPLICATION_JSON)
       .body(properErrorMessage);
   }

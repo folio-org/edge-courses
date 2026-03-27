@@ -7,7 +7,6 @@ public class TestConstants {
   public static final String MULTIPLE_COURSES_RESPONSE_PATH = "__files/courses/multiple_courses_response.json";
   public static final String ACTIVE_AND_EXPIRED_COURSES_RESPONSE_PATH = "__files/courses/active_and_expired_courses_response.json";
   public static final String SHARED_DEPARTMENT_COURSES_RESPONSE_PATH = "__files/courses/shared_department_courses_response.json";
-  public static final String RESERVES_WITHOUT_QUERY_RESPONSE_PATH = "__files/reserves/reserves_response_without_query.json";
   public static final String TEST_TENANT = "test";
   public static final String RESERVES = "reserves";
   public static final String COURSES = "courses";
@@ -15,5 +14,5 @@ public class TestConstants {
   public static final String TENANT_URL = "/_/tenant";
   public static final String POST_TENANT_REQUEST = "__files/tenant/tenant_attributes.json";
   public static final String INSTRUCTORS_URL = "/courses/instructors";
-  public static final String OKAPI_URL = "http://localhost:9130";
+  public static final String OKAPI_URL_FIELD = "okapiUrl";
 }

@@ -10,8 +10,9 @@ import java.time.format.DateTimeParseException;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
-import java.util.List;
 import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
 import java.util.function.Function;
@@ -28,6 +29,7 @@ import org.folio.courses.domain.dto.RequestQueryParameters;
 import org.folio.edge.courses.client.CourseClient;
 import org.folio.edge.courses.model.dto.DepartmentsResponse;
 import org.folio.edge.courses.model.dto.SortDirection;
+import org.folio.edge.courses.service.mapper.RequestQueryParametersMapper;
 import org.folio.edge.courses.utils.JsonConverter;
 import org.springframework.stereotype.Service;
 
@@ -41,39 +43,35 @@ public class CourseReservesService {
 
   private final CourseClient courseClient;
   private final JsonConverter jsonConverter;
+  private final RequestQueryParametersMapper requestQueryParametersMapper;
 
   public String getCoursesByQuery(RequestQueryParameters requestQueryParameters) {
     log.info("Calling getCoursesByQuery with query: {}", requestQueryParameters.getQuery());
-    var courses = courseClient.getCourseByQuery(requestQueryParameters);
-    log.info("Received response while getting getCoursesByQuery, status: {}",
-      courses::getStatusCode);
-    return courses.getBody();
+    var courses = courseClient.getCourseByQuery(requestQueryParametersMapper.toMap(requestQueryParameters));
+    return courses.toString();
   }
 
   public String getReservesByQuery(RequestQueryParameters requestQueryParameters) {
     log.info("Calling getReservesByQuery with query: {}", requestQueryParameters.getQuery());
-    var reserves = courseClient.getReservesByQuery(requestQueryParameters);
-    log.info("Received response while getting getReservesByQuery, status: {}",
-      reserves::getStatusCode);
-    return reserves.getBody();
+    var reserves = courseClient.getReservesByQuery(requestQueryParametersMapper.toMap(requestQueryParameters));
+    return reserves.toString();
   }
 
   public String getReservesByInstanceId(String instanceId, RequestQueryParameters requestQueryParameters) {
     log.info("Calling getCoursesByInstanceId with id: {}", instanceId);
-    var reserves = courseClient.getReservesByInstanceId(instanceId, requestQueryParameters);
-    log.info("Received response while getting getCoursesByInstanceId, status: {}",
-      reserves::getStatusCode);
-    return reserves.getBody();
+    var reserves = courseClient.getReservesByInstanceId(instanceId,
+      requestQueryParametersMapper.toMap(requestQueryParameters));
+    return reserves.toString();
   }
 
   public String getDepartments(RequestQueryParameters queryParameters) {
     log.info("Retrieving departments for active courses");
-    var maxLimit = new RequestQueryParameters().limit(Integer.MAX_VALUE);
+    var maxLimit = requestQueryParametersMapper.toMap(new RequestQueryParameters().limit(Integer.MAX_VALUE));
     var coursesResponse = courseClient.getCourseByQuery(maxLimit);
-    var courses = jsonConverter.getObjectFromJson(coursesResponse.getBody(), Courses.class);
+    var courses = jsonConverter.getObjectFromJson(coursesResponse.toString(), Courses.class);
     log.info("Received courses response while getting departments, size: {}", courses::getTotalRecords);
 
-    Set<String> seenDepartmentIds = new HashSet<>();
+    var seenDepartmentIds = new HashSet<>();
     var allDepartments = courses.getCourses().stream()
       .filter(this::isActiveCourse)
       .map(Course::getDepartmentObject)
@@ -87,9 +85,9 @@ public class CourseReservesService {
 
   public Instructors getInstructors(RequestQueryParameters queryParameters, String sortBy) {
     log.info("Calling getInstructors");
-    var maxLimit = new RequestQueryParameters().limit(Integer.MAX_VALUE);
+    Map<String, Object> maxLimit = requestQueryParametersMapper.toMap(new RequestQueryParameters().limit(Integer.MAX_VALUE));
     var coursesResponse = courseClient.getCourseByQuery(maxLimit);
-    var courses = jsonConverter.getObjectFromJson(coursesResponse.getBody(), Courses.class);
+    var courses = jsonConverter.getObjectFromJson(coursesResponse.toString(), Courses.class);
     log.info("Received courses response while getting instructors, size: {}", courses::getTotalRecords);
     Set<String> seenInstructorIds = new HashSet<>();
     var courseInstructors = courses.getCourses().stream()

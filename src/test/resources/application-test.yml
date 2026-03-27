@@ -4,6 +4,3 @@ spring:
     name: edge-courses
   liquibase:
     enabled: false
-  tenant:
-    validation:
-      enabled: false

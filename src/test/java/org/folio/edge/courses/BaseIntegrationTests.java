@@ -32,7 +32,6 @@ import org.springframework.test.web.servlet.ResultActions;
 @ActiveProfiles("test")
 @DirtiesContext(classMode = DirtiesContext.ClassMode.AFTER_CLASS)
 public abstract class BaseIntegrationTests {
-
   protected static final WireMockServer WIRE_MOCK = new WireMockServer(
       options()
           .dynamicPort()

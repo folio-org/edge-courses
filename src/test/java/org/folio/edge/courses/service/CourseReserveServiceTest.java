@@ -157,8 +157,8 @@ class CourseReserveServiceTest {
     //then
     var json = objectMapper.readTree(result);
     assertEquals(1, json.get("totalRecords").asInt());
-    assertEquals("1fc91124-cd2a-4fae-9ae4-40368d80982d", json.get("departments").get(0).get("id").asText());
-    assertEquals("Mathematics", json.get("departments").get(0).get("name").asText());
+    assertEquals("1fc91124-cd2a-4fae-9ae4-40368d80982d", json.get("departments").get(0).get("id").asString());
+    assertEquals("Mathematics", json.get("departments").get(0).get("name").asString());
   }
 
   @Test
@@ -178,7 +178,7 @@ class CourseReserveServiceTest {
     //then
     var json = objectMapper.readTree(result);
     var departmentIds = new java.util.ArrayList<String>();
-    json.get("departments").forEach(d -> departmentIds.add(d.get("id").asText()));
+    json.get("departments").forEach(d -> departmentIds.add(d.get("id").asString()));
     assertFalse(departmentIds.contains("332090cd-33af-4f97-aa5f-6a27fd367b63"));
     assertFalse(departmentIds.contains("aabbccdd-ffff-eeee-dddd-ccccbbbbaaaa"));
   }
@@ -200,7 +200,7 @@ class CourseReserveServiceTest {
     //then
     var json = objectMapper.readTree(result);
     assertEquals(1, json.get("totalRecords").asInt());
-    assertEquals("1fc91124-cd2a-4fae-9ae4-40368d80982d", json.get("departments").get(0).get("id").asText());
+    assertEquals("1fc91124-cd2a-4fae-9ae4-40368d80982d", json.get("departments").get(0).get("id").asString());
   }
 
   @Test

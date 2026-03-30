@@ -30,7 +30,7 @@ class CoursesErrorHandlerTest extends BaseIntegrationTests {
       .andExpect(status().isForbidden())
       .andExpect(header()
         .stringValues(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE))
-      .andExpect(jsonPath("code", is("403")));
+      .andExpect(jsonPath("code", is(403)));
   }
 
   @Test

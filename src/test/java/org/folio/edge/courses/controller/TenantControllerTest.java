@@ -7,13 +7,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import org.folio.edge.courses.BaseIntegrationTests;
 import org.folio.edge.courses.TestUtil;
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.test.web.servlet.MockMvc;
 
 class TenantControllerTest extends BaseIntegrationTests {
-
-  @Autowired
-  private MockMvc mockMvc;
 
   @Test
   void postTenant_shouldReturnHttpStatusOk() throws Exception {

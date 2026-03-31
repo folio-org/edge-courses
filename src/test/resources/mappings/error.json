@@ -3,7 +3,13 @@
     {
       "request": {
         "method": "GET",
-        "url": "/coursereserves/courses?offset=0&query=id%3D72034b0a-bf71-4495-b642-2e998f721e4c&limit=10&lang=en"
+        "urlPath": "/coursereserves/courses",
+        "queryParameters": {
+          "offset": { "equalTo": "0" },
+          "query": { "equalTo": "id=72034b0a-bf71-4495-b642-2e998f721e4c" },
+          "limit": { "equalTo": "10" },
+          "lang": { "equalTo": "en" }
+        }
       },
       "response": {
         "status": 403,

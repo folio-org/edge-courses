@@ -1,24 +1,22 @@
 package org.folio.edge.courses.client;
 
-import org.folio.edge.courses.config.CourseClientConfig;
-import org.springframework.cloud.openfeign.FeignClient;
-import org.springframework.cloud.openfeign.SpringQueryMap;
-import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
+import java.util.Map;
+import tools.jackson.databind.JsonNode;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.service.annotation.GetExchange;
+import org.springframework.web.service.annotation.HttpExchange;
 
-@FeignClient(name = "course", configuration = CourseClientConfig.class)
+@HttpExchange(contentType = "application/json")
 public interface CourseClient {
 
-  @GetMapping(value = "/coursereserves/courses", consumes = MediaType.APPLICATION_JSON_VALUE)
-  ResponseEntity<String> getCourseByQuery(@SpringQueryMap Object requestQueryParameters);
+  @GetExchange("coursereserves/courses")
+  JsonNode getCourseByQuery(@RequestParam Map<String, ?> requestQueryParameters);
 
-  @GetMapping(value = "/coursereserves/reserves", consumes = MediaType.APPLICATION_JSON_VALUE)
-  ResponseEntity<String> getReservesByQuery(@SpringQueryMap Object requestQueryParameters);
+  @GetExchange("coursereserves/reserves")
+  JsonNode getReservesByQuery(@RequestParam Map<String, ?> requestQueryParameters);
 
-  @GetMapping(value = "/coursereserves/courselistings/{listing_id}/reserves", consumes = MediaType.APPLICATION_JSON_VALUE)
-  ResponseEntity<String> getReservesByInstanceId(@PathVariable("listing_id") String listingId,
-    @SpringQueryMap Object requestQueryParameters);
-
+  @GetExchange("coursereserves/courselistings/{listing_id}/reserves")
+  JsonNode getReservesByInstanceId(@PathVariable("listing_id") String listingId,
+    @RequestParam Map<String, ?> requestQueryParameters);
 }

@@ -3,7 +3,13 @@
     {
       "request": {
         "method": "GET",
-        "url": "/coursereserves/courses?offset=0&query=id%3D83034b0a-bf71-4495-b642-2e998f721e5d&limit=10&lang=en"
+        "urlPath": "/coursereserves/courses",
+        "queryParameters": {
+          "offset": { "equalTo": "0" },
+          "query": { "equalTo": "id=83034b0a-bf71-4495-b642-2e998f721e5d" },
+          "limit": { "equalTo": "10" },
+          "lang": { "equalTo": "en" }
+        }
       },
       "response": {
         "status": 200,
@@ -16,7 +22,13 @@
     {
       "request": {
         "method": "GET",
-        "url": "/coursereserves/courses?offset=0&query=id%3D8f2b60f7-3ff3-4318-be23-95b04b9728c5&limit=10&lang=en"
+        "urlPath": "/coursereserves/courses",
+        "queryParameters": {
+          "offset": { "equalTo": "0" },
+          "query": { "equalTo": "id=8f2b60f7-3ff3-4318-be23-95b04b9728c5" },
+          "limit": { "equalTo": "10" },
+          "lang": { "equalTo": "en" }
+        }
       },
       "response": {
         "status": 200,
@@ -29,7 +41,12 @@
     {
       "request": {
         "method": "GET",
-        "url": "/coursereserves/courses?offset=0&limit=2147483647&lang=en"
+        "urlPath": "/coursereserves/courses",
+        "queryParameters": {
+          "offset": { "equalTo": "0" },
+          "limit": { "equalTo": "2147483647" },
+          "lang": { "equalTo": "en" }
+        }
       },
       "response": {
         "status": 200,
@@ -41,4 +58,3 @@
     }
   ]
 }
-

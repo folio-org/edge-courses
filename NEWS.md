@@ -1,6 +1,13 @@
+## v1.7.0  2026-04-16
+
+[EDGCOURSES-21](https://folio-org.atlassian.net/browse/EDGCOURSES-21) Fix invalid YAML api
+[EDGCOURSES-127](https://folio-org.atlassian.net/browse/EDGCOURSES-127) Fetch only relevant Instructors and Departments in "Course Reserves"
+[EDGCOURSES-26](https://folio-org.atlassian.net/browse/EDGCOURSES-26) Use GitHub Workflows for Maven
+[EDGCOURSES-22](https://folio-org.atlassian.net/browse/EDGCOURSES-26) Upgrade module to SpringBoot4.0 and Spring7.0
+
 ## v1.6.0 2025-03-17
 
-* [EDGCOURSES-18](https://folio-org.atlassian.net/browse/EDGEUSERS-5) - Update to edge-courses Java 21
+* [EDGCOURSES-18](https://folio-org.atlassian.net/browse/EDGCOURSES-18) - Update to edge-courses Java 21
 
 ## v1.5.1
 * [EDGCOURSES-15](https://folio-org.atlassian.net/browse/EDGCOURSES-15) Spring Boot 3.3.6 fixing security vulnerabilities

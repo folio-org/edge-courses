@@ -1,3 +1,7 @@
+## v1.7.1  2026-07-24
+
+[EDGCOURSES-32](https://folio-org.atlassian.net/browse/EDGCOURSES-32) Upgrade edge-common-spring in edge-courses
+
 ## v1.7.0  2026-04-16
 
 [EDGCOURSES-21](https://folio-org.atlassian.net/browse/EDGCOURSES-21) Fix invalid YAML api

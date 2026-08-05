@@ -1,3 +1,7 @@
+## WIP
+
+[FOLIO-4553](https://folio-org.atlassian.net/browse/FOLIO-4553) Set "permissions: contents: read" in maven.yml
+
 ## v1.7.0  2026-04-16
 
 [EDGCOURSES-21](https://folio-org.atlassian.net/browse/EDGCOURSES-21) Fix invalid YAML api

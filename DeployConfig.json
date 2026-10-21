@@ -52,7 +52,7 @@
     "EnvVars": [
       {
         "name": "FOLIO_CLIENT_OKAPIURL",
-        "value": "http://localhost:9130",
+        "value": null,
         "description": "Okapi base URL used to route all outbound calls into the FOLIO cluster (bound to folio.client.okapiUrl).",
         "type": "CONFIG",
         "essential": true

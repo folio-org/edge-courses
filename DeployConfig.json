@@ -45,9 +45,9 @@
       "timeouts": {
         "connect": "60s",
         "send": "60s",
-        "read": "60s"
+        "read": "120s"
       },
-      "description": "Standard Kong proxy timeouts. edge-courses has no request_timeout_ms knob, so the platform 60s defaults are kept. The load-all endpoints (/courses/departments, /courses/instructors) may need a longer read timeout (unverified)."
+      "description": "Kong proxy timeouts. edge-courses has no request_timeout_ms knob. The read timeout is raised to 120s because /courses/departments and /courses/instructors fetch all courses from mod-courses and aggregate them in memory, which can exceed the 60s platform default (unverified)."
     },
     "EnvVars": [
       {
@@ -68,21 +68,21 @@
         "name": "TOKEN_CACHE_CAPACITY",
         "value": "100",
         "description": "Maximum number of entries in the JWT token cache.",
-        "type": "FUNCTIONAL",
+        "type": "CACHE",
         "essential": false
       },
       {
         "name": "TOKEN_CACHE_TTL_MS",
         "value": "3600000",
         "description": "How long a cached JWT is retained, in milliseconds.",
-        "type": "FUNCTIONAL",
+        "type": "CACHE",
         "essential": false
       },
       {
         "name": "NULL_TOKEN_CACHE_TTL_MS",
         "value": "30000",
         "description": "How long a failed/null token lookup is cached before retrying, in milliseconds.",
-        "type": "FUNCTIONAL",
+        "type": "CACHE",
         "essential": false
       },
       {
@@ -90,14 +90,14 @@
         "value": "Ephemeral",
         "description": "Secure store backend used to resolve secrets. Valid values: Ephemeral, AwsSsm, Vault.",
         "type": "CONFIG",
-        "essential": true
+        "essential": false
       },
       {
         "name": "SECURE_STORE_PROPS",
         "value": "src/main/resources/ephemeral.properties",
         "description": "Path to the properties file configuring the selected secure store backend.",
         "type": "CONFIG",
-        "essential": true
+        "essential": false
       }
     ]
   }

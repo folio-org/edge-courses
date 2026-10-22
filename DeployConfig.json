@@ -1,6 +1,6 @@
 {
   "_disclaimer": "Default values are calibrated against a defined reference baseline of bugfest environment (currently 3 standalone tenants, and 11 consortia tenants). See ADR-0013 (Module configuration management) for the governance model behind this file.",
-  "description": "edge-courses configuration template. Sizing (cpu/memory/memoryReservation/xmx/metaspace) is taken from edge-rtac and is UNVERIFIED for edge-courses.",
+  "description": "edge-courses configuration template.",
   "moduleDefaults": {
     "resources": [
       {
@@ -39,7 +39,7 @@
     "deployment": {
       "isHaSupported": true,
       "replicasRecommendedCount": 2,
-      "description": "Deployment configuration for the edge module. edge-courses is a stateless, synchronous proxy to mod-courses (request-in -> Okapi call-out -> response-out) with no persistence, no Kafka, and no scheduled jobs, so replicas require no coordination and can be scaled horizontally without restriction. Note: /courses/departments and /courses/instructors load all courses in heap with no cache, so the heap sizing is unverified."
+      "description": "Deployment configuration for the edge module. edge-courses is a stateless, synchronous proxy to mod-courses (request-in -> Okapi call-out -> response-out) with no persistence, no Kafka, and no scheduled jobs, so replicas require no coordination and can be scaled horizontally without restriction. Note: /courses/departments and /courses/instructors load all courses in heap with no cache."
     },
     "kong": {
       "timeouts": {

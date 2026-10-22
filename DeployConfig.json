@@ -39,7 +39,7 @@
     "deployment": {
       "isHaSupported": true,
       "replicasRecommendedCount": 2,
-      "description": "Deployment configuration for the edge module. edge-courses is a stateless, synchronous proxy to mod-courses (request-in -> Okapi call-out -> response-out) with no persistence, no Kafka, and no scheduled jobs, so replicas require no coordination and can be scaled horizontally without restriction. Note: /courses/departments and /courses/instructors load all courses in heap with no cache."
+      "description": "Deployment configuration for the edge module. edge-courses is a stateless, synchronous proxy to FOLIO modules (request-in -> Okapi call-out -> response-out) with no persistence, no Kafka, and no scheduled jobs, so replicas require no coordination and can be scaled horizontally without restriction. Note: /courses/departments and /courses/instructors load all courses in heap with no cache."
     },
     "kong": {
       "timeouts": {
@@ -47,7 +47,7 @@
         "send": "60s",
         "read": "120s"
       },
-      "description": "Kong proxy timeouts. edge-courses has no request_timeout_ms knob. The read timeout is raised to 120s because /courses/departments and /courses/instructors fetch all courses from mod-courses and aggregate them in memory, which can exceed the 60s platform default (unverified)."
+      "description": "Kong proxy timeouts. edge-courses has no request-timeout setting of its own; the read timeout uses the 120s general default from the authoring guide. /courses/departments and /courses/instructors fetch all courses from mod-courses and aggregate them in memory, so they are the endpoints most likely to approach the limit (unverified)."
     },
     "EnvVars": [
       {

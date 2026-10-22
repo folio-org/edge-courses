@@ -58,13 +58,6 @@
         "essential": true
       },
       {
-        "name": "LOG_LEVEL",
-        "value": "INFO",
-        "description": "Log4j2 root log level.",
-        "type": "CONFIG",
-        "essential": false
-      },
-      {
         "name": "TOKEN_CACHE_CAPACITY",
         "value": "100",
         "description": "Maximum number of entries in the JWT token cache.",

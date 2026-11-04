@@ -1,5 +1,6 @@
 ## WIP
 
+[EDGCOURSES-37](https://folio-org.atlassian.net/browse/EDGCOURSES-37) Upgrade module to Spring Boot 4.1.1
 [FOLIO-4553](https://folio-org.atlassian.net/browse/FOLIO-4553) Set "permissions: contents: read" in maven.yml
 [EDGCOURSES-34](https://folio-org.atlassian.net/browse/EDGCOURSES-34) Add DeployConfig.json to edge-courses (ADR-0013 Configuration Management)
 

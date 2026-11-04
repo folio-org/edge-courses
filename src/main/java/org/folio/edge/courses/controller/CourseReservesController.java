@@ -1,6 +1,6 @@
 package org.folio.edge.courses.controller;
 
-import io.swagger.annotations.Api;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.folio.courses.domain.dto.Instructors;
@@ -10,7 +10,7 @@ import org.folio.edge.courses.service.CourseReservesService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 
-@Api(tags = "Edge courses")
+@Tag(name = "Edge courses")
 @Log4j2
 @RestController
 @RequiredArgsConstructor

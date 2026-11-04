@@ -165,7 +165,7 @@ class CourseReservesControllerIT extends BaseIntegrationTests {
 
   static class LimitAndOffsetProvider implements ArgumentsProvider {
 
-    String[] allItems = new String[]{
+    String[] allItems = {
       "Adams Christa A", "Taylor Mike", "Aagard Madgeline", "Kim Ammons"
     };
 

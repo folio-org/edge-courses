@@ -10,7 +10,6 @@ import java.util.List;
 import lombok.SneakyThrows;
 import lombok.extern.log4j.Log4j2;
 import org.folio.edgecommonspring.client.EdgeClientProperties;
-import org.folio.spring.config.properties.FolioEnvironment;
 import org.folio.spring.integration.XOkapiHeaders;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
@@ -44,8 +43,7 @@ public abstract class BaseIntegrationTests {
 
 
   @BeforeAll
-  static void beforeAll(@Autowired EdgeClientProperties edgeClientProperties,
-      @Autowired FolioEnvironment folioEnvironment) {
+  static void beforeAll(@Autowired EdgeClientProperties edgeClientProperties) {
     WIRE_MOCK.start();
     ReflectionTestUtils.setField(edgeClientProperties, TestConstants.OKAPI_URL_FIELD, WIRE_MOCK.baseUrl());
     log.info("Wire mock started");

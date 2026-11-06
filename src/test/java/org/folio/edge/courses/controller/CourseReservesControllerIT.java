@@ -21,6 +21,7 @@ import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.ArgumentsProvider;
 import org.junit.jupiter.params.provider.ArgumentsSource;
 import org.junit.jupiter.params.provider.ValueSource;
+import org.junit.jupiter.params.support.ParameterDeclarations;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.web.servlet.MockMvc;
 
@@ -164,12 +165,12 @@ class CourseReservesControllerIT extends BaseIntegrationTests {
 
   static class LimitAndOffsetProvider implements ArgumentsProvider {
 
-    String[] allItems = new String[]{
+    String[] allItems = {
       "Adams Christa A", "Taylor Mike", "Aagard Madgeline", "Kim Ammons"
     };
 
     @Override
-    public Stream<? extends Arguments> provideArguments(ExtensionContext context) {
+    public Stream<? extends Arguments> provideArguments(ParameterDeclarations parameters, ExtensionContext context) {
       return Stream.of(
         arguments(0, 4, 4, allItems),
         arguments(4, 5, 0, new String[]{}),

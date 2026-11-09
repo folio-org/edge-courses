@@ -1,3 +1,7 @@
+## v1.7.2  2026-11-09
+
+[EDGCOURSES-37](https://folio-org.atlassian.net/browse/EDGCOURSES-37) Upgrade module to Spring Boot 4.1.1
+
 ## v1.7.1  2026-07-24
 
 [EDGCOURSES-32](https://folio-org.atlassian.net/browse/EDGCOURSES-32) Upgrade edge-common-spring in edge-courses

@@ -1,3 +1,7 @@
+## v1.7.3  2026-11-23
+
+[EDGCOURSES-34](https://folio-org.atlassian.net/browse/EDGCOURSES-34) Add DeployConfig.json to edge-courses (ADR-0013 Configuration Management)
+
 ## v1.7.2  2026-11-09
 
 [EDGCOURSES-37](https://folio-org.atlassian.net/browse/EDGCOURSES-37) Upgrade module to Spring Boot 4.1.1
